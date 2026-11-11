@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/17/2025
+ms.date: 11/06/2026
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud administrator, I want to update or delete a standby pool for container instances, so that I can manage resource capacity and configurations effectively in my cloud environment.
 ---
@@ -15,11 +15,10 @@ ms.reviewer: tomvcassidy
 
 # Update or delete a standby pool for Azure Container Instances
 
+This article steps through updating or deleting a standby pool for Azure Container Instances.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
-
-
-This article steps through updating or deleting a standby pool for Azure Container Instances. 
 
 ## Update a standby pool
 A standby pool can be updated at any point in time. The settings that are adjustable after creation include `maxReadyCapacity` and the associated `containerGroupProfile`. If you update the container group profile of the standby pool, the new profile must also be in the same subscription and location as the standby pool. Once the profile has been updated, the pool will drain all existing instances and replaced them with new ones. 

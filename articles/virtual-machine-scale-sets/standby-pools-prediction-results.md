@@ -14,6 +14,8 @@ ms.reviewer: wwilliams
 
 # Get prediction results for Standby pools (Preview)
 
+Prediction results help you estimate demand for instances in your standby pool for Virtual Machine Scale Sets. Use these forecasts to make informed decisions about your pool size.
+
 > [!IMPORTANT]
 > Prediction results for standby pools is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
 

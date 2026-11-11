@@ -5,15 +5,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 11/09/2026
 ms.reviewer: wwilliams
 # Customer intent: As a cloud architect, I want to configure Virtual Machine Scale Sets with Spot Instances in standby pools, so that I can optimize costs while ensuring scalability and resource availability for my applications.
 ---
 
 # Use Spot Instances in standby pools (Preview)
-
-> [!IMPORTANT]
-> Using spot instances in standby pools for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature may change prior to general availability (GA).
 
 Azure Spot Instances allow you to take advantage of unused Azure capacity at a significant cost savings. By combining Spot Instances with standby pools in Virtual Machine Scale Sets, you can optimize costs while maintaining scalability. However, there are specific considerations and limitations when using Spot Instances with standby pools:
 
@@ -22,6 +19,9 @@ Azure Spot Instances allow you to take advantage of unused Azure capacity at a s
 - Standby pools using spot instances can't use a hibernated VM state. Only running and deallocated pool state are supported.
 
 This article explains how to configure and use Spot Instances with standby pools, including details about supported VM states and their behavior.
+
+> [!IMPORTANT]
+> Using Spot Instances in standby pools for Virtual Machine Scale Sets is currently in preview. Previews are made available to you on the condition that you agree to the [supplemental terms of use](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Some aspects of this feature might change before general availability (GA).
 
 ## Supported VM states for Spot Instances in standby pools
 
