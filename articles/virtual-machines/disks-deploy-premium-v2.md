@@ -49,6 +49,8 @@ Premium SSD v2 disks support a 4k physical sector size by default, but you can c
 
 Because not every region and zone supports Premium SSD v2 disks, use the Azure CLI or PowerShell to check region and zone support.
 
+For nonzonal deployments, also check the [nonzonal regional availability list](/azure/virtual-machines/disks-deploy-premium-v2?tabs=azure-cli#nonzonal-disks). 
+
 # [Azure CLI](#tab/azure-cli)
 
 To find the regions and zones that support Premium SSD v2 disks, replace `yourSubscriptionId` with your subscription, and then run the [az vm list-skus](/cli/azure/vm#az-vm-list-skus) command:
