@@ -5,15 +5,19 @@ author: iamwilliew
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 11/11/2026
 ms.author: wwilliams
 ms.reviewer: mattmcinnes
+ai-usage: ai-assisted
 # Customer intent: "As a cloud architect, I want to understand the specifications and support features of the Dnldsv6 virtual machine sizes, so that I can select the appropriate VM type for my applications based on performance and capacity requirements."
 ---
 
 # Dnldsv6 sizes series (Preview)
 
 [!INCLUDE [dnldsv6-summary](./includes/dnldsv6-series-summary.md)]
+
+> [!IMPORTANT]
+> Increased connection setup performance (connections per second, or CPS) is available only for supported traffic scenarios. It doesn't apply to traffic destined for private endpoints, traffic that uses virtual network encryption, or certain container networking scenarios. See [Connection acceleration limitations](/azure/virtual-network/network-optimized-vm-network-connection-acceleration#limitations) before sizing your workload.
 
 ## Host specifications
 [!INCLUDE [dnldsv6-series-specs](./includes/dnldsv6-series-specs.md)]
@@ -130,7 +134,6 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 | --- | --- |
 |[Premium Storage](../../premium-storage-performance.md)| Supported |
 |[Premium Storage caching](../../premium-storage-performance.md)| Supported |
-|[Live Migration](../../maintenance-and-updates.md#live-migration)| Not Supported |
 |[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
 |[Generation 2 VMs](../../generation-2.md)| Supported |
 |[Generation 1 VMs](../../generation-2.md)| Not Supported |
