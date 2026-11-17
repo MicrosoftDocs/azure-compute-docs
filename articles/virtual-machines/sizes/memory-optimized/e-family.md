@@ -5,8 +5,10 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/25/2026
+ms.date: 11/07/2026
+ai-usage: ai-assisted
 ms.author: mattmcinnes
+ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications and workloads of the E family VM sizes, so that I can select the most suitable virtual machines for memory-intensive applications in my organization.
 ---
 
@@ -21,6 +23,26 @@ ms.author: mattmcinnes
 [!INCLUDE [e-family-workloads](./includes/e-family-workloads.md)]
 
 ## Series in family
+
+### Epsv7 and Epdsv7-series
+
+#### [Epsv7-series](#tab/epsv7)
+
+[!INCLUDE [epsv7-series-summary](./includes/epsv7-series-summary.md)]
+
+[View the full Epsv7-series page](./epsv7-series.md).
+
+[!INCLUDE [epsv7-series-specs](./includes/epsv7-series-specs.md)]
+
+#### [Epdsv7-series](#tab/epdsv7)
+
+[!INCLUDE [epdsv7-series-summary](./includes/epdsv7-series-summary.md)]
+
+[View the full Epdsv7-series page](./epdsv7-series.md).
+
+[!INCLUDE [epdsv7-series-specs](./includes/epdsv7-series-specs.md)]
+
+---
 
 ### Esv7 and Edsv7-series
 #### [Esv7 series](#tab/esv7)

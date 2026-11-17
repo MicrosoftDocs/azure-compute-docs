@@ -5,8 +5,10 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 09/24/2026
+ms.date: 11/06/2026
+ai-usage: ai-assisted
 ms.author: mattmcinnes
+ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to explore the L family of storage optimized VM sizes, so that I can select the most suitable virtual machines for my workload requirements.
 ---
 
@@ -21,6 +23,14 @@ ms.author: mattmcinnes
 [!INCLUDE [l-family-workloads](./includes/l-family-workloads.md)]
 
 ## Series in family
+
+### Lpsv5-series
+
+[!INCLUDE [lpsv5-series-summary](./includes/lpsv5-series-summary.md)]
+
+[View the full Lpsv5-series page](./lpsv5-series.md).
+
+[!INCLUDE [lpsv5-series-specs](./includes/lpsv5-series-specs.md)]
 
 ### Lsv2-series
 [!INCLUDE [lsv2-series-summary](./includes/lsv2-series-summary.md)]
