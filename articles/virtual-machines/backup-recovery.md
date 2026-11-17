@@ -1,13 +1,13 @@
 ---
 title: Overview backup options for VMs
 description: Overview backup options for Azure virtual machines.
-author: iamwilliew
+author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: recovery
 ms.topic: overview
 ms.date: 10/20/2026
 ai-usage: ai-assisted
-ms.author: wwilliams
+ms.author: mattmcinnes
 # Customer intent: "As a cloud administrator, I want to explore backup and restore options for Azure VMs, so that I can effectively protect data and ensure recoverability in case of failures or disasters."
 ---
 
@@ -28,6 +28,7 @@ Availability, failover, and backup address different risks. Use this comparison 
 | Move an eligible existing zonal VM to another zone in the same region. | [Zone resilience for Azure VMs (Preview)](zone-resilience.md). | Requires ZRS OS and data disks. Failover is customer-initiated and interrupts the workload. |
 | Recover from a zone or regional outage through replication. | [Azure Site Recovery](/azure/site-recovery/site-recovery-overview). | Review the support requirements for zone-to-zone or region-to-region replication. |
 | Recover point-in-time data after deletion or corruption. | Azure Backup, managed snapshots, or VM restore points, described in this article. | Replication doesn't replace historical backups, and backups don't keep an application continuously available. |
+| Repair a Windows VM that fails to start, in place, without restoring from backup. | [Remote recovery for Azure VMs (Preview)](windows/recovery-environment-for-vm/overview.md). | Repairs the existing OS disk. Doesn't replace backups. |
 
 > [!IMPORTANT]
 > Zone resilience for Azure VMs is in preview. Use this preview only for evaluation and testing with nonproduction VMs. Don't use it for production VMs. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -74,3 +75,5 @@ Learn more about [working with VM restore points](virtual-machines-create-restor
 You can try out Azure Backup by following the [Azure Backup quickstart](/azure/backup/quick-backup-vm-portal).
 
 You can also plan and implement reliability for your virtual machine configuration. For more information, see [Reliability in Azure Virtual Machines](/azure/reliability/reliability-virtual-machines).
+
+For in-place startup repairs on supported Windows VMs, see [Remote recovery for Azure VMs (Preview)](windows/recovery-environment-for-vm/overview.md).

@@ -2,11 +2,12 @@
 title: Scheduled Events - Event Grid
 description: Detailed information on how to configure and use scheduled events in an Event Grid system topic.
 author: adwilso
-ms.author: wilsonadam   
+ms.author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
 ms.topic: concept-article 
-ms.date: 05/01/2026
+ms.date: 11/05/2026
+ms.reviewer: mattmcinnes
 #CustomerIntent: "As a cloud operations manager, I want to receive proactive notifications of scheduled maintenance events for my virtual machines via event grid, so that I can prepare my applications and minimize downtime and disruption."
 ---
 
@@ -19,7 +20,7 @@ Scheduled events can be delivered through an Event Grid System Topic so you can 
 
 You can use Event Grid to receive notifications about the upcoming maintenance operations on your Azure virtual machines (VMs), and configure your VMs to handle these events gracefully without disruptions to your customers.
 
-Event Grid is a cloud service that enables you to create and manage event-driven applications. The Scheduled Events system topic publishes events related to impactful operations on your VMs, such as reboot, redeploy, or reimage. When you subscript to this topic, you're notified in advance about these events and can take appropriate actions. These actions include saving the state of your applications, draining sessions, or migrating the workloads to another VM.
+Event Grid is a cloud service that enables you to create and manage event-driven applications. The Scheduled Events system topic publishes events related to impactful operations on your VMs, such as reboot, redeploy, or reimage. When you subscribe to this topic, you're notified in advance about these events and can take appropriate actions. These actions include saving the state of your applications, draining sessions, or migrating the workloads to another VM.
 
 
 > [!Note] 
@@ -59,7 +60,7 @@ By default, scheduled events aren't delivered to Event Grid for virtual machines
 
 Enabling delivery to the Event Grid System Topic also delivers the events to [Azure Resource Graph](scheduled-events-resource-graph.md).
 
-If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](/rest/api/compute/virtual-machine-scale-sets/create-or-update#scheduledeventspolicy) setting. This setting enables scheduled events for all VMs in the scale set and ensure they're published to both Event Grid and the Azure Resource Graph.
+If you're using Virtual Machine Scale Sets Flex or Uniform, enable scheduled events in Event Grid by using the `scheduledEventsAdditionalPublishingTargets` [eventGridAndResourceGraph](/rest/api/compute/virtual-machine-scale-sets/create-or-update#scheduledeventspolicy) setting. This setting enables scheduled events for all VMs in the scale set and ensures they're published to both Event Grid and the Azure Resource Graph.
 
 ```json
 "scheduledEventsPolicy": {
@@ -149,10 +150,10 @@ These fields contain the same information as the IMDS and Azure Resource Graph E
 | Field | Description |
 | --------------- | ------------- |
 | EventId | A unique identifier for an event. The EventId won't change as the EventStatus changes throughout the event's lifetime |
-| EventType | Impact this event causes. <br>**Freeze:** The Virtual Machine is scheduled to pause for a few seconds. CPU and network connectivity might be suspended, but there's no impact on memory or open files.<br><br>**Reboot:** The Virtual Machine is scheduled for reboot (non-persistent memory is lost). In rare cases a VM scheduled for EventType:"Reboot" might experience a freeze event instead of a reboot. <br><br>**Redeploy:** The Virtual Machine is scheduled to move to another node (ephemeral disks are lost).<br><br>**Preempt:** The Spot Virtual Machine is being deleted (ephemeral disks are lost). This event is made available on a best effort basis.<br><br>**Terminate:** The virtual machine is scheduled for deletion. |
+| `EventType` | Impact this event causes. <br>**Freeze:** The virtual machine is scheduled to pause for a few seconds. CPU and network connectivity might be suspended, but there's no impact on memory or open files.<br><br>**Reboot:** The virtual machine is scheduled for reboot (non-persistent memory is lost). In rare cases a VM scheduled for `EventType`:"Reboot" might experience a freeze event instead of a reboot. <br><br>**Redeploy:** The virtual machine is scheduled to move to another node (ephemeral disks are lost).<br><br>**Preempt:** The Spot virtual machine is being deleted (ephemeral disks are lost). This event is made available on a best effort basis.<br><br>**Terminate:** The virtual machine is scheduled for deletion.<br><br>**SpotRebalanceRecommendation:** Spot VM is at risk of eviction. Rebalance recommended. |
 | ResourceType | Type of resource this event affects. Currently the only possible value is `"VirtualMachine"` |
 | Resources | Array of resources this event affects, identified by VM instance names. Approving this event approves it to proceed for all resources listed in this array. |
-| EventStatus | Status of this event. <br>**Scheduled:** The event is scheduled to start after the time specified in the NotBefore property.<br><br>**Started:** The event has started.<br><br>**Completed:** (Event Grid and ARG only) The event was completed successfully after the maintenance operations was performed.<br><br>**Canceled:** (Event Grid and ARG only) The scheduled impact won't proceed as scheduled and the VM won't be impacted at the scheduled time. |
+| `EventStatus` | Status of this event. <br>**Scheduled:** The event is scheduled to start after the time specified in the `NotBefore` property.<br><br>**Started:** The event has started.<br><br>**Completed:** (Event Grid and ARG only) The event was completed successfully after the maintenance operations was performed.<br><br>**Canceled:** (Event Grid and ARG only) The scheduled impact won't proceed as scheduled and the VM won't be impacted at the scheduled time.<br><br>**Advisory:** This event is informational only. |
 | NotBefore | Time after which this event can start. The event is guaranteed to not start before this time. Is blank if the event is in the started state. Time is in GMT format, using RFC 1123. |
 | Description | A human-readable description of the event. |
 | EventSource | Initiator of the event. <br>**Platform:** The Azure platform initiated this event.<br><br>**User:** An authorized user initiated the event. |

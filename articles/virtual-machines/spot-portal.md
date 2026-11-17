@@ -1,13 +1,13 @@
 ---
 title: Use the portal to deploy Azure Spot Virtual Machines
 description: How to use the Portal to deploy Spot Virtual Machines
-author: iamwilliew
+author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
-ms.date: 02/28/2023
-ms.author: wwilliams
-ms.reviewer: wwilliams
+ms.date: 11/06/2026
+ms.author: mattmcinnes
+ms.reviewer: mattmcinnes
 # Customer intent: As a cloud administrator, I want to deploy Azure Spot Virtual Machines through the portal so that I can utilize cost-effective solutions for my interruptible workloads while managing pricing and eviction strategies effectively.
 ---
 
@@ -15,7 +15,7 @@ ms.reviewer: wwilliams
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Uniform scale sets
 
-Using [Azure Spot Virtual Machines](spot-vms.md) allows you to take advantage of our unused capacity at a significant cost savings. At any point in time when Azure needs the capacity back, the Azure infrastructure will evict Azure Spot Virtual Machines. Therefore, Azure Spot Virtual Machines are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more.
+By using [Azure Spot Virtual Machines](spot-vms.md), you can take advantage of unused capacity at a significant cost savings. At any point when Azure needs the capacity back, the Azure infrastructure evicts Azure Spot Virtual Machines. Therefore, Azure Spot Virtual Machines are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more. [Spot Plus (Public Preview)](spot-plus-public-preview-azure-compute-technical.md) is an enhanced tier of Azure Spot Virtual Machines for interruption-tolerant workloads. It's designed to deliver better runtimes and improved eviction and rebalance signals, while remaining evictable when Azure needs the capacity.
 
 Pricing for Azure Spot Virtual Machines is variable, based on region and SKU. For more information, see VM pricing for [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) and [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). For more information about setting the max price, see [Azure Spot Virtual Machines - Pricing](spot-vms.md#pricing).
 
@@ -23,21 +23,19 @@ You have option to set a max price you are willing to pay, per hour, for the VM.
 
 When the VM is evicted, you have the option to either delete the VM and the underlying disk or deallocate the VM so that it can be restarted later.
 
-
 ## Create the VM
 
 When you are deploying a VM, you can choose to use an Azure spot instance.
 
+On the **Basics** tab, in the **Instance details** section, select **Run with Azure Spot discount** to choose a Spot variant.
 
-On the **Basics** tab, in the **Instance details** section, **No** is the default for using an Azure spot instance.
+:::image type="content" source="media/spot-portal/spot-plus-pricing-tier-selection.png" alt-text="Screenshot of the Basics tab with the Run with Azure Spot discount option.":::
 
-![Screen capture for choosing no, don't use an Azure spot instance](./media/spot-portal/no.png)
+After you choose the Spot variant, the section expands and you can choose your [eviction type and eviction policy](spot-vms.md#eviction-policy). 
 
-If you select **Yes**, the section expands and you can choose your [eviction type and eviction policy](spot-vms.md#eviction-policy). 
+:::image type="content" source="media/spot-portal/spot-plus-eviction-settings.png" alt-text="Screenshot of the expanded Spot configuration with eviction type and eviction policy options.":::
 
-![Screen capture for choosing yes, use an Azure spot instance](./media/spot-portal/yes.png)
-
-You can also compare the pricing and eviction rates with other similar regions by selecting **View pricing history and compare prices in nearby regions**.
+Select **View pricing history and compare prices in nearby regions** to compare the pricing and eviction rates with other similar regions. Currently, this feature is available for **Spot** only.
 
 In this example, the Canada Central region is less expensive and has a lower eviction rate than the East US region.
 
@@ -54,7 +52,6 @@ Replace the following with your information:
 - `subscriptionId`
 - `resourceGroupName`
 - `vmName`
-
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01

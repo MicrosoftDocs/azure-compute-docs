@@ -5,8 +5,10 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 05/05/2025
+ms.date: 11/07/2026
+ai-usage: ai-assisted
 ms.author: mattmcinnes
+ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to compare the various M family VM sizes, so that I can select the most suitable configuration for my memory-intensive workloads.
 ---
 
@@ -21,6 +23,23 @@ ms.author: mattmcinnes
 [!INCLUDE [m-family-workloads](./includes/m-family-workloads.md)]
 
 ## Series in family
+
+### Mpsv4 and Mpdsv4-series
+#### [Mpsv4-series](#tab/mpsv4)
+[!INCLUDE [mpsv4-series](./includes/mpsv4-series-summary.md)]
+
+[View the full Mpsv4-series page](./mpsv4-series.md)
+
+[!INCLUDE [mpsv4-series-specs](./includes/mpsv4-series-specs.md)]
+
+#### [Mpdsv4-series](#tab/mpdsv4)
+[!INCLUDE [mpdsv4-series](./includes/mpdsv4-series-summary.md)]
+
+[View the full Mpdsv4-series page](./mpdsv4-series.md)
+
+[!INCLUDE [mpdsv4-series-specs](./includes/mpdsv4-series-specs.md)]
+
+---
 
 ### Mbsv3 and Mbdsv3-series
 #### [Mbsv3-series](#tab/mbsv3)

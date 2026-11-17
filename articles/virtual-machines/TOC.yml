@@ -61,6 +61,14 @@
       href: /azure/virtual-machine-scale-sets/quick-create-bicep-windows?toc=/azure/virtual-machines/toc.json
     - name: ARM template
       href: /azure/virtual-machine-scale-sets/flexible-virtual-machine-scale-sets-rest-api?toc=/azure/virtual-machines/toc.json
+  - name: Create Compute Templates
+    items:
+    - name: Overview of Compute Templates
+      href: overview-compute-templates.md
+    - name: Create VM with Compute Templates in Azure
+      href: create-virtual-machine-with-compute-templates.md
+    - name: Create Adaptive Placement with Compute Templates
+      href: how-to-create-adaptive-placement-with-compute.md
   expanded: true
 - name: Tutorials
   items:
@@ -236,6 +244,14 @@
        - name: Overview
          displayName: D-series, sizes, size, vm size
          href: ./sizes/general-purpose/d-family.md
+       - name: Dpsv7 series
+         href: ./sizes/general-purpose/dpsv7-series.md
+       - name: Dpdsv7 series
+         href: ./sizes/general-purpose/dpdsv7-series.md
+       - name: Dplsv7 series
+         href: ./sizes/general-purpose/dplsv7-series.md
+       - name: Dpldsv7 series
+         href: ./sizes/general-purpose/dpldsv7-series.md
        - name: Dsv7 series
          href: ./sizes/general-purpose/dsv7-series.md
        - name: Dlsv7 series
@@ -398,6 +414,10 @@
        - name: Overview
          displayName: E-series, sizes, size, vm size
          href: ./sizes/memory-optimized/e-family.md
+       - name: Epsv7 series
+         href: ./sizes/memory-optimized/epsv7-series.md
+       - name: Epdsv7 series
+         href: ./sizes/memory-optimized/epdsv7-series.md
        - name: Esv7 series
          href: ./sizes/memory-optimized/esv7-series.md
        - name: Edsv7 series
@@ -483,6 +503,10 @@
        - name: Overview
          displayName: M-series, sizes, size, vm size
          href: ./sizes/memory-optimized/m-family.md
+       - name: Mpsv4 series
+         href: ./sizes/memory-optimized/mpsv4-series.md
+       - name: Mpdsv4 series
+         href: ./sizes/memory-optimized/mpdsv4-series.md
        - name: Medium Memory
          items:
          - name: Mdsv4 Medium Memory series
@@ -535,6 +559,8 @@
        - name: Overview
          displayName: L-series, sizes, size, vm size
          href: ./sizes/storage-optimized/l-family.md
+       - name: Lpsv5 series
+         href: ./sizes/storage-optimized/lpsv5-series.md
        - name: Laosv5 series
          href: ./sizes/storage-optimized/laosv5-series.md
        - name: Lasv5 series
@@ -721,7 +747,7 @@
        items:
        - name: Overview
          displayName: Hc-series, sizes, size, vm size
-         href: ./sizes/high-performance-compute/hc-family.md       
+         href: ./sizes/high-performance-compute/hc-family.md
        - name: HC series
          items:
          - name: Overview
@@ -734,7 +760,7 @@
        items:
        - name: Overview
          displayName: HX-series, sizes, size, vm size
-         href: ./sizes/high-performance-compute/hx-family.md       
+         href: ./sizes/high-performance-compute/hx-family.md
        - name: HX series
          items:
          - name: Overview
@@ -777,6 +803,8 @@
        href: enable-nvme-interface.md
      - name: SCSI to NVMe for Linux and Windows VMs
        href: nvme-linux.md
+     - name: Azure Boost observability for NVMe disks
+       href: azure-boost-observability.md
    - name: VM Lifecycle
      items:
      - name: Overview
@@ -875,12 +903,16 @@
      href: quotas.md
    - name: Constrained vCPUs
      href: constrained-vcpu.md
+   - name: VM Processor Mode
+     href: vm-processor-mode.md
    - name: VM Customization
      href: vm-customization.md
    - name: Azure VMs with no temp disk
      href: azure-vms-no-temp-disk.yml
 - name: Instances
   items:  
+  - name: Create a VM with adaptive placement (preview)
+    href: vm-adaptive-placement.md
   - name: Azure Compute Gallery
     items:
     - name: Overview
@@ -1195,6 +1227,8 @@
       href: ./dedicated-hosts/modernization-guide.md
   - name: Azure Spot Virtual Machines
     items:
+    - name: "Azure Spot Plus VMs: Public Preview"
+      href: spot-plus-public-preview-azure-compute-technical.md
     - name: Overview
       displayName: pre-empt, preempt, spot, low priority, low-priority, Azure Spot Virtual Machines
       href: spot-vms.md
@@ -1223,6 +1257,8 @@
       displayName: pre-empt, preempt, spot, low priority, low-priority
       href: /azure/architecture/guide/spot/spot-eviction
       maintainContext: true
+    - name: Rebalance Recommendation (preview Spot Plus)
+      href: spot-eviction-risk-notifications.md
   - name: Azure Boost
     displayName: Boost, Azure Boost, boost vm, boost virtual machine
     href: /azure/azure-boost/overview?toc=/azure/virtual-machines/toc.json&bc=/azure/virtual-machines/breadcrumb/toc.json
@@ -2487,6 +2523,22 @@
   - name: Overview
     displayName: Backup and recovery
     href: backup-recovery.md
+  - name: Remote recovery for Azure VMs (Preview)
+    items:
+    - name: Overview
+      href: windows/recovery-environment-for-vm/overview.md
+    - name: Deploy a VM with remote recovery (Preview)
+      href: windows/recovery-environment-for-vm/deploy-vm.md
+    - name: Author a custom remediation (Preview)
+      href: windows/recovery-environment-for-vm/author-remediation.md
+    - name: Publish a custom remediation (Preview)
+      href: windows/recovery-environment-for-vm/publish-remediation.md
+    - name: Apply a custom remediation (Preview)
+      href: windows/recovery-environment-for-vm/apply-remediation.md
+    - name: Monitor recovery (Preview)
+      href: windows/recovery-environment-for-vm/monitor-recovery.md
+    - name: Test quick machine recovery (Preview)
+      href: windows/recovery-environment-for-vm/test-quick-machine-recovery.md
 - name: Reliability in Virtual Machines
   items:
   - name: Reliability in Virtual Machines
