@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/17/2025
+ms.date: 11/11/2026
 ms.reviewer: tomvcassidy
 # Customer intent: As a DevOps engineer, I want to request a container group from a standby pool in Azure Container Instances, so that I can effectively manage container deployments and optimize resource usage during scaling.
 ---
@@ -15,11 +15,10 @@ ms.reviewer: tomvcassidy
 
 # Request a container from a standby pool for Azure Container Instances
 
+This article steps through requesting a container group from a standby pool for Azure Container Instances.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
-
-
-This article steps through requesting a container group from a standby pool for Azure Container Instances.   
 
 ## Prerequisites
 
