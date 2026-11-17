@@ -1,12 +1,12 @@
 ---
 title: Ebdsv6 size series
 description: Information on and specifications of the Ebdsv6-series sizes
-author: bansal-misha
+author: eehindero
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
-ms.author: mishabansal
+ms.date: 11/16/2026
+ms.author: eehindero
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud infrastructure manager, I want to understand the specifications and features of the Edsv6 size series virtual machines, so that I can select the appropriate VM size for my application workloads and resource requirements."
 ---
@@ -84,8 +84,8 @@ Remote (uncached) storage info for each size
 | Standard_E48bds_v6 | 64 | 209000 | 6160 | 220000 | 7000 | 278630 | 8030 | 293295 | 9124 |
 | Standard_E64bds_v6 | 64 | 242000 | 6600 | 253000 | 8000 | 324280 | 8580 | 339020 | 10400 |
 | Standard_E96bds_v6 | 64 | 286000 | 8250 | 286000 | 10000 | 429000 | 9900 | 429000 | 12000 |
-| Standard_E128bds_v6 | 64 | 330000 | 10000 | 350000 | 11500 | 500000 | 12000 | 530303 | 13800 |
-| Standard_E192ibds_v6 | 64 | 400000 | 14000 | 400000 | 14000 | 800000 | 14000 | 800000 | 14000 |
+| Standard_E128bds_v6 | 64 | 330000 | 10000 | 350000 | 11500 | 500000 | 12000 | 530303 | 12500 |
+| Standard_E192ibds_v6 | 64 | 400000 | 12500 | 400000 | 12500 | 800000 | 12500 | 800000 | 12500 |
 
 
 #### Storage resources
