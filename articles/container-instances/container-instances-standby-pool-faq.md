@@ -7,18 +7,17 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/17/2025
+ms.date: 11/12/2026
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud developer, I want to understand how to configure and manage standby pools in Azure Container Instances, so that I can optimize resource allocation and handle container requests effectively.
 ---
 
 # Frequently asked questions about standby pools for Azure Container Instances
 
+Get answers to frequently asked questions about standby pools for Azure Container Instances.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
-
-
-Get answers to frequently asked questions about standby pools for Azure Container Instances. 
 
 ### How long can my standby pool name be? 
 A standby pool can be anywhere between 3 and 24 characters. For more information, see [Resource naming restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules)

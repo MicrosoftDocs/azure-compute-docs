@@ -5,7 +5,7 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: azure-container-instances
 ms.topic: concept-article
-ms.date: 11/17/2025
+ms.date: 11/12/2026
 ms.update-cycle: 1095-days
 ms.reviewer: wwilliams
 # Customer intent: "As a cloud administrator, I want to retrieve and interpret the health status of my standby pool for container instances, so that I can proactively monitor performance and address any issues that may arise."
@@ -13,10 +13,10 @@ ms.reviewer: wwilliams
 
 # Understand the health state of your standby pool for Azure Container Instances
 
+The health state of your standby pool provides critical insights into its operational status. By using the Standby Pool runtime view API, you can retrieve the current health state of your standby pool, including details about instance counts, provisioning state, and overall health status. This information allows you to monitor the pool's performance and take proactive measures to address any issues.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
-
-The health state of your standby pool provides critical insights into its operational status. By using the Standby Pool runtime view API, you can retrieve the current health state of your standby pool, including details about instance counts, provisioning state, and overall health status. This information allows you to monitor the pool's performance and take proactive measures to address any issues.
 
 ## Health state overview
 
