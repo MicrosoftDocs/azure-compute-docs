@@ -55,7 +55,7 @@ Local (temp) storage information for each size:
 
 Remote (uncached) storage information for each size:
 
-| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Ultra Disk and Premium SSD v2 IOPS  | Max Uncached Premium SSD Throughput (MB/s)| Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M16ls_v4  | 64 | 20,000 | 20,000 | 400 | 400 |
 | Standard_M32ls_v4 | 64 | 40,000 | 40,000 | 800 | 800 |

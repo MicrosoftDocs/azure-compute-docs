@@ -1,17 +1,17 @@
 ---
 title: Ebsv6 size series
 description: Information on and specifications of the Ebsv6-series sizes
-author: bansal-misha
+author: eehindero
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
-ms.author: mishabansal
+ms.date: 11/16/2026
+ms.author: eehindero
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to review the specifications and feature support of various Esv6-series virtual machine sizes, so that I can select the most appropriate size for my workloads and optimize performance in the cloud environment.
 ---
 
-# Ebsv6 sizes series (Preview)
+# Ebsv6 sizes series 
 
 [!INCLUDE [ebsv6-summary](./includes/ebsv6-series-summary.md)]
  
@@ -66,8 +66,8 @@ Remote (uncached) storage info for each size
 | Standard_E48bs_v6 | 64 | 209000 | 6160 | 220000 | 7000 | 278630 | 8030 | 293295 | 9124 |
 | Standard_E64bs_v6 | 64 | 242000 | 6600 | 253000 | 8000 | 324280 | 8580 | 339020 | 10400 |
 | Standard_E96bs_v6 | 64 | 286000 | 8250 | 286000 | 10000 | 429000 | 9900 | 429000 | 12000 |
-| Standard_E128bs_v6 | 64 | 330000 | 10000 | 350000 | 11500 | 500000 | 12000 | 530303 | 13800 |
-| Standard_E192ibs_v6 | 64 | 400000 | 14000 | 400000 | 14000 | 800000 | 14000 | 800000 | 14000 |
+| Standard_E128bs_v6 | 64 | 330000 | 10000 | 350000 | 11500 | 500000 | 12000 | 530303 | 12500 |
+| Standard_E192ibs_v6 | 64 | 400000 | 12500 | 400000 | 12500 | 800000 | 12500 | 800000 | 12500 |
 
 #### Storage resources
 - [Introduction to Azure managed disks](../../../virtual-machines/managed-disks-overview.md)

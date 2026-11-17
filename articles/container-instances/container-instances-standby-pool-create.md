@@ -7,7 +7,7 @@ ms.service: azure-container-instances
 ms.custom:
   - ignite-2024
 ms.topic: how-to
-ms.date: 11/17/2025
+ms.date: 11/12/2026
 ms.reviewer: tomvcassidy
 # Customer intent: As a cloud administrator, I want to create a standby pool for Azure Container Instances, so that I can reduce scale-out latency and improve the responsiveness of my container deployment.
 ---
@@ -15,11 +15,10 @@ ms.reviewer: tomvcassidy
 
 # Create a standby pool for Azure Container Instances
 
+This article guides you through the steps to create a container group profile and use that profile to configure a standby pool for Azure Container Instances.
+
 > [!IMPORTANT]
 > For standby pools to successfully create and manage resources, it requires access to the associated resources in your subscription. Ensure the correct permissions are assigned to the standby pool resource provider in order for your standby pool to function properly. For detailed instructions, see **[configure role permissions for standby pools](container-instances-standby-pool-configure-permissions.md)**.
-
-
-This article steps through creating a container group profile and using that profile to configure a standby pool for Azure Container Instances. 
 
 ## Prerequisites
 
