@@ -136,6 +136,7 @@ az vm run-command invoke \
 ## Validate the license
 
 Use the `pro status --all` command to validate the license.
+Ubuntu Pro is enabled when `pro status --all` shows `esm-infra` and `esm-apps` as enabled.
 
 Expected output:
 
