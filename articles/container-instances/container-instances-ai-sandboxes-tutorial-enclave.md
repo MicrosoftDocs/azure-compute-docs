@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Run sensitive workloads in a serverless sandbox enclave (Public Preview)"
+title: "Tutorial: Run sensitive workloads in a serverless sandbox enclave (Preview)"
 description: In this tutorial, you create a parent serverless sandbox in Azure Container Instances with a reserved enclave budget, start a networkless enclave micro VM with sandboxctl, and communicate with it over vsock.
 ms.topic: tutorial
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want to run sensitive operations in a networkless enclave micro VM controlled from a parent sandbox, so that untrusted agent tasks are isolated from secrets and external networks.
 ---
 
-# Tutorial: Run sensitive workloads in a serverless sandbox enclave (Public Preview)
+# Tutorial: Run sensitive workloads in a serverless sandbox enclave (preview)
 
 An *enclave* is a second Hyper-V isolated micro VM that a parent [serverless sandbox in Azure Container Instances](container-instances-ai-sandboxes.md) starts and manages from inside the guest. The parent sandbox communicates with the host's `aci.hostbridge.peersandbox.v1.PeerSandboxService` gRPC service over vsock (`AF_VSOCK`, host `CID 2`, port `5090`) by using the `sandboxctl` CLI (or any gRPC client generated from [`peersandbox.proto`](#enclave-protobuf-definition-peersandboxproto)). An enclave has its own kernel, CPU, and memory allocation, has no IP address and no outbound internet access, and is reachable only from its parent sandbox over vsock.
 
@@ -41,36 +41,36 @@ To allow a sandbox to start enclaves, set `properties.peerSandboxProfile` when y
 
 The enclave budget is immutable after creation. You can't combine `peerSandboxProfile` with `confidentialComputeProperties` or with `min` and `max` resource bounds, and you can't save a snapshot of a sandbox that has an enclave budget.
 
-1. Create a parent sandbox named `parent1` with 1 CPU core and 1 GiB of memory for the parent, and an enclave budget of 2 CPU cores and 4 GB of memory:
+Create a parent sandbox named `parent1` with 1 CPU core and 1 GiB of memory for the parent, and an enclave budget of 2 CPU cores and 4 GB of memory:
 
-    ```http
-    PUT {endpoint}/sandboxes/parent1?api-version=2026-08-01-preview
-    Authorization: Bearer {accessToken}
-    Content-Type: application/json
+```http
+PUT {endpoint}/sandboxes/parent1?api-version=2026-08-01-preview
+Authorization: Bearer {accessToken}
+Content-Type: application/json
 
-    {
-      "location": "centralus",
-      "properties": {
-        "image": "mcr.microsoft.com/mirror/docker/library/python:3.9-slim-bookworm",
-        "guestOs": "linux",
-        "architecture": "amd64",
-        "resources": {
-          "cpu": 1,
-          "memory": 1
-        },
-        "peerSandboxProfile": {
-          "cpu": 2,
-          "memoryInGB": 4
-        }
-      }
+{
+  "location": "centralus",
+  "properties": {
+    "image": "mcr.microsoft.com/mirror/docker/library/python:3.9-slim-bookworm",
+    "guestOs": "linux",
+    "architecture": "amd64",
+    "resources": {
+      "cpu": 1,
+      "memory": 1
+    },
+    "peerSandboxProfile": {
+      "cpu": 2,
+      "memoryInGB": 4
     }
-    ```
+  }
+}
+```
 
-    Wait until `properties.provisioningState` is `Succeeded`. Then copy `properties.connectionString` from the response, and wait until the guest is ready (`WaitForReady`). By using the [sample C# CLI](container-instances-ai-sandboxes-gateway-proto.md#build-a-c-cli-from-sandboxgatewayproto):
+Wait until `properties.provisioningState` is `Succeeded`. Then copy `properties.connectionString` from the response, and wait until the guest is ready (`WaitForReady`). By using the [sample C# CLI](container-instances-ai-sandboxes-gateway-proto.md#build-a-c-cli-from-sandboxgatewayproto):
 
-    ```bash
-    dotnet run -- -cs "<parent1-connection-string>" wait
-    ```
+```bash
+dotnet run -- -cs "<parent1-connection-string>" wait
+```
 
 ## Set up sandboxctl in the parent sandbox
 

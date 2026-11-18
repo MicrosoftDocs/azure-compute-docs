@@ -1,5 +1,5 @@
 ---
-title: Serverless sandboxes in Azure Container Instances (Public Preview)
+title: Serverless sandboxes in Azure Container Instances (Preview)
 description: Learn about serverless sandboxes in Azure Container Instances, which run AI agent workloads in fast, hardware-isolated micro VMs, and about their core concepts, APIs, and capabilities.
 ms.topic: concept-article
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want to understand what serverless sandboxes in Azure Container Instances are and what they can do, so that I can decide whether to use them to run agent-generated code securely.
 ---
 
-# Serverless sandboxes in Azure Container Instances (Public Preview)
+# Serverless sandboxes in Azure Container Instances (preview)
 
 [!INCLUDE [preview-callout](./includes/preview-callout.md)]
 

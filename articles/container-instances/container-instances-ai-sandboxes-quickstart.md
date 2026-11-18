@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Create your first serverless sandbox in Azure Container Instances (Public Preview)"
+title: "Quickstart: Create your first serverless sandbox in Azure Container Instances (Preview)"
 description: In this quickstart, you use the Azure Resource Manager REST API to create an AI agents group, the sandbox management REST API to create a serverless sandbox in Azure Container Instances, and the sandbox gateway to run a command and copy a file into the sandbox.
 ms.topic: quickstart
 ms.author: dpeshwani
@@ -11,13 +11,13 @@ ms.update-cycle: 180-days
 # Customer intent: As a developer of AI agents, I want to create a serverless sandbox and run a command in it in a few minutes, so that I can evaluate serverless sandboxes in Azure Container Instances for my agents.
 ---
 
-# Quickstart: Create your first serverless sandbox in Azure Container Instances (Public Preview)
+# Quickstart: Create your first serverless sandbox in Azure Container Instances (preview)
 
 In this quickstart, you create a [serverless sandbox](container-instances-ai-sandboxes.md) in Azure Container Instances with the three [sandbox APIs](container-instances-ai-sandboxes.md#sandbox-apis):
 
-1. The **AI agents group API** (Azure Resource Manager REST), to create an AI agents group and connect to it.
-1. The **sandbox management API** (REST), to create a sandbox in the group.
-1. The **sandbox gateway API** (gRPC), to run a command, copy a file, and view logs in the sandbox.
+* The **AI agents group API** (Azure Resource Manager REST), to create an AI agents group and connect to it.
+* The **sandbox management API** (REST), to create a sandbox in the group.
+* The **sandbox gateway API** (gRPC), to run a command, copy a file, and view logs in the sandbox.
 
 Then you delete the resources.
 

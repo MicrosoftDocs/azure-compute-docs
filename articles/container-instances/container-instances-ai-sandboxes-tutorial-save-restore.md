@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Save and restore a serverless sandbox (Public Preview)"
+title: "Tutorial: Save and restore a serverless sandbox (Preview)"
 description: In this tutorial, you use the sandbox management REST API to save the state of a running serverless sandbox in Azure Container Instances in a snapshot, and then restore one and many sandboxes from it.
 ms.topic: tutorial
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want to prepare a sandbox once and start many copies of it from a snapshot, so that my agents don't wait for setup every time they need a sandbox.
 ---
 
-# Tutorial: Save and restore a serverless sandbox (Public Preview)
+# Tutorial: Save and restore a serverless sandbox (preview)
 
 A *snapshot* saves the state of a [serverless sandbox in Azure Container Instances](container-instances-ai-sandboxes.md), including the processes that run in it and their memory. The service stores snapshots in the storage account it provisions in the managed resource group of your AI agents group. When you restore a sandbox from a snapshot, the sandbox starts from the moment of the snapshot and doesn't repeat the setup that you did in the source sandbox.
 

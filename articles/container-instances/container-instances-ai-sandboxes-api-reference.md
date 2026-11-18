@@ -1,5 +1,5 @@
 ---
-title: Serverless sandboxes REST and gateway API reference (Public Preview)
+title: Serverless sandboxes REST and gateway API reference (Preview)
 description: Reference for the serverless sandboxes APIs in Azure Container Instances, including the AI agents group API, the sandbox management API, and the sandbox gateway gRPC API.
 ms.topic: reference
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want a complete list of the serverless sandbox operations, request properties, and gateway methods, so that I can build my own client for serverless sandboxes in Azure Container Instances.
 ---
 
-# Serverless sandboxes REST and gateway API reference (Public Preview)
+# Serverless sandboxes REST and gateway API reference (preview)
 
 [Serverless sandboxes in Azure Container Instances](container-instances-ai-sandboxes.md) have three APIs. The parent AI agents group is an Azure Resource Manager resource, and you manage the sandboxes inside it through the group's endpoint.
 
