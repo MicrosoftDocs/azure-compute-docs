@@ -1,5 +1,5 @@
 ---
-title: Sandbox gateway protobuf reference for serverless sandboxes (Public Preview)
+title: Sandbox gateway protobuf reference for serverless sandboxes (Preview)
 description: Complete sandboxgateway.proto definition and C# CLI walkthrough for generating a gRPC client to interact with serverless sandboxes in Azure Container Instances.
 ms.topic: reference
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want the complete sandboxgateway.proto definition so that I can generate a gRPC client in my preferred language to interact with running serverless sandboxes in Azure Container Instances.
 ---
 
-# Sandbox gateway protobuf reference for serverless sandboxes (Public Preview)
+# Sandbox gateway protobuf reference for serverless sandboxes (preview)
 
 This article provides the [`sandboxgateway.proto` definition](#protobuf-definition-sandboxgatewayproto) for the [sandbox gateway API](container-instances-ai-sandboxes-api-reference.md#sandbox-gateway-api) (`aci.sandboxgateway.SandboxGatewayService`) of [serverless sandboxes in Azure Container Instances](container-instances-ai-sandboxes.md) and shows how to [build a C# CLI tool](#build-a-c-cli-from-sandboxgatewayproto) from it to interact with a running sandbox.
 

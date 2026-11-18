@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Control serverless sandbox outbound traffic with Agent Grid (Public Preview)"
+title: "Tutorial: Control serverless sandbox outbound traffic with Agent Grid (Preview)"
 description: In this tutorial, you associate an AI agents group in Azure Container Instances with an Agent Grid resource and apply default and per-sandbox outbound FQDN policies.
 ms.topic: tutorial
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want to restrict outbound network traffic from my serverless sandboxes by using workload-identity-based FQDN policies, so that agents can reach only approved destinations.
 ---
 
-# Tutorial: Control serverless sandbox outbound traffic with Agent Grid (Public Preview)
+# Tutorial: Control serverless sandbox outbound traffic with Agent Grid (preview)
 
 By using [Azure Agent Grid](/azure/agent-grid/overview), each [serverless sandbox in Azure Container Instances](container-instances-ai-sandboxes.md) that you enroll in a grid gets a SPIFFE workload identity, and the system denies outbound traffic from the sandbox by default unless a policy group that's bound to the grid allows it. You can apply default policies to all sandboxes in the grid and add policies for individual sandboxes while they run.
 

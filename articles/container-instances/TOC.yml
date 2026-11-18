@@ -61,7 +61,7 @@
     items:
     - name: Deploy virtual nodes on Azure Container Instances in your Azure Kubernetes Service cluster
       href: container-instances-tutorial-virtual-nodes-helm.md
-- name: Serverless sandboxes (Public Preview)
+- name: Serverless sandboxes (preview)
   items:
   - name: Overview
     href: container-instances-ai-sandboxes.md
