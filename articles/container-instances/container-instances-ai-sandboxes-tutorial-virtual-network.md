@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Connect serverless sandboxes to a virtual network (Public Preview)"
+title: "Tutorial: Connect serverless sandboxes to a virtual network (Preview)"
 description: In this tutorial, you use the Azure Resource Manager REST API to connect an AI agents group in Azure Container Instances to a delegated subnet, and reach a private web app from a serverless sandbox.
 ms.topic: tutorial
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want my sandboxes to reach private resources in my virtual network, so that agents can use internal services and data without exposing them to the internet.
 ---
 
-# Tutorial: Connect serverless sandboxes to a virtual network (Public Preview)
+# Tutorial: Connect serverless sandboxes to a virtual network (preview)
 
 You can connect an AI agents group for [serverless sandboxes in Azure Container Instances (ACI)](container-instances-ai-sandboxes.md) to a subnet in your Azure virtual network. Each sandbox in the group gets a private IP address from the subnet, so sandboxes can reach private resources in the virtual network, such as internal services, databases, and private endpoints.
 

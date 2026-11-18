@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Access Azure resources from a serverless sandbox with an agent identity (Public Preview)"
+title: "Tutorial: Access Azure resources from a serverless sandbox with an agent identity (Preview)"
 description: In this tutorial, you configure a Microsoft Entra Agent ID on a serverless sandbox in Azure Container Instances so that code inside the sandbox can authenticate to Azure Blob Storage without secrets.
 ms.topic: tutorial
 ms.author: dpeshwani
@@ -11,7 +11,7 @@ ms.update-cycle: 1095-days
 # Customer intent: As a developer of AI agents, I want to assign a dedicated Microsoft Entra Agent ID to each serverless sandbox, so that code in the sandbox can access only the Azure resources authorized for that agent without storing credentials.
 ---
 
-# Tutorial: Access Azure resources from a serverless sandbox with an agent identity (Public Preview)
+# Tutorial: Access Azure resources from a serverless sandbox with an agent identity (preview)
 
 By using agent identity, you can assign a [Microsoft Entra Agent ID](/entra/agent-id/) to an individual [serverless sandbox in Azure Container Instances](container-instances-ai-sandboxes.md) so that code running in the sandbox can acquire Microsoft Entra tokens and access Azure resources without storing secrets in the sandbox. Sandboxes created without an agent identity can't acquire tokens from the instance metadata endpoint, even when they run in the same AI agents group.
 
