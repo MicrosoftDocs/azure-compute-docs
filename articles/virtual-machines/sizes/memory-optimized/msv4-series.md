@@ -1,5 +1,5 @@
 ---
-title: Msv4 Medium Memory size series (Preview)
+title: Msv4 Medium Memory size series
 description: Information on and specifications of the Msv4-series sizes
 author: iamwilliew
 ms.service: azure-virtual-machines
