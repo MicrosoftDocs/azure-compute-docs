@@ -1,5 +1,5 @@
 ---
-title: Mdsv4 Medium Memory size series (Preview)
+title: Mdsv4 Medium Memory size series
 description: Information on and specifications of the Mdsv4-series sizes
 author: iamwilliew
 ms.service: azure-virtual-machines
