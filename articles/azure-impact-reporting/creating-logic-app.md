@@ -12,6 +12,8 @@ ms.custom: template-overview
 
 # Report impacts by using a logic app (preview)
 
+This article shows you how to use Azure Logic Apps to automate workload impact reporting to Azure Impact Reporting. You create a workflow that queries a data source on a schedule and submits impact reports through the REST API.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
