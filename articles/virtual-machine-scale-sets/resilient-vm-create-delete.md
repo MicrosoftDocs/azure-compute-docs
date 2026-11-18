@@ -5,16 +5,15 @@ author: manasisoman-work
 ms.author: manasisoman
 ms.service: azure-virtual-machine-scale-sets
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 11/18/2026
 ms.reviewer: wwilliams
 ms.custom: portal
 # Customer intent: "As a cloud infrastructure administrator, I want to enable resilient create and delete for Virtual Machine Scale Sets, so that I can minimize manual intervention when handling errors during VM provisioning and deletion processes."
 ---
 
-
 # Resilient create and delete for Virtual Machine Scale Sets
 
-Resilient create and delete enables your Virtual Machine Scale Sets to automatically recover from VM provisioning and deletion failures without manual intervention. The feature retries failed Virtual Machine (VM) create and delete operations on your behalf. Resilient create increases the overall success rate of VM provisioning by retrying through provisioning timeout errors. Resilient delete ensures VMs are properly cleaned up by automatically retrying deletions that fail due to transient platform issues.
+Resilient create and delete enables Virtual Machine Scale Sets to automatically recover from VM provisioning and deletion failures without manual intervention. The feature retries failed Virtual Machine (VM) create and delete operations on your behalf. Resilient create increases the overall success rate of VM provisioning by retrying through provisioning timeout errors. Resilient delete ensures VMs are properly cleaned up by automatically retrying deletions that fail due to transient platform issues.
 
 ## Resilient create
 
