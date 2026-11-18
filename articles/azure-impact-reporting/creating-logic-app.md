@@ -4,7 +4,7 @@ description: Learn how to onboard your workload to Azure Impact Reporting by usi
 author: anajib
 ms.author: ashiknajib
 ms.topic: how-to
-ms.date: 06/19/2024
+ms.date: 11/18/2026
 ms.service: azure 
 ms.custom: template-overview
 # Customer intent: As a cloud solutions architect, I want to implement a logic app for Azure Impact Reporting so that I can automate the collection and reporting of workload impacts efficiently and ensure proactive management of my resources.
