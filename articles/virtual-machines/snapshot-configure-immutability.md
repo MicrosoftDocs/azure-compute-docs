@@ -93,7 +93,7 @@ Use the dedicated built-in roles when available, or assign the equivalent permis
 
 Microsoft retained a leading independent assessment firm that specializes in records management and information governance, Cohasset Associates, to evaluate immutable disk snapshots and their compliance with requirements specific to the financial services industry. Cohasset validated that an active locked immutable policy on a snapshot meets the relevant storage requirements of CFTC Rule 1.31(c)-(d), FINRA Rule 4511, and SEC Rule 17a-4(f). Microsoft targeted this set of rules because they represent the most prescriptive guidance globally for records retention for financial institutions.
 
-You can find the certification in the Microsoft Service Trust Portal.
+You can find the certification in the [Microsoft Service Trust Portal](https://servicetrust.microsoft.com/DocumentPage/8c8115b2-0069-47df-837f-57d52b5e9d36).
 
 ### How immutability policies satisfy regulatory requirements
 
