@@ -6,7 +6,7 @@ ms.author: saraic
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
 ms.topic: how-to
-ms.date: 05/19/2026
+ms.date: 11/18/2026
 ms.reviewer: wwilliams
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a developer, I want to create a virtual machine scale set using a specialized image from an Azure Compute Gallery, so that I can efficiently manage and deploy scalable applications with predefined configurations.
@@ -14,15 +14,15 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 
 # Create a scale set using a specialized image version with the Azure CLI
 
+In this article, you learn how to create a scale set from a [specialized image version](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) stored in an Azure Compute Gallery. If you want to create a scale set by using a generalized image version, see [Create a scale set from a generalized image](instance-generalized-image-version-cli.md).
+
 > [!IMPORTANT]
 > You can't currently create a Virtual Machine Scale Set using Flexible orchestration mode from an image shared by another tenant.
 
-Create a scale set from a [specialized image version](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) stored in an Azure Compute Gallery. If you want to create a scale set using a generalized image version, see [Create a scale set from a generalized image](instance-generalized-image-version-cli.md).
 
 > [!IMPORTANT]
 > 
 > When you create a new scale set from a specialized image, the VMs retain the computer name of the original VM. Other computer-specific information, like the CMID, is also kept. This duplicate information can cause issues. When using a specialized image, be aware of what types of computer-specific information your applications rely on.  
-
 
 Replace resource names as needed in these examples. 
 

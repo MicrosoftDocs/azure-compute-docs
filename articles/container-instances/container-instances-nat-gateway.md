@@ -7,20 +7,20 @@ ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
 ms.author: tomcassidy
-ms.date: 11/17/2025
+ms.date: 11/17/2026
 # Customer intent: As a cloud administrator, I want to configure a NAT gateway for my container groups, so that I can establish a static public IP address for outbound traffic to simplify monitoring and firewall rule management.
 ---
 
 # Configure a NAT gateway for static IP address for outbound traffic from a container group
 
+When you set up a [container group](container-instances-container-groups.md) with an external-facing IP address, it allows external clients to use the IP address to access a container in the group. For example, a browser can access a web app running in a container. Currently a container group uses a different IP address for outbound traffic. This egress IP address isn't exposed programmatically, which makes container group monitoring and configuration of client firewall rules more complex.
+
 > [!IMPORTANT]
 > If you deploy your container group into a virtual network, you must use a NAT gateway for outbound connectivity. This is the only supported configuration for outbound connectivity from your container group in a virtual network. See [Configure a NAT gateway for static IP address for outbound traffic from a container group](./container-instances-nat-gateway.md) for more information on how to configure this.
 
-Setting up a [container group](container-instances-container-groups.md) with an external-facing IP address allows external clients to use the IP address to access a container in the group. For example, a browser can access a web app running in a container. However, currently a container group uses a different IP address for outbound traffic. This egress IP address isn't exposed programmatically, which makes container group monitoring and configuration of client firewall rules more complex.
-
 This article provides steps to configure a container group in a [virtual network](container-instances-virtual-network-concepts.md) integrated with a [Network Address Translation (NAT) gateway](/azure/virtual-network/nat-gateway/nat-overview). By configuring a NAT gateway to SNAT a subnet address range delegated to Azure Container Instances (ACI), you can identify outbound traffic from your container groups. The container group egress traffic uses the public IP address of the NAT gateway. Multiple container groups deployed in the virtual network's subnet can use a single NAT gateway.
 
-In this article, you use the Azure CLI to create the resources for this scenario:
+In this article, the Azure CLI is being used to create the resources for this scenario:
 
 * Container groups deployed on a delegated subnet [in the virtual network](container-instances-vnet.md)
 * A NAT gateway deployed in the network with a static public IP address
