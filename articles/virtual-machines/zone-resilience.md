@@ -48,7 +48,7 @@ Before you enable zone resilience for Azure VMs, confirm that your configuration
 | Private IP address | Use a static or dynamic private IP address. |
 | Public IP address | If used, configure a zone-redundant Standard SKU public IP address. |
 | Network appliance | If used, configure a zone-redundant Standard SKU load balancer or supported gateway. |
-| Management tool | Use the Azure portal, Azure CLI version 2.87.0 or later, Azure PowerShell with zone movement and force deallocation support, or Compute REST API version `2026-03-01`. |
+| Management tool | Use the Azure portal, Azure CLI version 2.87.0 or later, Azure PowerShell with Az module version 16.3.0 or later and Az.Compute module version 11.9.0 or later, or Compute REST API version `2026-03-01`. |
 
 For current ZRS disk types and regional availability, see [Redundancy options for managed disks](disks-redundancy.md#zone-redundant-storage-for-managed-disks). To create ZRS disks, see [Deploy a managed disk that uses zone-redundant storage](disks-deploy-zrs.md).
 
@@ -174,7 +174,7 @@ The command returns `true`.
 
 # [Azure PowerShell](#tab/azure-powershell-enable)
 
-Use a version of Az.Compute that includes [Set-AzVMZoneMovement](/powershell/module/az.compute/set-azvmzonemovement) and supports `Stop-AzVM -ForceDeallocate`. Confirm that the zone movement cmdlet is available with `Get-Command Set-AzVMZoneMovement`, and check the deallocation parameters with `Get-Command Stop-AzVM -Syntax`.
+Use Az.Compute module version 11.9.0 or later with Azure PowerShell (Az module version 16.3.0 or later). These versions include [Set-AzVMZoneMovement](/powershell/module/az.compute/set-azvmzonemovement) and support `Stop-AzVM -ForceDeallocate`. Confirm that the zone movement cmdlet is available with `Get-Command Set-AzVMZoneMovement`, and check the deallocation parameters with `Get-Command Stop-AzVM -Syntax`.
 
 For a new VM, pass the `PSVirtualMachine` configuration from `New-AzVMConfig` through `Set-AzVMZoneMovement -IsEnabled $true` before you call `New-AzVM`. Configure the required zone, ZRS disks, and network resources on the VM configuration.
 
