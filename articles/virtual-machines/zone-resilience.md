@@ -174,7 +174,7 @@ The command returns `true`.
 
 # [Azure PowerShell](#tab/azure-powershell-enable)
 
-Use Az.Compute module version 11.9.0 or later with Azure PowerShell (Az module version 16.3.0 or later). These versions include [Set-AzVMZoneMovement](/powershell/module/az.compute/set-azvmzonemovement) and support `Stop-AzVM -ForceDeallocate`. Confirm that the zone movement cmdlet is available with `Get-Command Set-AzVMZoneMovement`, and check the deallocation parameters with `Get-Command Stop-AzVM -Syntax`.
+Use the Az.Compute module version 11.9.0 or later with Azure PowerShell (Az module version 16.3.0 or later). These versions include [Set-AzVMZoneMovement](/powershell/module/az.compute/set-azvmzonemovement) and support `Stop-AzVM -ForceDeallocate`. Confirm that the zone movement cmdlet is available with `Get-Command Set-AzVMZoneMovement`, and check the deallocation parameters with `Get-Command Stop-AzVM -Syntax`.
 
 For a new VM, pass the `PSVirtualMachine` configuration from `New-AzVMConfig` through `Set-AzVMZoneMovement -IsEnabled $true` before you call `New-AzVM`. Configure the required zone, ZRS disks, and network resources on the VM configuration.
 
