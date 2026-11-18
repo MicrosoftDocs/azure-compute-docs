@@ -1,5 +1,5 @@
 ---
-title: Msv4 Medium Memory size series (Preview)
+title: Msv4 Medium Memory size series
 description: Information on and specifications of the Msv4-series sizes
 author: iamwilliew
 ms.service: azure-virtual-machines
@@ -11,7 +11,7 @@ ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to assess the Mbsv3 and Msv4 Medium Memory VM series specifications, so that I can determine the best virtual machine options for storage-intensive workloads like SQL Server and data analytics."
 ---
 
-# Msv4 Medium Memory sizes series (Preview)
+# Msv4 Medium Memory sizes series
 
 [!INCLUDE [msv4-summary](./includes/msv4-series-summary.md)]
 
