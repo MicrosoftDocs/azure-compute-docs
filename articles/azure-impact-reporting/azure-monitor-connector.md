@@ -5,17 +5,17 @@ author: rolandnyamo
 ms.author: ronyamo
 ms.service: azure 
 ms.topic: overview
-ms.date: 09/17/2025
+ms.date: 11/19/2026
 ms.custom: template-overview
 # Customer intent: "As a systems administrator, I want to use the Impact Connector for Azure Monitor alerts so that I can efficiently report impact events and enhance change event correlation within my organization's AI operations workflows."
 ---
 
 # What is the impact connector for Azure Monitor alerts (preview)?
 
+When you use the impact connector for Azure Monitor alerts, you can seamlessly report the impact from an alert into Microsoft AI operations for change event correlation. In this article, learn about how connectors work.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-When you use the impact connector for Azure Monitor alerts, you can seamlessly report the impact from an alert into Microsoft AI operations for change event correlation.
 
 ## How connectors work
 

@@ -5,12 +5,15 @@ author: rolandnyamo
 ms.author: ronyamo
 ms.service: azure 
 ms.topic: overview
-ms.date: 09/17/2025
+ms.date: 11/18/2026
 ms.custom: template-overview
+ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to use impact reporting tools to document performance issues in my Azure workloads so that I can quickly identify and address platform-related problems to maintain service reliability.
 ---
 
 # What is Azure Impact Reporting Preview?
+
+Azure Impact Reporting helps you investigate performance and availability issues in your Azure workloads. Report suspected platform-related impacts and review findings about events that might explain the issues.
 
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

@@ -4,13 +4,15 @@ description: Learn how to onboard your workload to Azure Impact Reporting by usi
 author: anajib
 ms.author: ashiknajib
 ms.topic: how-to
-ms.date: 06/19/2024
+ms.date: 11/18/2026
 ms.service: azure 
 ms.custom: template-overview
 # Customer intent: As a cloud solutions architect, I want to implement a logic app for Azure Impact Reporting so that I can automate the collection and reporting of workload impacts efficiently and ensure proactive management of my resources.
 ---
 
 # Report impacts by using a logic app (preview)
+
+This article shows you how to use Azure Logic Apps to automate workload impact reporting to Azure Impact Reporting. You create a workflow that queries a data source on a schedule and submits impact reports through the REST API.
 
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
