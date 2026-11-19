@@ -5,17 +5,17 @@ author: rolandnyamo
 ms.author: ronyamo
 ms.topic: faq
 ms.service: azure 
-ms.date: 11/01/2022
+ms.date: 11/19/2026
 ms.custom: template-overview
 # Customer intent: As an Azure user, I want to understand how to effectively use Azure Impact Reporting so that I can communicate potential issues and enhance my service experience.
 ---
 
 # Azure Impact Reporting Preview FAQ
 
+Use this article to find answers to common questions about Azure Impact Reporting.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Here are answers to common questions about Azure Impact Reporting.
 
 ## Is impact reporting a replacement for opening a support ticket?
 
