@@ -1,11 +1,11 @@
 ---
 title: Copy a snapshot to a new region
 description: Learn how to copy an incremental snapshot of a managed disk to a different region.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/16/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, portal
 ms.devlang: azurecli
 # Customer intent: "As a cloud administrator, I want to copy incremental snapshots of managed disks to different regions, so that I can optimize data recovery and reduce storage costs."

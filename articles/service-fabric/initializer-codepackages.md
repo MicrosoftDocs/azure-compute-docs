@@ -2,7 +2,7 @@
 title: Initializer CodePackages in Service Fabric
 description: Describes Initializer CodePackages in Service Fabric.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

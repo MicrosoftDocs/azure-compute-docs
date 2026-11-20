@@ -5,13 +5,15 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/31/2024
+ms.date: 11/19/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As an IT decision-maker, I want to compare the specifications and features of NVv4 series virtual machine sizes, so that I can select the appropriate size for my organization's computing needs.
 ---
 
 # NVv4 sizes series
+
+This article describes the sizes, host specifications, and supported features of Azure NVv4-series virtual machines.
 
 > [!NOTE]
 > The NVv4-series retired on September 30, 2026. For more information, see the [NVv4-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/nvv4-retirement).

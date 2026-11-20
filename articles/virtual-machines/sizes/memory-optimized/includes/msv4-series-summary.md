@@ -1,12 +1,12 @@
 ---
 title: Msv4-series summary include file
 description: Include file for Msv4-series summary
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 09/03/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to assess the Msv4 series VM specifications, so that I can determine their suitability for high-memory workloads like SQL Server and data analytics applications."

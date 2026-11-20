@@ -1,11 +1,11 @@
 ---
 title: include file
 description: include file
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: include
 ms.date: 12/09/2024
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: include file
 # Customer intent: As an IT admin managing disk resources, I want to understand how to change the type of an existing disk to Premium SSD v2, so that I can optimize performance for my cloud storage needs.
 ---

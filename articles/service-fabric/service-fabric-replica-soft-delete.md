@@ -2,7 +2,7 @@
 title: Replica soft delete for enhanced data protection in Service Fabric 
 description: Learn about the replica soft delete feature for Service Fabric's reliable services.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

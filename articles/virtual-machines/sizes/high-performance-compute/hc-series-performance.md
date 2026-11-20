@@ -6,8 +6,8 @@ ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 09/25/2026
 ms.reviewer: wwilliams
-ms.author: padmalathas
-author: iamwilliew
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: "As a cloud architect, I want to analyze the performance results of HC-series VM sizes, so that I can select the optimal configuration for my high-performance computing workloads."
 ---
 

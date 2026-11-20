@@ -1,12 +1,12 @@
 ---
 title: Share an Azure managed disk across VMs
 description: Learn how Azure shared disks let you share Azure managed disks across multiple Linux and Windows virtual machines.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.topic: concept-article
 ms.date: 10/13/2026
-ms.author: rogarana
+ms.author: prkazasr
 # Customer intent: As a cloud architect, I want to understand how to share Azure managed disks across multiple VMs, so that I can effectively deploy and manage clustered applications in the cloud.
 ---
 

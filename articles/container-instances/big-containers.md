@@ -1,7 +1,7 @@
 ---
 title: Big containers on Azure container instances
 description: Capabilities and benefits of Big Containers on Azure Container Instances.
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to automate the process of adding application certificates to a Service Fabric cluster, so that I can enhance security and manage secrets efficiently across my virtual machine scale sets.
 ---

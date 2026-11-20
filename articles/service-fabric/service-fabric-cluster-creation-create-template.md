@@ -2,7 +2,7 @@
 title: Create an Azure Service Fabric cluster template 
 description: Learn how to create a Resource Manager template for a Service Fabric cluster. Configure security, Azure Key Vault, and Microsoft Entra ID for client authentication.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: no-azure-ad-ps-ref

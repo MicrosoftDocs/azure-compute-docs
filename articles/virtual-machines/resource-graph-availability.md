@@ -3,8 +3,8 @@ title: Virtual Machine (VM) availability information in Azure Resource Graph
 description: Query your Azure resources at scale with complex filtering, grouping, and sorting with Azure Resource Graph (ARG).
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-author: bwren
-ms.author: bwren
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 02/08/2023
 ms.reviewer: Xema Pathak
 ms.custom: sfi-image-nochange

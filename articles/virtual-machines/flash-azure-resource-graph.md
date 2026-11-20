@@ -2,7 +2,7 @@
 title: Project Flash - Use Azure Resource Graph to monitor Azure Virtual Machine availability
 description: This article covers important concepts for monitoring Azure virtual machine availability using Azure Resource Graph.
 ms.service: azure-virtual-machines
-ms.author: tomcassidy
+ms.author: prkazasr
 author: tomvcassidy
 ms.date: 01/31/2024
 ms.topic: concept-article

@@ -1,8 +1,8 @@
 ---
 title: Install VM Watch
 description: Get started by installing VM watch on virtual machines.
-author: iamwilliew 
-ms.author: wwilliams
+author: kaza-sriram 
+ms.author: prkazasr
 ms.service: azure-virtual-machines
 ms.topic: get-started
 ms.date:     09/23/2024

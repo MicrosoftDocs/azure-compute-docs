@@ -2,7 +2,7 @@
 title: Deploy GPU-Enabled Container Instance
 description: Learn how to deploy Azure container instances to run compute-intensive container applications by using GPU resources.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli

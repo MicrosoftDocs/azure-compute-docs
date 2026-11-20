@@ -2,7 +2,7 @@
 title: Azure Service Fabric CLI- sfctl events 
 description: Describes the Service Fabric CLI sfctl events commands.
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

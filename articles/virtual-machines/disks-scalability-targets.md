@@ -1,8 +1,8 @@
 ---
 title: Scalability and performance targets for VM disks
 description: Learn about scalability and performance targets for virtual machine disks attached to VMs.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 12/09/2024
 ms.topic: concept-article
 ms.service: azure-disk-storage

@@ -2,7 +2,7 @@
 title: Migrate Oracle workloads to Oracle Database@Azure
 description: Learn how to migrate Oracle workloads to Oracle Database@Azure
 author: suzuber
-ms.author: jacobjaygbay
+ms.author: vaidehikher
 ms.service: oracle-on-azure
 ms.topic: concept-article
 ms.date: 10/03/2024

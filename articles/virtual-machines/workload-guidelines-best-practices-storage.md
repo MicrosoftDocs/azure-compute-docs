@@ -2,7 +2,7 @@
 title: "Azure HPC workload best practices guide"
 description: A comprehensive guide to choosing a storage solution best suited to your HPC workloads.
 author: christinechen2
-ms.author: padmalathas
+ms.author: prkazasr
 ms.reviewer: normesta
 ms.date: 06/30/2025
 ms.service: azure-virtual-machines

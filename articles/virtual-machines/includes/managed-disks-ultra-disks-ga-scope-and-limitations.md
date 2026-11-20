@@ -1,11 +1,11 @@
 ---
 title: include file
 description: include file
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: include
 ms.date: 08/24/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to understand the limitations and requirements of Ultra Disks so that I can evaluate their suitability for my virtual machine deployments and ensure compliance with application needs and infrastructure capabilities.
 ---

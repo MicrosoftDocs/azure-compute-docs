@@ -1,11 +1,11 @@
 ---
 title: Secure Azure managed disk downloads and uploads
 description: Learn how to secure managed disk downloads and uploads with Microsoft Entra ID and RBAC roles. Control access and protect your data with authentication requirements.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/17/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 # Customer intent: As a cloud engineer, I want to secure managed disk downloads and uploads with Microsoft Entra ID and RBAC roles, so that I can control who has access to import or export disk data and protect my data from unauthorized access.
 ---

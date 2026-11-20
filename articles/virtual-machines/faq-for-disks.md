@@ -1,12 +1,12 @@
 ---
 title: "Frequently asked questions about Azure managed disks"
 description: "Get answers to frequently asked questions about Azure managed disks, including disk types, snapshots, shared disks, encryption, migration, and storage limits."
-author: roygara
+author: kaza-sriram
 ai-usage: ai-assisted
 ms.service: azure-disk-storage
 ms.topic: faq
 ms.date: 09/08/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: references_regions
 ---
 

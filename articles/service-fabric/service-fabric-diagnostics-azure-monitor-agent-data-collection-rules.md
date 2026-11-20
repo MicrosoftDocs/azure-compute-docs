@@ -2,7 +2,7 @@
 title: Configure Service Fabric cluster telemetry with Azure Monitor Agent and data collection rules
 description: Learn how to collect Service Fabric cluster telemetry by using Azure Monitor Agent (AMA) and data collection rules (DCRs), and migrate from deprecated WAD/LAD and Log Analytics agent configurations.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

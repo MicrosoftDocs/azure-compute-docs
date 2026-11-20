@@ -1,12 +1,12 @@
 ---
 title: ND GB300 v6 series specs include
 description: Include file containing specifications of ND GB300 v6 series VM sizes.
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 11/13/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of the ND GB300 v6 series VMs, so that I can ensure they meet the performance requirements for my high-demand workloads."

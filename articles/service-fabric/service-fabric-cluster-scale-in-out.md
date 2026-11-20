@@ -2,7 +2,7 @@
 title: Scale a Service Fabric cluster in or out 
 description: Scale a Service Fabric cluster in or out to match demand by setting autoscale rules for each node type/virtual machine scale set. Add or remove nodes to a Service Fabric cluster
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell

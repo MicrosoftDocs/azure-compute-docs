@@ -1,11 +1,11 @@
 ---
 title: Copy a managed disk to a storage account - CLI
 description: Azure CLI sample - Export or copy a managed disk to a storage account.
-author: roygara
+author: ushnaarshadkhan
 ms.service: azure-disk-storage
 ms.topic: sample
 ms.date: 02/23/2022
-ms.author: rogarana
+ms.author: uarshadkhan
 ms.custom: mvc, devx-track-azurecli
 # Customer intent: As a cloud engineer, I want to export a managed disk to a storage account using the CLI, so that I can facilitate regional expansion and enable the publishing of VHD files in the Azure Marketplace.
 ---

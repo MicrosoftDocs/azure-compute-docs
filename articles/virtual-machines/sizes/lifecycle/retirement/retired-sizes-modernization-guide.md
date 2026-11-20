@@ -1,7 +1,7 @@
 ---
 title: Retired VM sizes modernization guide
 description: Modernization guide for retired VM size series
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article

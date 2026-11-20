@@ -2,7 +2,7 @@
 title: Scheduled Events - Event Grid
 description: Detailed information on how to configure and use scheduled events in an Event Grid system topic.
 author: adwilso
-ms.author: mattmcinnes
+ms.author: prkazasr   
 ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
 ms.topic: concept-article 

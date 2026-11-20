@@ -2,7 +2,7 @@
 title: Scheduled Events - Azure Resource Graph
 description: Detailed information on how to configure and use scheduled events in Azure Resource Graph for virtual machines and scale sets.
 author: adwilso
-ms.author: wilsonadam   
+ms.author: prkazasr   
 ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
 ms.topic: concept-article 

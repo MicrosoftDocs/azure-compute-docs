@@ -1,12 +1,12 @@
 ---
 title: Dnldsv6 size series
 description: Information on and specifications of the Dnldsv6-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 03/10/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and support features of the Dnldsv6 virtual machine sizes, so that I can select the appropriate VM type for my applications based on performance and capacity requirements."
 ---

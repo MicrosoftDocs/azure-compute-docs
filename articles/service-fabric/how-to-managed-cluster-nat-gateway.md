@@ -2,7 +2,7 @@
 title: Configure a Service Fabric managed cluster to use a NAT gateway
 description: Use a NAT gateway on your Service Fabric managed cluster to provide internet access without exposing them directly to the internet.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

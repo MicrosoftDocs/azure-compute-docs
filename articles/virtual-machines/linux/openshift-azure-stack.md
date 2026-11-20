@@ -2,8 +2,8 @@
 title: Deploy OpenShift to Azure Stack Hub
 ms.reviewer: robess
 description: Discover how to deploy OpenShift on Azure Stack Hub, configure CNS for GlusterFS, and use Red Hat-managed RHCOS images.
-author: ronmiab
-ms.author: robess
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-stack
 ms.custom: linux-related-content
 ms.collection: linux

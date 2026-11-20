@@ -2,7 +2,7 @@
 title: Monitor your apps in Service Fabric using ELK in Azure 
 description: In this tutorial, learn how to set up ELK and monitor your Service Fabric applications.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

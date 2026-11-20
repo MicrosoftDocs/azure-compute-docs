@@ -2,7 +2,7 @@
 title: Quickly deploy an existing app to a cluster 
 description: Use an Azure Service Fabric cluster to host an existing Node.js application with Visual Studio.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-js

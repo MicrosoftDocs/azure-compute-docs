@@ -2,7 +2,7 @@
 title: Scale a Service Fabric cluster in Azure 
 description: In this tutorial, you learn how to scale an Service Fabric cluster in Azure out and in, and how to clean up leftover resources.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

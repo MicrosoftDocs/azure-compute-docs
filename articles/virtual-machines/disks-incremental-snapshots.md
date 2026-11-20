@@ -1,11 +1,11 @@
 ---
 title: Create an incremental snapshot
 description: Learn about incremental snapshots for managed disks, including how to create them and the performance impact when restoring snapshots.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 08/19/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, references_regions
 ms.devlang: azurecli
 # Customer intent: As a cloud administrator, I want to create incremental snapshots for managed disks, so that I can efficiently back up and restore disk data while minimizing storage costs and improving performance.

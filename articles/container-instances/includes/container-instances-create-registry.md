@@ -4,7 +4,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.topic: include
 ms.date: 11/17/2025
-ms.author: tomcassidy
+ms.author: dmuralidhar
 ms.custom: devx-track-azurecli
 # Customer intent: "As a cloud developer, I want to create an Azure container registry and sign in to it, so that I can manage and deploy my container images efficiently."
 ---

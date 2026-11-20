@@ -2,7 +2,7 @@
 title: Define Service Configuration in StartupServices.xml for a Service Fabric Application
 description: Learn how to use StartupServices.xml to separate service level configuration from ApplicationManifest.xml.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

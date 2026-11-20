@@ -2,7 +2,7 @@
 title: Performance Monitoring with Azure Monitor logs (retired)
 description: This article is retired. Use Azure Monitor Agent (AMA) and data collection rules (DCRs) for Service Fabric telemetry instead of Log Analytics agent (MMA/OMS).
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

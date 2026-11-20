@@ -1,8 +1,8 @@
 ---
 title: About Azure Spot Virtual Machines
 description: Learn about Azure Spot Virtual Machines to save on costs.
-author: mattmcinnes
-ms.author: mattmcinnes
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: overview

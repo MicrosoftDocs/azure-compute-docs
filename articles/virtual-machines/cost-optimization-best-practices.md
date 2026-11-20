@@ -2,7 +2,7 @@
 title: Best practices for virtual machine cost optimization
 description: Learn the best practices for managing costs for virtual machines.
 author: tomvcassidy
-ms.author: tomcassidy
+ms.author: prkazasr
 ms.custom: subject-cost-optimization
 ms.service: azure-virtual-machines
 ms.topic: concept-article

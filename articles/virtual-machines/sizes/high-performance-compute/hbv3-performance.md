@@ -8,8 +8,8 @@ ms.custom:
 ms.topic: concept-article
 ms.date: 02/10/2026
 ms.reviewer: wwilliams
-ms.author: padmalathas
-author: padmalathas
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: As a high-performance computing engineer, I want to understand the performance and scalability of HBv3-series VMs, so that I can optimize my applications and workloads effectively on these virtual machines.
 ---
 

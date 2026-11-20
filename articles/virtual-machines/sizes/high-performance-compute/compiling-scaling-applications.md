@@ -7,8 +7,8 @@ ms.custom:
 ms.topic: how-to
 ms.date: 09/25/2026
 ms.reviewer: mattmcinnes
-ms.author: wwilliams
-author: iamwilliew
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: "As a cloud architect, I want to optimize the deployment of HPC applications on Azure VMs, so that I can enhance scalability and performance for large-scale computational tasks."
 ---
 

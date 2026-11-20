@@ -2,7 +2,7 @@
 title:  Create a Service Fabric managed cluster (SFMC) with Ephemeral OS disks for node types
 description: Learn how to create a Service Fabric managed cluster (SFMC) with Ephemeral OS disks for node types
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

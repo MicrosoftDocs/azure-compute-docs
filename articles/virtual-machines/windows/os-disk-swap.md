@@ -1,11 +1,11 @@
 ---
 title: Swap OS disk for an Azure VM with PowerShell
 description: Change the operating system disk used by an Azure virtual machine using PowerShell.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 04/24/2018
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: devx-track-azurepowershell
 # Customer intent: As a system admin, I want to swap the OS disk of an existing Azure VM using PowerShell, so that I can update or restore the VM's operating system without deleting or recreating it.
 ---

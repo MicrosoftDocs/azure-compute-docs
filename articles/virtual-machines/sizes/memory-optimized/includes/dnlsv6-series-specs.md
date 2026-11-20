@@ -1,12 +1,12 @@
 ---
 title: Dnlsv6 series specs include
 description: Include file containing specifications of Dnlsv6-series VM sizes.
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 05/08/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud infrastructure planner, I want to review the specifications of Dnlsv6 series VM sizes, so that I can determine the appropriate resource allocation for applications requiring varying performance and capacity.

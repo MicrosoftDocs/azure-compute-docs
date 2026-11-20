@@ -1,7 +1,7 @@
 ---
 ms.service: azure-service-fabric
 ms.topic: include
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 services: service-fabric
 ms.date: 03/22/2026

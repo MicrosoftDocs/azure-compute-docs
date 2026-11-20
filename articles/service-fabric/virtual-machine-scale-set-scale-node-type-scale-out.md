@@ -2,7 +2,7 @@
 title: Add a node type to an Azure Service Fabric cluster 
 description: Learn how to scale out a Service Fabric cluster by adding a Virtual Machine Scale Set.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

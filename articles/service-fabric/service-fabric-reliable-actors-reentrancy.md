@@ -2,7 +2,7 @@
 title: Reentrancy in Azure Service Fabric actors 
 description: Introduction to reentrancy for Service Fabric Reliable Actors, a way to logically avoid blocking based on call context.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

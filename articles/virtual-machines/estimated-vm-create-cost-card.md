@@ -1,12 +1,12 @@
 ---
 title: Estimate the cost of creating a Virtual Machine in the Azure portal (Preview)
 description: Use the Azure portal Virtual Machine creation flow cost card to estimate the final cost of your Virtual Machine.
-author: iamwilliew
+author: kaza-sriram
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.update-cycle: 180-days
 ms.date: 11/02/2026
-ms.author: wwilliams
+ms.author: prkazasr
 ms.custom: portal
 # Customer intent: As a cloud architect, I want to use the estimated cost card during the VM creation process, so that I can accurately budget for the resources and services required for my Azure virtual machines.
 ---

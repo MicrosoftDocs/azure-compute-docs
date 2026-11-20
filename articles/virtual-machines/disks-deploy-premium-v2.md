@@ -1,8 +1,8 @@
 ---
 title: Deploy a Premium SSD v2 managed disk
 description: Learn how to deploy zonal and nonzonal Premium SSD v2 managed disks and review their regional availability.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 08/11/2026
 ms.topic: how-to
 ms.service: azure-disk-storage

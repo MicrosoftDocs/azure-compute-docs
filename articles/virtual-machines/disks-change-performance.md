@@ -1,11 +1,11 @@
 ---
 title: Performance tiers for Azure Premium SSD managed disks
 description: Learn how performance tiers for Azure Premium SSD managed disks work and which tiers are available for each disk size.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: concept-article
 ms.date: 09/11/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: references_regions
 ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to understand how performance tiers for Premium SSD managed disks work, so that I can evaluate if they're a suitable option for my needs when optimizing disk performance and managing costs effectively during varying demand periods.

@@ -2,7 +2,7 @@
 title: Override entrypoint in container instance
 description: Set a command line to override the entrypoint in a container image when you deploy an Azure container instance
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli

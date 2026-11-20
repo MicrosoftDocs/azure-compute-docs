@@ -2,7 +2,7 @@
 title: Differences between Cloud Services (extended support) and Service Fabric 
 description: A conceptual overview for migrating applications from Cloud Services to Service Fabric.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

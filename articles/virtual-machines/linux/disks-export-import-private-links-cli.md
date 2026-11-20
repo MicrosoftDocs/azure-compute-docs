@@ -1,11 +1,11 @@
 ---
 title: Restrict import and export access for managed disks using Private Link
 description: Use Azure CLI or Azure PowerShell to configure Private Link for managed disks and restrict import and export access to your virtual network.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/02/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, linux-related-content, windows-related-content
 ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator, I want to configure Private Link for managed disks by using Azure CLI or Azure PowerShell, so that I can restrict import and export access to my virtual network."

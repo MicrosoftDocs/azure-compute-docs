@@ -7,8 +7,8 @@ ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 09/25/2026
 ms.reviewer: wwilliams
-ms.author: padmalathas
-author: padmalathas
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: "As a data engineer, I want to understand the performance and scalability of HBv5-series VMs, so that I can optimize high-performance computing workloads and ensure efficient resource utilization."
 ---
 

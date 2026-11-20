@@ -1,12 +1,12 @@
 ---
 title: Increase performance of Premium SSD, Standard SSD, and Standard HDD
 description: Increase the performance of Azure Premium SSD, Standard SSD, and Standard HDD managed disks by using performance plus.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ai-usage: ai-assisted
 ms.date: 09/16/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: devx-track-azurepowershell, portal
 # Customer intent: As an IT administrator, I want to enable performance enhancements on Azure disks, so that I can increase IOPS and throughput for demanding workloads without incurring additional costs.
 ---

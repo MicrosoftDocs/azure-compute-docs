@@ -1,14 +1,14 @@
 ---
 title: Use CLI to deploy Azure Spot Virtual Machines
 description: Learn how to use the CLI to deploy Azure Spot Virtual Machines to save costs.
-author: mattmcinnes
+author: kaza-sriram
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.custom: devx-track-azurecli, linux-related-content
 ms.topic: how-to
 ms.date: 11/05/2026
-ms.author: mattmcinnes
-ms.reviewer: mattmcinnes
+ms.author: prkazasr
+ms.reviewer: wwilliams
 # Customer intent: "As a cloud engineer, I want to deploy Azure Spot Virtual Machines using the CLI, so that I can leverage cost savings on compute resources for workloads that can tolerate interruptions."
 ---
 

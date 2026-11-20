@@ -2,7 +2,7 @@
 title: Connect securely to an Azure Service Fabric cluster 
 description: Describes how to authenticate client access to a Service Fabric cluster and how to secure communication between clients and a cluster.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

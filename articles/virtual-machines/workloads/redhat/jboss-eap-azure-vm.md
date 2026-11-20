@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Deploy a JBoss EAP cluster on Azure Virtual Machines (VMs)"
 description: Shows you how to quickly stand up a JBoss EAP cluster on Azure Virtual Machines.
-author: KarlErickson
-ms.author: karler
+author: marckk
+ms.author: kdelamarck
 ms.reviewer: jiangma
 ms.topic: quickstart
 ms.date: 03/26/2026

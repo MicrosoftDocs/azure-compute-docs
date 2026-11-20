@@ -1,11 +1,11 @@
 ---
 title: Common PowerShell commands for Azure Virtual Machines
 description: Common PowerShell commands to get you started creating and managing VMs in Azure.
-author: iamwilliew
+author: kaza-sriram
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 09/07/2023
-ms.author: wwilliams
+ms.author: prkazasr
 # Customer intent: As a system administrator, I want to learn common PowerShell commands for managing Azure Virtual Machines, so that I can efficiently create, configure, and control VM resources in my cloud environment.
 ---
 # Common PowerShell commands for creating and managing Azure Virtual Machines

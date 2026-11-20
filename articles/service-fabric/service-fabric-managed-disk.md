@@ -2,7 +2,7 @@
 title: Deploy Service Fabric node types with managed data disks
 description: Learn how to create and deploy Service Fabric node types with attached managed data disks.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

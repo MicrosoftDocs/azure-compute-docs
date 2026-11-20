@@ -1,8 +1,8 @@
 ---
 title: Use Azure Storage Explorer to manage Azure managed disks
 description: Learn how to upload, download, and migrate an Azure managed disk across regions and create a snapshot of a managed disk, using the Azure Storage Explorer.      
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: azure-disk-storage

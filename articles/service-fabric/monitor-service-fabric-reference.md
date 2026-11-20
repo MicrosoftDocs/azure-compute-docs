@@ -4,7 +4,7 @@ description: This article contains important reference material you need when yo
 ms.date: 03/22/2026
 ms.custom: horz-monitor
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 # Customer intent: "As a systems administrator, I want to monitor Service Fabric metrics and events, so that I can ensure the health and performance of my applications running in the cluster."

@@ -2,7 +2,7 @@
 title: 'Service Fabric Cluster Resource Manager: Movement cost'
 description: Learn about the movement cost for Service Fabric services, and how it can be specified to fit any architectural need, including dynamic configuration.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

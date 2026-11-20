@@ -2,7 +2,7 @@
 title: 'Service Fabric cluster security: client roles'
 description: This article describes the two client roles and the permissions provided to the roles.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

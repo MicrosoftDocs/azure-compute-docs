@@ -2,12 +2,12 @@
 title: Dndsv6-series summary include file
 description: Include file for Dnsv6-series summary
 services: virtual-machines
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 05/07/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to assess the Dndsv6-series virtual machines, so that I can determine their suitability for high-performance networking and large-scale e-commerce applications in my infrastructure."
 ---

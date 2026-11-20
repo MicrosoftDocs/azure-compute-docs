@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: "As a DevOps engineer, I want to upgrade a Service Fabric application using PowerShell, so that I can streamline the deployment process and ensure my application is running the latest version efficiently."
 ---

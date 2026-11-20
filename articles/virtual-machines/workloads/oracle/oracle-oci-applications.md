@@ -1,12 +1,12 @@
 ---
 title: Architectures for Oracle applications with Azure Virtual Machines with database on OCI
 description: Architectures for Oracle applications with Azure Virtual Machines with database on OCI.
-author: jjaygbay1
+author: vaidehikher18
 ms.service: oracle-on-azure
 ms.collection: linux
 ms.topic: concept-article
 ms.date: 10/03/2024
-ms.author: jacobjaygbay
+ms.author: vaidehikher
  
 # Customer intent: As an IT architect, I want to design and deploy Oracle applications on Azure with a database on Oracle Cloud Infrastructure, so that I can ensure high availability, security, and effective integration between the two cloud environments.
 ---

@@ -2,7 +2,7 @@
 title: Run a script when an Azure Service Fabric service starts 
 description: Learn how to configure a policy for a Service Fabric service setup entry point and run a script at service startup time.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
