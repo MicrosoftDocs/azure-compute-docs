@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc
 # Customer intent: "As a developer, I want to deploy an application using the Service Fabric CLI, so that I can efficiently manage application instances within my Azure Service Fabric cluster."
 ---

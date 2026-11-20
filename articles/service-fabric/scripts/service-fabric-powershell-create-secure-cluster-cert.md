@@ -7,7 +7,7 @@ ms.assetid: 0f9c8bc5-3789-4eb3-8deb-ae6e2200795a
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to create a secure Service Fabric cluster using PowerShell so that I can manage and deploy applications with high availability and scalability.
 ---

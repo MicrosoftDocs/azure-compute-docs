@@ -4,7 +4,7 @@ description: Azure PowerShell Script Sample - Changes the RDP port range of a de
 services: service-fabric
 ms.custom: devx-track-azurepowershell
 author: tomvcassidy
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
