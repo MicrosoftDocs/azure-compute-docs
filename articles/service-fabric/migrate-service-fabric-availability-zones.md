@@ -5,7 +5,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: article
 ms.date: 02/18/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ---
 
 # Migrate your Service Fabric cluster to availability zone support

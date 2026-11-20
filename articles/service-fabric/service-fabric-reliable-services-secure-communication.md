@@ -2,7 +2,7 @@
 title: Secure service remoting communications with C#
 description: Learn how to secure service remoting based communication for C# reliable services that are running in an Azure Service Fabric cluster.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

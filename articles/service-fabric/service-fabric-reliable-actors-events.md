@@ -2,7 +2,7 @@
 title: Events in actor-based Azure Service Fabric actors
 description: Learn about events for Service Fabric Reliable Actors, an effective way to communicate between actor and client.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

@@ -2,7 +2,7 @@
 title: Change Azure Service Fabric cluster settings 
 description: This article describes the fabric settings and the fabric upgrade policies that you can customize.
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

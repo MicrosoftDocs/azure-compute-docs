@@ -2,7 +2,7 @@
 title: Package an Azure Service Fabric app 
 description: Learn about packaging an Azure Service Fabric application and how to prepare for deployment to a cluster.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

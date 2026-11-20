@@ -2,7 +2,7 @@
 title: Azure Service Fabric security best practices
 description: Best practices and design considerations for keeping Azure Service Fabric clusters and applications secure.
 ms.topic: best-practice
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

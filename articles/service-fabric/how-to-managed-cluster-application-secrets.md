@@ -2,7 +2,7 @@
 title: Deploy application secrets to a Service Fabric managed cluster
 description: Learn about Azure Service Fabric application secrets and how to deploy them to a managed cluster
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

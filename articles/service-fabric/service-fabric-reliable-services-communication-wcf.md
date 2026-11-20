@@ -2,7 +2,7 @@
 title: Reliable Services WCF communication stack 
 description: The built-in WCF communication stack in Service Fabric provides client-service WCF communication for Reliable Services.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

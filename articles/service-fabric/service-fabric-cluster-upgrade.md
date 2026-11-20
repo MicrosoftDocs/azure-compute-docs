@@ -2,7 +2,7 @@
 title: Upgrading Azure Service Fabric clusters
 description: Learn about options for updating your Azure Service Fabric cluster
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

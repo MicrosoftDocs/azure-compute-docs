@@ -2,7 +2,7 @@
 title: Convert Azure Cloud Services (extended support) apps to Service Fabric 
 description: This guide compares Cloud Services (extended support) Web and Worker Roles and Service Fabric stateless services to help migrate from Cloud Services (extended support) to Service Fabric.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

@@ -2,7 +2,7 @@
 title: Azure Service Fabric reverse proxy secure communication 
 description: Configure reverse proxy to enable secure end-to-end communication in an Azure Service Fabric application.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

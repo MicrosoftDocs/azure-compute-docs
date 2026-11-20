@@ -2,7 +2,7 @@
 title: "Tutorial: Build a .NET application in Azure Service Fabric" 
 description: In this tutorial, learn how to create an application by using an ASP.NET Core front end and a reliable service, stateful back end. Then, deploy the application to a cluster.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet

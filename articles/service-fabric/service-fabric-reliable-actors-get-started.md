@@ -2,7 +2,7 @@
 title: Create an actor-based service on Azure Service Fabric 
 description: Learn how to create, debug, and deploy your first actor-based service in C# using Service Fabric Reliable Actors.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

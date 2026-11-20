@@ -2,7 +2,7 @@
 title: Induce Chaos in Service Fabric clusters 
 description: Using Fault Injection and Cluster Analysis Service APIs to manage Chaos in the cluster.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

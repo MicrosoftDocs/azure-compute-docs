@@ -2,7 +2,7 @@
 title: Set up your dev environment on macOS
 description: Install the runtime, SDK, and tools and create a local development cluster. After completing this setup, you'll be ready to build applications on macOS.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet

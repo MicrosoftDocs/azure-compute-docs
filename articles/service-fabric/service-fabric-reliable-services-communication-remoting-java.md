@@ -2,7 +2,7 @@
 title: Service remoting using Java in Azure Service Fabric 
 description: Service Fabric remoting allows clients and services to communicate with Java services by using a remote procedure call.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java

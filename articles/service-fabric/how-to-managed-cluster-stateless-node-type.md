@@ -2,7 +2,7 @@
 title: Deploy a Service Fabric managed cluster with stateless node types
 description: Learn how to create and deploy stateless node types in Service Fabric managed clusters
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

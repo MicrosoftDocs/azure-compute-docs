@@ -2,7 +2,7 @@
 title: Troubleshooting application upgrades 
 description: This article covers some common issues around upgrading a Service Fabric application and how to resolve them.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

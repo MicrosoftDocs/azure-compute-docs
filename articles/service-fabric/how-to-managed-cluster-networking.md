@@ -2,7 +2,7 @@
 title: Configure network settings for Service Fabric managed clusters
 description: Learn how to configure your Service Fabric managed cluster for NSG rules, RDP port access, load-balancing rules, and more.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell

@@ -2,7 +2,7 @@
 title: "Tutorial: Deploy an app by using CI/CD and Azure Pipelines"
 description: In this tutorial, learn how to set up continuous integration and continuous deployment (CI/CD) for an Azure Service Fabric application by using Azure Pipelines.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

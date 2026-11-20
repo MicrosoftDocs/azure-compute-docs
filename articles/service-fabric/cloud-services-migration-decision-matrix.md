@@ -2,7 +2,7 @@
 title: Azure Cloud Services migration decision matrix 
 description: This article provides a decision matrix to help evaluate migration options for an Azure solution currently built on Cloud Services.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

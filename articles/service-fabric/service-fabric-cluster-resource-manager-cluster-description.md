@@ -2,7 +2,7 @@
 title: Describe a cluster by using Cluster Resource Manager 
 description: Describe a Service Fabric cluster by specifying fault domains, upgrade domains, node properties, and node capacities for Cluster Resource Manager.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

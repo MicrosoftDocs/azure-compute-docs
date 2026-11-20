@@ -2,7 +2,7 @@
 title: Learn about Azure Service Fabric Support options 
 description: Azure Service Fabric cluster versions supported and links to file support tickets
 ms.topic: troubleshooting
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

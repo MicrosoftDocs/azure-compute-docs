@@ -2,7 +2,7 @@
 title: 'Quickstart: Create a Java app on Azure Service Fabric'
 description: In this quickstart, you create a Java application for Azure using a Service Fabric reliable services sample application.
 ms.topic: quickstart
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java, linux-related-content

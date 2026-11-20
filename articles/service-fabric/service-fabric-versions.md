@@ -2,7 +2,7 @@
 title: Azure Service Fabric versions
 description: Learn about cluster versions in Azure Service Fabric and platform versions actively supported
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content

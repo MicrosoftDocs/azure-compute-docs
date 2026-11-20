@@ -2,7 +2,7 @@
 title: Set up your development environment on Linux 
 description: Install the runtime and SDK and create a local development cluster on Linux. After completing this setup, you'll be ready to build applications.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet, devx-track-extended-java, linux-related-content
