@@ -1,13 +1,13 @@
 ---
 title: Create managed disk from snapshot (Linux) - CLI sample
 description: Use an Azure CLI script to create a managed disk from a snapshot and monitor the background copy process.
-author: roygara
+author: ushnaarshadkhan
 ms.service: azure-disk-storage
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.date: 09/02/2026
-ms.author: rogarana
+ms.author: uarshadkhan
 ms.custom: mvc, devx-track-azurecli, linux-related-content
 # Customer intent: As a cloud engineer, I want to create managed disks from snapshots by using Azure CLI, so that I can use the disks to restore data or create a virtual machine.
 ---
