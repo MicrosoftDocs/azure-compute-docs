@@ -5,14 +5,17 @@
 
 title: NVv4 series retirement
 description: 'This article contains the details of the NVv4-series retirement. '
-author:      yangnicole-ml # GitHub alias
+author: yangnicole-ml # GitHub alias
 ms.author: yangnicole
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date:     06/13/2025
+ms.date: 11/20/2026
 ---
 
 # NVv4-series Virtual Machines Retired on September 30, 2026
+
+Azure NVv4-series virtual machines retired on September 30, 2026. This article explains how the retirement affects you, recommends replacement VM series, and provides steps to resize your VMs.
+
 > [!NOTE]
 > There is a known resize operation error that occurs when migrating from the NVv4-series to the NVads_V710_v5-series. To unblock this, register your subscription ID under the Azure Feature Exposure Control (AFEC) ‘VMTempDiskResizePreview’. The AFEC is also discoverable in the portal. Then, confirm the AFEC registration status before resizing the VMs. 
 
