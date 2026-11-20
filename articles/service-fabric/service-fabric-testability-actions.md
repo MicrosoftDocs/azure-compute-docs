@@ -2,7 +2,7 @@
 title: Simulate failures in Azure microservices 
 description: This article talks about the testability actions found in Microsoft Azure Service Fabric.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

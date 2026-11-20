@@ -2,8 +2,8 @@
 title: Deploy GPU-accelerated Linux virtual desktops with ThinLinc on Azure
 description: Plan and deploy persistent, GPU-accelerated Linux virtual desktops on Azure by using ThinLinc and supported Azure GPU virtual machines.
 ai-usage: ai-generated
-author: padmalathas
-ms.author: padmalathas
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-virtual-machines
 ms.subservice: hpc
 ms.collection: linux

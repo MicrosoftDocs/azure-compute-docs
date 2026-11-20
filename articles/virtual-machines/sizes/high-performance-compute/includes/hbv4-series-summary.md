@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 11/24/2025
-ms.author: padmalathas
+ms.author: jvenkatesh
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to evaluate the HBv4-series VMs for HPC workloads, so that I can ensure they meet the performance and scalability requirements for my organization's computational tasks.

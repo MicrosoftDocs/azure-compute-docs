@@ -2,7 +2,7 @@
 title: Enclaves for confidential containers on Azure Container Instances (preview)
 description: Learn how to run an enclave pod next to a confidential container group, and how to start containers in it and communicate with it.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

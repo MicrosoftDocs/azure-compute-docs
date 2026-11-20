@@ -1,11 +1,11 @@
 ---
 title: include file
 description: include file
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: include
 ms.date: 06/17/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: include file, references_regions
 # Customer intent: "As a cloud architect, I want to find out which regions support nonzonal Azure Disk Storage deployments, so that I can plan the deployment of my applications based on availability and redundancy requirements."
 ---

@@ -1,8 +1,8 @@
 ---
 title: Prevent torn writes with managed disks on Linux virtual machines
 description: Learn how to configure atomic writes for Linux virtual machines (VMs) using managed disks with NVMe controllers.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/16/2026
 ms.topic: concept-article
 ms.service: azure-disk-storage

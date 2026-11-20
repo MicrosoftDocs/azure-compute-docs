@@ -2,7 +2,7 @@
 title: Patch the Windows operating system in your Service Fabric cluster 
 description: Here's how to enable automatic OS image upgrades to patch Service Fabric cluster nodes running on Windows.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

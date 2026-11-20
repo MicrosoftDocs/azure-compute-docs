@@ -2,7 +2,7 @@
 title: Grant access to Azure resources on a Service Fabric cluster
 description: Learn how to grant a managed-identity-enabled Service Fabric application access to other Azure resources that support Microsoft Entra authentication.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

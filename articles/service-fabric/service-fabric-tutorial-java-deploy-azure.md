@@ -2,7 +2,7 @@
 title: Deploy a Java app to a Service Fabric cluster in Azure 
 description: In this tutorial, learn how to deploy a Java Service Fabric application to an Azure Service Fabric cluster.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

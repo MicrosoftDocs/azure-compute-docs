@@ -2,7 +2,7 @@
 title: Azure Service Fabric environment variables 
 description: Learn about environment variables in Azure Service Fabric. Contains a reference of a full list of variables and their uses.
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

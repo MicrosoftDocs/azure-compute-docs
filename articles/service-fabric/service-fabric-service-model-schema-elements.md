@@ -2,7 +2,7 @@
 title: Azure Service Fabric service model XML schema elements 
 description: Describes the elements in the XML schema of the Service Fabric service model.
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content

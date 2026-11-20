@@ -2,8 +2,8 @@
 title: Linux VDI Options
 description: Linux VDI on Azure supports remote desktop, GPU visualization, and brokered sessions. Compare architectures and choose an option for your users.
 ai-usage: ai-assisted
-author: padmalathas
-ms.author: padmalathas
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/10/2026
 ms.topic: concept-article
 ms.service: azure-virtual-machines

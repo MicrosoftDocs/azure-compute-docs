@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 11/24/2025
-ms.author: padmalathas
+ms.author: jvenkatesh
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access detailed specifications for HX-series VM sizes, so that I can ensure the virtual machines meet the performance and configuration requirements for my applications."

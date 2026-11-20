@@ -4,8 +4,8 @@ description: Deploys Azure Disk Encryption to a Windows virtual machine using a 
 ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: disks
-author: ejarvi
-ms.author: ejarvi
+author: gabstamsft
+ms.author: gabsta
 ms.collection: windows
 ms.date: 03/19/2020
 

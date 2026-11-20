@@ -3,8 +3,8 @@ ms.service: azure-virtual-machines
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.topic: include
 ms.date: 07/07/2022
-author: iamwilliew
-ms.author: wwilliams
+author: kaza-sriram
+ms.author: prkazasr
 # Customer intent: "As an IT administrator managing virtual machines, I want to aggregate OS update statuses and availability states across my machines, so that I can efficiently monitor and ensure the health of my infrastructure."
 ---
 

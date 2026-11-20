@@ -2,7 +2,7 @@
 title: Set up an encryption cert on Linux clusters 
 description: Learn how to set up an encryption certificate and encrypt secrets on Linux clusters.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content

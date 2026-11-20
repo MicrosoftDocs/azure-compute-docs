@@ -2,7 +2,7 @@
 title: Deploy a Service Fabric managed cluster with a subnet per NodeType
 description: This article provides the configuration necessary to deploy a Service Fabric managed cluster with different subnets per NodeType.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template

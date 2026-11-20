@@ -2,7 +2,7 @@
 title: Azure Service Fabric Central Secret Service 
 description: This article describes how to use Central Secret Service in Azure Service Fabric
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

@@ -2,7 +2,7 @@
 title: Use multiple network interface cards in a Service Fabric managed cluster
 description: Learn how to create node types with multiple virtual NICs in Service Fabric managed clusters.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

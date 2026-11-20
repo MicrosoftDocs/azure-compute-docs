@@ -5,7 +5,7 @@ author: tracygooo
 
 ms.topic: concept-article
 ms.date: 1/26/2026
-ms.author: majovanovic
+ms.author: bojanmiksin
 # Customer intent: As a cloud service administrator, I want to enable/disable a certain set of metrics quickly, without editing the service description.
 ---
 

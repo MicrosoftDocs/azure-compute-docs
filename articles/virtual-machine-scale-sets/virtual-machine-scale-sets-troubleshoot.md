@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot autoscale with Virtual Machine Scale Sets
 description: Troubleshoot autoscale with Virtual Machine Scale Sets. Understand typical problems encountered and how to resolve them.
-author: iamwilliew
-ms.author: wwilliams
+author: mimckitt
+ms.author: mimckitt
 ms.topic: troubleshooting
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale

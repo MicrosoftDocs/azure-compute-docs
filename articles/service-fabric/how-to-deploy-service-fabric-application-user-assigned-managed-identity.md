@@ -2,7 +2,7 @@
 title: Deploy app with a user-assigned managed identity
 description: This article shows you how to deploy Service Fabric application with a user-assigned managed identity
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

@@ -2,7 +2,7 @@
 title: How to migrate to TLS (Transport Layer Security) 1.3 for Service Fabric
 description: A how-to guide for migrating to TLS version 1.3 for classic and managed Service Fabric clusters.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

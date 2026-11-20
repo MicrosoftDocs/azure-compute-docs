@@ -1,11 +1,11 @@
 ---
 title: Migrate Azure VMs to managed disks 
 description: Migrate Azure virtual machines created using unmanaged disks in storage accounts to use managed disks.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 05/30/2019
-ms.author: rogarana
+ms.author: prkazasr
 # Customer intent: "As a cloud administrator, I want to migrate Azure virtual machines from unmanaged to managed disks, so that I can enhance storage management, improve reliability, and reduce the risk of single points of failure."
 ---
 

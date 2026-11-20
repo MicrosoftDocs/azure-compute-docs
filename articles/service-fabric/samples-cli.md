@@ -2,7 +2,7 @@
 title: Azure CLI (az) and Azure Service Fabric CLI (sfctl) Samples
 description: Azure CLI (az) and Azure Service Fabric CLI (sfctl) Samples on managing clusters, applications, and services.
 ms.topic: sample
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurecli

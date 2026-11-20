@@ -1,7 +1,7 @@
 ---
 title: Support Policy for Azure Container Instances
 description: Outline of the support policies on Azure Container Instances
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

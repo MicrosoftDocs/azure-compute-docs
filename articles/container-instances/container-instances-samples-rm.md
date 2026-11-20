@@ -1,7 +1,7 @@
 ---
 title: Azure Resource Manager template samples
 description: Find Azure Resource Manager template samples to deploy Azure Container Instances in different configurations
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-arm-template

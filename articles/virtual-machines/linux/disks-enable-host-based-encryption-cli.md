@@ -1,11 +1,11 @@
 ---
 title: Enable end-to-end encryption using encryption at host - Azure CLI - managed disks
 description: Use encryption at host to enable end-to-end encryption on your Azure managed disks.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 06/25/2025
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom:
   - devx-track-azurecli
   - linux-related-content

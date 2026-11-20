@@ -1,8 +1,8 @@
 ---
 title: Best practices for high availability with Azure VMs and managed disks
 description: Learn the steps you can take to get the best availability with your Azure virtual machines and managed disks.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 10/20/2026
 ai-usage: ai-assisted
 ms.topic: concept-article

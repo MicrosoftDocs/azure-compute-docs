@@ -2,7 +2,7 @@
 title: Create your first reliable service in Java 
 description: Introduction to creating a Microsoft Azure Service Fabric application with stateless and stateful services in Java.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-extended-java

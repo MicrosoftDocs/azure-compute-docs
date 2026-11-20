@@ -2,7 +2,7 @@
 title: Scheduled Events for Azure Virtual Machines
 description: Overview of how to configure and use scheduled events across all Azure VMs
 author: adwilso
-ms.author: wilsonadam
+ms.author: prkazasr
 ms.service: azure-virtual-machines
 ms.subservice: scheduled-events
 ms.topic: overview

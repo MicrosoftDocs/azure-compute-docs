@@ -4,7 +4,7 @@ description: Describes developing, deploying, testing, upgrading, maintaining, a
 service: service-fabric
 ms.service: azure-service-fabric
 author: tomvcassidy
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.topic: concept-article
 ms.date: 03/22/2026
 ms.update-cycle: 1095-days

@@ -2,7 +2,7 @@
 title:  Add Azure Dedicated Host to a Service Fabric managed cluster (SFMC)
 description: Learn how to add Azure Dedicated Host to a Service Fabric managed cluster (SFMC)
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

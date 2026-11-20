@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: "As a cloud administrator, I want to update the RDP username and password for all nodes in a Service Fabric cluster, so that I can ensure secure access and maintain the configuration of my virtual machines."
 ---

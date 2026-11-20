@@ -2,7 +2,7 @@
 title: Manage Azure Service Fabric application secrets
 description: Learn how to secure secret values in a Service Fabric application (platform-agnostic).
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 11/24/2025
-ms.author: padmalathas
+ms.author: jvenkatesh
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: As a cloud architect, I want to assess the capabilities of HX-series virtual machines, so that I can determine their suitability for running memory-intensive workloads in applications like silicon design and advanced manufacturing processes.

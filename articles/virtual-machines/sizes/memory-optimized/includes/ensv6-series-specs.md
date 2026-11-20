@@ -1,12 +1,12 @@
 ---
 title: Ensv6 series specs include
 description: Include file containing specifications of Ensv6-series VM sizes.
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 05/08/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of the Ensv6 series virtual machines, so that I can choose the appropriate VM size for my workload requirements."

@@ -1,5 +1,5 @@
 ---
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 services: container-instances
 ms.service: azure-container-instances

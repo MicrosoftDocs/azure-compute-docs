@@ -2,7 +2,7 @@
 title: Deploy and upgrade with Azure Resource Manager
 description: Learn how to deploy applications and services to a Service Fabric cluster using an Azure Resource Manager template.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template, devx-track-azurepowershell

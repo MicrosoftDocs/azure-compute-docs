@@ -1,12 +1,12 @@
 ---
 title: Dnsv6 series specs include
 description: Include file containing specifications of Dnsv6-series VM sizes.
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 05/08/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As an IT administrator, I want to access detailed specifications for Dnsv6-series VM sizes, so that I can effectively select the appropriate virtual machine configuration for my organization's workload requirements."

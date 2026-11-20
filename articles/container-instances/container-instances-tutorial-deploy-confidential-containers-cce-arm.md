@@ -2,7 +2,7 @@
 title: "Tutorial: Prepare a deployment for a confidential container on Azure Container Instances"
 description: Learn how to create an Azure Resource Manager template for a confidential container deployment with a custom confidential computing enforcement policy.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

@@ -2,7 +2,7 @@
 title: Service model XML schema attribute groups 
 description: Describes the attribute groups in the XML schema of the Service Fabric service model.
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

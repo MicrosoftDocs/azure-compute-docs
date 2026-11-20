@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: As an IT administrator, I want to create a network security group rule in PowerShell, so that I can allow inbound traffic on specific ports for improved network security configuration.
 ---

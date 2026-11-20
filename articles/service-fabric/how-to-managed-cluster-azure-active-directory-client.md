@@ -2,7 +2,7 @@
 title: How to configure Azure Service Fabric managed cluster for Microsoft Entra client access
 description: Learn how to configure an Azure Service Fabric managed cluster for Microsoft Entra client access
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

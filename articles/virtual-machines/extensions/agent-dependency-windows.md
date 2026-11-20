@@ -5,7 +5,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: extensions
 author: guywi-ms
-ms.author: guywild
+ms.author: gabsta
 ms.reviewer: jushiman
 ms.collection: windows
 ms.date: 01/14/2025

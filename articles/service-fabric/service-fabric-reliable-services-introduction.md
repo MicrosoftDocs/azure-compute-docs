@@ -2,7 +2,7 @@
 title: Overview of the Reliable Service programming model 
 description: Learn about Service Fabric's Reliable Service programming model, and get started writing your own services.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

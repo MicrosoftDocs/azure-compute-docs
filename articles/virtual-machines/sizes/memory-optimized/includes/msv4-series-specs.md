@@ -1,12 +1,12 @@
 ---
 title: Msv4 series specs include
 description: Include file containing specifications of Msv4-series VM sizes.
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 09/03/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access the specifications of Msv4-series VMs, so that I can determine the appropriate resources for my application's performance needs."

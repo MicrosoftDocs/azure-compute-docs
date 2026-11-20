@@ -2,7 +2,7 @@
 title: Project Flash - Use Azure Monitor to monitor Azure Virtual Machine availability
 description: This article covers important concepts for monitoring Azure virtual machine availability using the Azure Monitor VM availability metric.
 ms.service: azure-virtual-machines
-ms.author: tomcassidy
+ms.author: prkazasr
 author: tomvcassidy
 ms.date: 06/17/2026
 ms.topic: concept-article

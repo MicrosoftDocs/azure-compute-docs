@@ -2,7 +2,7 @@
 title: Clean up a standalone cluster
 description: In this tutorial, learn how to delete AWS or Azure resources for your standalone Service Fabric cluster.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric
