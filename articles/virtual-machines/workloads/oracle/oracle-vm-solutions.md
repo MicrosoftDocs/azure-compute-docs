@@ -1,13 +1,13 @@
 ---
 title: Oracle virtual machine images and their deployment on Microsoft Azure
 description: Learn about Oracle virtual machine images and their deployment to Microsoft Azure.
-author: jjaygbay1
+author: vaidehikher18
 ms.service: oracle-on-azure
 ms.custom:
 ms.collection: linux
 ms.topic: concept-article
 ms.date: 10/08/2024
-ms.author: jacobjaygbay
+ms.author: vaidehikher
 # Customer intent: As a cloud architect, I want to deploy Oracle virtual machine images on Azure so that I can leverage Oracle's software capabilities alongside Azure's infrastructure for my applications and database workloads.
 ---
 # Oracle virtual machine images and their deployment on Microsoft Azure

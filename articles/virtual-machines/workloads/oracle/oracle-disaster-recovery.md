@@ -1,12 +1,12 @@
 ---
 title: Overview of an Oracle disaster recovery scenario in your Azure environment | Microsoft Docs
 description: A disaster recovery scenario for an Oracle Database 12c database in your Azure environment
-author: jjaygbay1
+author: vaidehikher18
 ms.service: oracle-on-azure
 ms.collection: linux
 ms.topic: concept-article
 ms.date: 10/03/2024
-ms.author: jacobjaygbay
+ms.author: vaidehikher
 
 # Customer intent: "As a database administrator, I want to set up a disaster recovery plan for my Oracle Database in Azure, so that I can ensure quick recovery and maintain business continuity in case of a failure."
 ---
