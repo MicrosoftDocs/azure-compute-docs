@@ -2,8 +2,8 @@
 title: Upload a VHD to Azure or copy a disk across regions - Azure CLI
 description: Learn how to upload a VHD to an Azure managed disk and copy a managed disk across regions, using the Azure CLI, via direct upload.
 services: "virtual-machines,storage"
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/02/2026
 ms.topic: how-to
 ms.service: azure-disk-storage

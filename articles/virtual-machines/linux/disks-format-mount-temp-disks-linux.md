@@ -1,13 +1,13 @@
 ---
 title: Format and mount temporary disks on Azure Linux VMs
 description: Learn to format and mount temporary disks (also known as resource disks) on Azure Linux VMs with both SCSI and NVMe interfaces
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.collection: linuxFast local storage for temporary data
 ms.topic: how-to
 ms.date: 09/03/2025
-ms.author: rogarana
+ms.author: prkazasr
 ---
 
 # Format and mount temporary disk to Azure Linux VMs

@@ -1,8 +1,8 @@
 ---
 title: Tutorial - Manage Azure disks with the Azure CLI
 description: In this tutorial, you learn how to use the Azure CLI to create and manage Azure disks for virtual machines
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-disk-storage
 ms.topic: tutorial
 ms.date: 09/21/2026
