@@ -9,7 +9,7 @@ ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
 ms.custom: linux-related-content
 ms.date: 04/30/2025
-ms.author: padmalathas
+ms.author: gabsta
 author: magatala-MSFT
 # Customer intent: As a cloud engineer managing Linux N-series VMs, I want to install AMD GPU drivers using an extension, so that I can optimize my virtual machines for high-performance GPU workloads.
 ---

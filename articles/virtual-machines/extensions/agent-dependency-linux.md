@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.custom: devx-track-azurecli, linux-related-content
 author: guywi-ms
-ms.author: guywild
+ms.author: gabsta
 ms.collection: linux
 ms.date: 01/14/2025
 # Customer intent: "As a cloud administrator, I want to deploy the Azure Monitor Dependency agent extension on my Linux virtual machines, so that I can monitor and manage dependencies effectively across my infrastructure."

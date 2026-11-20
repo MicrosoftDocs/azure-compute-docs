@@ -5,8 +5,8 @@ ms.topic: how-to
 ms.service: azure-virtual-machines
 ms.subservice: disks
 ms.custom: linux-related-content
-author: ejarvi
-ms.author: ejarvi
+author: gabstamsft
+ms.author: gabsta
 ms.date: 03/19/2020
 ms.collection: linux
 # Customer intent: "As a systems administrator managing Linux virtual machines, I want to deploy Azure Disk Encryption, so that I can ensure full disk encryption and secure key management for my sensitive data."

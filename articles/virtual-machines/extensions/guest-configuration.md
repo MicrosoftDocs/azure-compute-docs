@@ -5,7 +5,7 @@ ms.topic: concept-article
 ms.service: azure-virtual-machines
 ms.subservice: extensions
 author: MutemwaRMasheke
-ms.author: mmasheke
+ms.author: gabsta
 ms.date: 08/20/2025
 # Customer intent: "As a cloud administrator, I want to install the Machine Configuration extension on my Azure virtual machines, so that I can audit and configure compliance settings effectively for improved security management."
 ---
