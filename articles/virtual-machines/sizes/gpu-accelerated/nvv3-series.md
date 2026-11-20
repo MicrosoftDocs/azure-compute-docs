@@ -5,7 +5,7 @@ author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 07/31/2024
+ms.date: 11/20/2026
 ms.author: mattmcinnes
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to evaluate the specifications of the NVv3 virtual machine sizes, so that I can select the appropriate size for resource-intensive applications based on computing, storage, and network requirements.
