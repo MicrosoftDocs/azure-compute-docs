@@ -12,7 +12,7 @@ ms.subservice: sizes
 
 # Migrate your Standard_NC24rs_v3 virtual machine size by September 30, 2025
 
-On September 30, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
+On September 30, 2025, Microsoft Azure retires the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
 
 > [!NOTE]
 > All the NCv3-series VM sizes, including Standard_NC24rs_v3, retire on September 30, 2025. For retirement details and SKU migration guidance, see the [NCv3-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/ncv3-retirement).
