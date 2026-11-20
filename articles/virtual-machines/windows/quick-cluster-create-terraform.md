@@ -6,7 +6,7 @@ ms.service: azure-virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.date: 07/24/2023
-ms.author: tarcher
+ms.author: prkazasr
 ms.custom: devx-track-terraform
 content_well_notification: 
   - AI-contribution
