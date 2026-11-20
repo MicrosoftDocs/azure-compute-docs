@@ -1,8 +1,8 @@
 ---
 title: Tutorial - Autoscale a scale set with the Azure CLI
 description: Learn how to use the Azure CLI to automatically scale a Virtual Machine Scale Set as CPU demands increases and decreases
-author: iamwilliew
-ms.author: wwilliams
+author: mimckitt
+ms.author: mimckitt
 ms.topic: tutorial
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: autoscale
