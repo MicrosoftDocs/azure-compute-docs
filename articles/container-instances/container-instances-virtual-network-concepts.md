@@ -2,7 +2,7 @@
 title: Scenarios to use a virtual network with Azure Container Instances
 description: Scenarios, resources, and limitations to deploy container groups to an Azure virtual network.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

@@ -2,7 +2,7 @@
 title: Mount gitRepo volume to container group
 description: Learn how to mount a gitRepo volume to clone a Git repository into your container instances
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli

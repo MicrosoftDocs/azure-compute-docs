@@ -4,7 +4,7 @@ author: tomvcassidy
 ms.service: azure-container-instances
 ms.topic: include
 ms.date: 11/17/2025
-ms.author: tomcassidy
+ms.author: dmuralidhar
 # Customer intent: "As a developer, I want to install Azure CLI and Docker locally, so that I can complete the tutorial and effectively work with container instances."
 ---
 

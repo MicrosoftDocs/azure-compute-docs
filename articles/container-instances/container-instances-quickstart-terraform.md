@@ -7,7 +7,7 @@ ms.date: 11/17/2025
 ms.update-cycle: 180-days
 ms.custom: devx-track-terraform, linux-related-content
 author: TomArcherMsft
-ms.author: tarcher
+ms.author: dmuralidhar
 content_well_notification: 
   - AI-contribution
 ai-usage: ai-assisted

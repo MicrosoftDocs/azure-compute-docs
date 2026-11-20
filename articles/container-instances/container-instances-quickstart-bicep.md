@@ -3,7 +3,7 @@ title: Quickstart - create a container instance - Bicep
 description: In this quickstart, you use a Bicep file to quickly deploy a containerized web app that runs in an isolated Azure container instance.
 author: tomvcassidy
 services: container-instances
-ms.author: tomcassidy
+ms.author: dmuralidhar
 ms.date: 11/17/2025
 ms.update-cycle: 180-days
 ms.topic: quickstart

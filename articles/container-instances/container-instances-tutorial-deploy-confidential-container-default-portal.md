@@ -2,7 +2,7 @@
 title: Tutorial - Deploy a confidential container to Azure Container Instances via Azure portal
 description: In this tutorial, you deploy a confidential container with a development policy to Azure Container Instances via Azure portal.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

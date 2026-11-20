@@ -5,7 +5,7 @@ author: tomvcassidy
 ms.topic: reference
 ms.service: azure-container-instances
 services: container-instances
-ms.author: tomcassidy
+ms.author: dmuralidhar
 ms.date: 07/25/2026
 # Customer intent: "As a cloud developer, I want to configure a container group using a YAML file, so that I can ensure reproducible deployments and streamline my container management process."
 ---

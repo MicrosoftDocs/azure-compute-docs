@@ -1,7 +1,7 @@
 ---
 title: Container instances and container orchestration
 description: Understand how Azure container instances interact with container orchestrators.
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
