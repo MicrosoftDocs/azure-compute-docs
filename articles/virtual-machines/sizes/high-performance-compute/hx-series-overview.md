@@ -7,8 +7,8 @@ ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 09/25/2026
 ms.reviewer: wwilliams
-ms.author: padmalathas
-author: padmalathas
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: As a cloud architect, I want to understand the architecture and specifications of HX-series virtual machines, so that I can effectively design and optimize high-performance computing workloads within our cloud infrastructure.
 ---
 

@@ -7,8 +7,8 @@ ms.subservice: hpc
 ms.topic: concept-article
 ms.date: 09/25/2026
 ms.reviewer: wwilliams
-ms.author: padmalathas
-author: padmalathas
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: As a cloud architect, I want to understand the architecture and specifications of the HBv5-series virtual machines, so that I can select the optimal VM size for my high-performance computing workloads.
 ---
 

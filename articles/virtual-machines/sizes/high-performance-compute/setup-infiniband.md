@@ -6,8 +6,8 @@ ms.subservice: hpc
 ms.topic: how-to
 ms.date: 09/25/2026
 ms.reviewer: wwilliams
-ms.author: padmalathas
-author: padmalathas
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: "As a cloud engineer, I want to configure InfiniBand on HPC virtual machines, so that I can enhance the network performance and scalability of my high-performance computing applications."
 ---
 
