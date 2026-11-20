@@ -6,7 +6,7 @@
 title: NVv3 series retirement
 description: 'This article contains the details of the NVv3-series retirement. '
 author: yangnicole-ml # GitHub alias
-ms.author: yangnicole
+ms.author: abelw
 ms.service: azure-virtual-machines
 ms.topic: how-to
 ms.date: 11/20/2026
