@@ -1,12 +1,12 @@
 ---
 title: NVads-V710 v5-series summary include file
 description: Include file for NVads-V710 v5-series summary
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 09/16/2024
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to explore NVads V710 v5-series virtual machines, so that I can implement cost-effective solutions for GPU-accelerated graphics applications, cloud-based virtual desktops, and AI/ML workloads."

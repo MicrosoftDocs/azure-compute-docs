@@ -1,12 +1,12 @@
 ---
 title: NVads-V710 v5-series specs include
 description: Include file containing specifications of NVads-V710 v5-series VM sizes.
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 09/16/2024
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications of NVads-V710 v5-series virtual machines, so that I can select the appropriate configuration for my application workloads."

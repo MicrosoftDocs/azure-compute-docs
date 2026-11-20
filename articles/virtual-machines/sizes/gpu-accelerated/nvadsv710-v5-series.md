@@ -1,12 +1,12 @@
 ---
 title: NVads V710 v5 size series
 description: Information on and specifications of the NVads-V710 v5-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 09/16/2024
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to understand the specifications and features of the NVads V710 v5 sizes, so that I can select the most suitable virtual machine types for my applications based on performance requirements."
 ---

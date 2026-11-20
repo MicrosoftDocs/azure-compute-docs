@@ -5,8 +5,8 @@
 
 title: 'ND-H200-v5 size series '
 description: Information on and specifications of the ND-H200-v5 series sizes
-author:      iamwilliew
-ms.author:   wwilliams
+author:      chiefabel7
+ms.author:   abelw
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.date:     09/02/2025
