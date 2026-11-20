@@ -2,12 +2,12 @@
 title: Ensv6-series summary include file
 description: Include file for Ensv6-series summary
 services: virtual-machines
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 05/07/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.custom: include file
 # Customer intent: "As a system architect, I want to evaluate Ensv6-series virtual machines, so that I can determine their suitability for memory-intensive applications and high-performance networking demands of my enterprise workloads."
 ---

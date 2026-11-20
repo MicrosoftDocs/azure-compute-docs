@@ -1,7 +1,7 @@
 ---
 title: Mbdsv4 size series (Preview)
 description: Information on and specifications of the Mbdsv4-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article

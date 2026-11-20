@@ -1,12 +1,12 @@
 ---
 title: Endsv6 series specs include
 description: Include file containing specifications of Endsv6-series VM sizes.
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 05/08/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access a detailed specification sheet for Endsv6-series VM sizes, so that I can select the appropriate virtual machine configuration for my application requirements."
