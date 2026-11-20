@@ -6,7 +6,7 @@ author: cynthnan
  ms.service: virtual-machines
  ms.topic: include
  ms.date: 04/17/2018
-ms.author: wwilliams
+ms.author: prkazasr
  ms.custom: include file
  # Customer intent: As a system administrator, I want to understand the supported SSH key formats for virtual machines, so that I can configure secure connections effectively.
 ---

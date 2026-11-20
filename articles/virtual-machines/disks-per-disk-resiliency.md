@@ -1,8 +1,8 @@
 ---
 title: Improve workload availability with per-disk resiliency (preview)
 description: Learn how to use per-disk resiliency on Azure managed data disks to keep a VM running when a data disk has a connectivity or availability issue.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-disk-storage
 ms.topic: concept-article
 ms.date: 08/28/2026

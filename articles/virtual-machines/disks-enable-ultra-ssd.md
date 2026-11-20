@@ -1,11 +1,11 @@
 ---
 title: Configure Ultra Disks for Azure virtual machines
 description: Learn how to check Ultra Disk availability, deploy and attach Ultra Disks, configure 512-byte sectors, and adjust performance for Azure virtual machines.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/18/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template, portal
 # Customer intent: "As a cloud administrator, I want to deploy Ultra Disks for Azure VMs, so that I can achieve maximum performance for data-intensive workloads and optimize that performance without needing to restart my virtual machines."
 ---

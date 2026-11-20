@@ -2,11 +2,11 @@
 title: User data for Azure Virtual Machine
 description: Allow customer to insert script or other metadata into an Azure virtual machine at provision time.
 services: virtual-machines-linux
-author: ningk
+author: kaza-sriram
 manager: rogardle
 ms.topic: how-to
 ms.date: 02/28/2023
-ms.author: ningk
+ms.author: prkazasr
 ms.reviewer: azmetadata, mattmcinnes
 # Customer intent: As a cloud administrator, I want to insert scripts and metadata into Azure virtual machines during provisioning, so that I can automate configurations and ensure the virtual machines are properly set up upon deployment.
 ---

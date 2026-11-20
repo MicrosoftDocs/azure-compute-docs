@@ -1,11 +1,11 @@
 ---
 title: Unmanaged disks have been retired
 description: This article provides a high-level overview of the retirement of Azure unmanaged disks and how to migrate to Azure managed disks.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: concept-article
 ms.date: 03/10/2026
-ms.author: rogarana
+ms.author: prkazasr
 # Customer intent: As an Azure user managing virtual machines, I want to migrate my unmanaged disks to managed disks before the retirement deadline, so that I can ensure continued operation and take advantage of the enhanced reliability and features of managed disks.
 ---
 

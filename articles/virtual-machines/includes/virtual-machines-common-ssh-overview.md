@@ -6,7 +6,7 @@ author: cynthnan
  ms.service: virtual-machines
  ms.topic: include
  ms.date: 07/09/2020
-ms.author: wwilliams
+ms.author: prkazasr
  ms.custom: include file
  # Customer intent: As a system administrator, I want to configure SSH key authentication for my virtual machines, so that I can enhance security against unauthorized access and reduce the risk of brute-force attacks.
 ---

@@ -1,11 +1,11 @@
 ---
 title: Migrate Standard HDD OS disks by September 08, 2028
 description: Learn about the retirement of the capability to use Standard HDD as OS disks for Azure Virtual Machines.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/16/2026
-ms.author: rogarana
+ms.author: prkazasr
 ai-usage: ai-assisted
 ---
 

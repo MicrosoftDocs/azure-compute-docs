@@ -1,11 +1,11 @@
 ---
 title: include file
 description: include file
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: include
 ms.date: 08/28/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: include file, references_regions
 ai-usage: ai-assisted
 # Customer intent: As a cloud administrator, I want to know which regions support per-disk resiliency so that I can deploy in supported locations.

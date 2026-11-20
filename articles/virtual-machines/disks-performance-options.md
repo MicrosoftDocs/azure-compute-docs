@@ -1,11 +1,11 @@
 ---
 title: Overview - Options to improve Azure managed disk performance
 description: Learn the available options for improving Azure managed disk performance, organized by disk type.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: concept-article
 ms.date: 04/15/2025
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: accpeerreview2025-2
 # Customer intent: As a cloud architect, I want to understand the performance options for Azure managed disks, so that I can optimize disk usage and meet the varying demands of workloads effectively.
 ---

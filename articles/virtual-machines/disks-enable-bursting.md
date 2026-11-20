@@ -1,8 +1,8 @@
 ---
 title: Enable on-demand disk bursting
 description: Enable on-demand disk bursting on an Azure Premium SSD managed disk.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/11/2026
 ms.topic: how-to
 ms.service: azure-disk-storage

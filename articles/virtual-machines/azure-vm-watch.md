@@ -1,8 +1,8 @@
 ---
 title: Azure VM Watch
 description: Learn how to use the Azure VM watch service offering.
-author: iamwilliew 
-ms.author: wwilliams
+author: kaza-sriram 
+ms.author: prkazasr
 ms.service: azure-virtual-machines
 ms.topic: concept-article
 ms.update-cycle: 1095-days

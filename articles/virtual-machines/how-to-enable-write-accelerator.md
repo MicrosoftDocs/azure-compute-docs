@@ -1,11 +1,11 @@
 ---
 title: Azure Write Accelerator
 description: Learn how to enable and use Write Accelerator
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/21/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ai-usage: ai-assisted
 # Customer intent: "As a cloud administrator, I want to enable Write Accelerator on Premium SSDs for M-Series VMs, so that I can enhance write I/O performance for log files in high-performance database applications."

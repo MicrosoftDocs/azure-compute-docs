@@ -2,7 +2,7 @@
 title: Plan to manage costs for virtual machines
 description: Learn how to plan for and manage costs for virtual machines by using cost analysis in the Azure portal.
 author: tomvcassidy
-ms.author: tomcassidy
+ms.author: prkazasr
 ms.custom: subject-cost-optimization, portal
 ms.service: azure-virtual-machines
 ms.topic: how-to

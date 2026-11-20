@@ -1,8 +1,8 @@
 ---
 title: Create a snapshot of an Azure managed disk
 description: Learn how to create a point-in-time copy of an Azure managed disk for backup or troubleshooting by using the Azure portal, Azure PowerShell, or Azure CLI.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/17/2026

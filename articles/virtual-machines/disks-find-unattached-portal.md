@@ -1,8 +1,8 @@
 ---
 title: "Find and delete unattached Azure managed and unmanaged disks - Azure portal"
 description: Find unattached managed disks in the Azure portal and use scripts to find unattached unmanaged disks.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/16/2026
 ms.service: azure-disk-storage
 ms.topic: how-to
