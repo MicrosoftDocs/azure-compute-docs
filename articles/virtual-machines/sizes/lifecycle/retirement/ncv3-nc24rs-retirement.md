@@ -5,17 +5,17 @@ author: sherrywangms
 ms.author: sherrywang
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 03/19/2024
+ms.date: 11/20/2026
 ms.subservice: sizes
 # Customer intent: "As a cloud infrastructure manager, I want to migrate my Standard_NC24rs_v3 virtual machines to a newer VM series, so that I can ensure uninterrupted service and maintain optimized performance before the retirement deadline on September 30, 2025."
 ---
 
 # Migrate your Standard_NC24rs_v3 virtual machine size by September 30, 2025
 
+On September 30, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
+
 > [!NOTE]
 > All the NCv3-series VM sizes, including Standard_NC24rs_v3, retire on September 30, 2025. For retirement details and SKU migration guidance, see the [NCv3-series retirement page](/azure/virtual-machines/sizes/lifecycle/retirement/ncv3-retirement).
-
-On September 30, 2025, Microsoft Azure will retire the Standard_NC24rs_v3 virtual machine (VM) size in NCv3-series virtual machines (VMs). To avoid any disruption to your service, we recommend that you change the VM sizing from the Standard_NC24rs_v3 to the newer VM series in the same NC product line.
 
 Microsoft recommends the Azure [NCadsH100_v5-series ](/azure/virtual-machines/ncads-h100-v5?source=recommendations)VMs, which offer greater GPU memory bandwidth per GPU, improved [accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-cli) capabilities, and larger and faster local solid state drives. These VMs are targeted for GPU accelerated midrange AI training, batch inferencing, and high-performance computing simulation workloads.
 
