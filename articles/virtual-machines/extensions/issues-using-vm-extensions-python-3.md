@@ -10,11 +10,13 @@ ms.service: azure-virtual-machines
 ms.subservice: extensions
 ms.collection: linux
 ms.topic: how-to
-ms.date: 03/15/2023
+ms.date: 11/23/2026
 # Customer intent: As a Linux system administrator, I want to understand how to manage VM extensions with Python 3 on Azure, so that I can ensure successful deployment and operation of virtual machines without issues related to legacy Python support.
 ---
 
 # Issues using VM extensions in Python 3-enabled Linux Azure Virtual Machines systems
+
+This article explains why some Azure VM extensions fail to deploy on Python 3-enabled Linux systems and how to resolve issues with the legacy `/usr/bin/python` entrypoint.
 
 > [!NOTE]
 > Microsoft encourages users to adopt **Python 3.x** in their systems unless your workload requires **Python 2.x** support. Examples of this requirement might include legacy administration scripts, or extensions such as **Azure Disk Encryption** and **Azure Monitor**.
