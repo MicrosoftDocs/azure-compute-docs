@@ -162,6 +162,8 @@
     items:
     - name: Azure file share
       href: container-instances-volume-azure-files.md
+    - name: Azure file share using managed identity
+      href: container-instances-volume-azure-files-managed-identity.md
     - name: Secret
       href: container-instances-volume-secret.md
     - name: Empty directory

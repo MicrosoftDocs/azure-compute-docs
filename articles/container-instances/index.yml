@@ -78,6 +78,8 @@ landingContent:
             url: container-instances-using-azure-container-registry.md
           - text: Use managed identity
             url: container-instances-managed-identity.md
+          - text: Mount an Azure file share using managed identity
+            url: container-instances-volume-azure-files-managed-identity.md
           - text: Mount an Azure file share
             url: container-instances-volume-azure-files.md        
   - title: Deploy confidential container groups

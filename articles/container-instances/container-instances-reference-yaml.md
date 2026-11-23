@@ -6,7 +6,7 @@ ms.topic: reference
 ms.service: azure-container-instances
 services: container-instances
 ms.author: tomcassidy
-ms.date: 07/25/2026
+ms.date: 11/13/2026
 # Customer intent: "As a cloud developer, I want to configure a container group using a YAML file, so that I can ensure reproducible deployments and streamline my container management process."
 ---
 
@@ -17,7 +17,7 @@ This article covers the syntax and properties for the YAML file supported by Azu
 A YAML file is a convenient way to configure a container group for reproducible deployments. It's a concise alternative to using a [Resource Manager template](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups) or the Azure Container Instances SDKs to create or update a container group.
 
 > [!NOTE]
-> This reference applies to YAML files for Azure Container Instances REST API version `2021-10-01`.
+> This reference applies to YAML files for Azure Container Instances REST API version `2026-07-01`.
 
 ## Schema
 
@@ -25,7 +25,7 @@ The schema for the YAML file follows, including comments to highlight key proper
 
 ```yaml
 name: string  # Name of the container group
-apiVersion: '2021-10-01'
+apiVersion: '2026-07-01'
 location: string
 tags: {}
 identity: 
@@ -117,6 +117,7 @@ properties: # Properties of container group
       readOnly: boolean
       storageAccountName: string
       storageAccountKey: string
+      userManagedIdentityClientId: string
     emptyDir: {}
     secret: {}
     gitRepo:
@@ -168,7 +169,7 @@ The following tables describe the values you need to set in the schema.
 |  Name | Type | Required | Value |
 |  ---- | ---- | ---- | ---- |
 |  name | string | Yes | The name of the container group. |
-|  apiVersion | enum | Yes | **2021-10-01 (latest)**, 2021-09-01, 2021-07-01, 2021-03-01, 2020-11-01, 2019-12-01, 2018-10-01, 2018-09-01, 2018-07-01, 2018-06-01, 2018-04-01 |
+|  apiVersion | enum | Yes | **2026-07-01 (latest)**, 2025-09-01, 2023-05-01, 2022-09-01, 2021-10-01, 2021-09-01, 2021-07-01, 2021-03-01, 2020-11-01, 2019-12-01, 2018-10-01, 2018-09-01, 2018-07-01, 2018-06-01, 2018-04-01 |
 |  location | string | No | The resource location. |
 |  tags | object | No | The resource tags. |
 |  identity | object | No | The identity of the container group, if configured. - [ContainerGroupIdentity object](#containergroupidentity-object) |
@@ -297,7 +298,10 @@ The following tables describe the values you need to set in the schema.
 |  shareName | string | Yes | The name of the Azure File share to be mounted as a volume. |
 |  readOnly | boolean | No | The flag indicating whether the Azure File shared mounted as a volume is read-only. |
 |  storageAccountName | string | Yes | The name of the storage account that contains the Azure File share. |
-|  storageAccountKey | string | No | The storage account access key used to access the Azure File share. |
+|  storageAccountKey | string | No | The storage account access key used to access the Azure File share. Required for key-based authentication. Omit when using managed identity authentication. |
+|  userManagedIdentityClientId | string | No | The client ID of the user-assigned managed identity used to authenticate to Azure Files. Required for managed identity authentication. The identity must be assigned to the container group. |
+
+The container group's `identity.userAssignedIdentities` property must contain the resource ID of the identity specified by `userManagedIdentityClientId`. For a deployment example, see [Mount an Azure file share using managed identity and Kerberos](container-instances-volume-azure-files-managed-identity.md).
 
 ### GitRepoVolume object
 

@@ -15,6 +15,8 @@ ms.custom: mvc, devx-track-azurecli
 
 By default, Azure Container Instances are stateless. If the container is restarted, crashes, or stops, all of its state is lost. To persist state beyond the lifetime of the container, you must mount a volume from an external store. As shown in this article, Azure Container Instances can mount an Azure file share created with [Azure Files](/azure/storage/files/storage-files-introduction). Azure Files offers fully managed file shares hosted in Azure Storage that are accessible via the industry standard Server Message Block (SMB) protocol. Using an Azure file share with Azure Container Instances provides file-sharing features similar to using an Azure file share with Azure virtual machines.
 
+This article uses a storage account access key to authenticate the mount. To mount a share without an access key, see [Mount an Azure file share using managed identity and Kerberos](container-instances-volume-azure-files-managed-identity.md).
+
 ## Limitations
 
 * You can only mount Azure Files shares to Linux containers. Review more about the differences in feature support  for Linux and Windows container groups in the [overview](container-instances-overview.md#linux-and-windows-containers).
@@ -54,7 +56,7 @@ az storage share create \
 
 ## Get storage credentials
 
-To mount an Azure file share as a volume in Azure Container Instances, you need three values: the storage account name, the share name, and the storage access key.
+To mount an Azure file share by using key-based authentication in Azure Container Instances, you need three values: the storage account name, the share name, and the storage access key.
 
 * **Storage account name** - If you used the preceding script, the storage account name was stored in the `$ACI_PERS_STORAGE_ACCOUNT_NAME` variable. To see the account name, type:
 

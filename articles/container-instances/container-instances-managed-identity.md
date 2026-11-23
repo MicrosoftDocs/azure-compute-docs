@@ -517,5 +517,6 @@ The container authenticates to storage by using only its managed identity. Adapt
 
 ## Related content
 
+* [Mount an Azure file share using managed identity](container-instances-volume-azure-files-managed-identity.md).
 * Learn more about [managed identities for Azure resources](/azure/active-directory/managed-identities-azure-resources/).
 * See an [Azure Go SDK example](https://medium.com/@samkreter/c98911206328) of using a managed identity to access a key vault from Container Instances.
