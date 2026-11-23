@@ -7,9 +7,11 @@ ms.subservice: extensions
 author: mgreenegit
 ms.author: migreene
 ms.collection: windows
-ms.date: 08/20/2025
+ms.date: 11/23/2026
 ---
 # PowerShell DSC Extension
+
+The PowerShell DSC Extension for Windows uploads and applies a PowerShell DSC Configuration on an Azure virtual machine. The DSC Extension calls into PowerShell DSC to enact the received DSC configuration on the virtual machine. This article details the supported platforms, configurations, and deployment options for the DSC virtual machine extension for Windows.
 
 > [!NOTE]
 > DSC extension will be retired on March 31, 2028. Move to
@@ -19,10 +21,6 @@ ms.date: 08/20/2025
 > Automation State Configuration, and commonly requested features from customer feedback.
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
-
-## Overview
-
-The PowerShell DSC Extension for Windows uploads and applies a PowerShell DSC Configuration on an Azure virtual machine. The DSC Extension calls into PowerShell DSC to enact the received DSC configuration on the virtual machine. This document details the supported platforms, configurations, and deployment options for the DSC virtual machine extension for Windows.
 
 [!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 
