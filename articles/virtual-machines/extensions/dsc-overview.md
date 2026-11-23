@@ -10,7 +10,7 @@ ms.subservice: extensions
 ms.collection: windows
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
-ms.date: 08/20/2025
+ms.date: 11/23/2026
 ms.author: migreene
 ms.custom: devx-track-azurecli, devx-track-arm-template
 ms.devlang: azurecli
@@ -18,6 +18,10 @@ ms.devlang: azurecli
 ---
 
 # Introduction to the Azure Desired State Configuration extension handler
+
+The Azure VM Extension for Azure virtual machines (VM) and the associated extensions are part of Microsoft Azure infrastructure services. Azure VM extensions are software components that extend VM functionality and simplify various VM management operations.
+
+The DSC extension only pushes a configuration to the VM. No ongoing reporting is available, other than locally in the VM.
 
 > [!NOTE]
 > DSC extension will be retired on March 31, 2028. Please move to
@@ -27,10 +31,6 @@ ms.devlang: azurecli
 > Automation State Configuration, and commonly requested features from customer feedback.
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
-
-The Azure VM Extension for Azure virtual machines (VM) and the associated extensions are part of Microsoft Azure infrastructure services. Azure VM extensions are software components that extend VM functionality and simplify various VM management operations.
-
-The DSC extension only pushes a configuration to the VM. No ongoing reporting is available, other than locally in the VM.
 
 [!INCLUDE [VM assist troubleshooting tools](../includes/vmassist-include.md)]
 

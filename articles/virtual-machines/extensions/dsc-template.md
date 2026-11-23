@@ -17,6 +17,9 @@ ms.author: migreene
 ---
 # Desired State Configuration extension with Azure Resource Manager templates
 
+This article describes the Azure Resource Manager template for the [Desired State Configuration
+(DSC) extension handler](dsc-overview.md).
+
 > [!NOTE]
 > DSC extension will be retired on March 31, 2028. Please move to
 > [Azure Machine Configuration](/azure/governance/machine-configuration/overview) by that date.
@@ -26,9 +29,6 @@ ms.author: migreene
 > Azure Machine Configuration also includes hybrid machine support through
 > [Arc-enabled servers](/azure/azure-arc/servers/overview).
 
-
-This article describes the Azure Resource Manager template for the [Desired State Configuration
-(DSC) extension handler](dsc-overview.md).
 
 > [!NOTE]
 > You might encounter slightly different schema examples. The change in schema occurred in the October 2016 release. For details, see [Update from a previous format](#update-from-a-previous-format).
