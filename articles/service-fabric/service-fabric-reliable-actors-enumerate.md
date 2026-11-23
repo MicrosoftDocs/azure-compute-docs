@@ -2,7 +2,7 @@
 title: Enumerate actors on Azure Service Fabric 
 description: Learn about enumeration of Reliable Actors and their metadata in an Azure Service Fabric application using examples.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

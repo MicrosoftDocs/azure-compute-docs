@@ -2,7 +2,7 @@
 title: Debug Windows containers with Service Fabric and VS 
 description: Learn how to debug Windows containers in Azure Service Fabric using Visual Studio 2019.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet

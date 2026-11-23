@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.author: tomcassidy
+ms.author: dmuralidhar
 ms.date: 11/17/2025
 # Customer intent: "As a cloud developer, I want to configure custom DNS settings for my container group using a YAML file, so that I can ensure proper name resolution within my Azure virtual network."
 ---

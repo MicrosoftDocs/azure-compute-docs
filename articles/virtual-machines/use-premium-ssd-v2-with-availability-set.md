@@ -2,7 +2,7 @@
 title: Use Premium SSD v2 with VMs in an availability set
 description: Learn how to deploy Premium SSD v2 disks with VMs in an availability set.
 author: vishalprayag
-ms.author: rogarana 
+ms.author: prkazasr 
 ms.date: 09/21/2026
 ms.topic: how-to
 ms.service: azure-disk-storage

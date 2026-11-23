@@ -5,17 +5,17 @@ author: rolandnyamo
 ms.author: ronyamo
 ms.service: azure 
 ms.topic: overview
-ms.date: 06/19/2024
+ms.date: 11/19/2026
 ms.custom: template-overview
 # Customer intent: As an IT administrator, I want to create an Impact Reporting connector for Azure Monitor Alerts so that I can efficiently manage and report on alerts across my Azure subscriptions.
 ---
 
 # Create an impact connector for Azure Monitor alerts (preview)
 
+You can create impact connectors through [AzCLI](/cli/azure), [Azure PowerShell](/powershell/azure), or the Azure portal. This article outlines the connector creation process and requirements.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-You can create impact connectors through [AzCLI](/cli/azure), [Azure PowerShell](/powershell/azure), or the Azure portal. This article outlines the connector creation process and requirements.
 
 ## Prerequisites
 

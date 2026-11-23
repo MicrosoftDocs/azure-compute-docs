@@ -1,12 +1,12 @@
 ---
 title: Use PowerShell to deploy Azure Spot Virtual Machines
 description: Learn how to use Azure PowerShell to deploy Azure Spot Virtual Machines to save on costs.
-author: iamwilliew
+author: kaza-sriram
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: how-to
-ms.date: 02/28/2023
-ms.author: wwilliams
+ms.date: 11/05/2026
+ms.author: prkazasr
 ms.reviewer: wwilliams
 ms.custom: devx-track-azurepowershell
 # Customer intent: "As a cloud engineer, I want to deploy Azure Spot Virtual Machines using PowerShell, so that I can take advantage of unused capacity for cost savings on suitable workloads while managing evictions effectively."
@@ -16,7 +16,7 @@ ms.custom: devx-track-azurepowershell
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Windows VMs :heavy_check_mark: Flexible scale sets 
 
-Using [Azure Spot Virtual Machines](../spot-vms.md) allows you to take advantage of our unused capacity at a significant cost savings. At any point in time when Azure needs the capacity back, the Azure infrastructure will evict Azure Spot Virtual Machines. Therefore, Azure Spot Virtual Machines are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more.
+By using [Azure Spot Virtual Machines](../spot-vms.md), you can take advantage of unused capacity at a significant cost savings. When Azure needs the capacity back, the Azure infrastructure evicts Azure Spot Virtual Machines. Azure Spot Virtual Machines are great for workloads that can handle interruptions, such as batch processing jobs, dev/test environments, large compute workloads, and more. [Spot Plus (Public Preview)](../spot-plus-public-preview-azure-compute-technical.md) is an enhanced tier of Azure Spot Virtual Machines for interruption-tolerant workloads. It delivers better runtimes and improved eviction and rebalance signals, while remaining evictable when Azure needs the capacity.
 
 Pricing for Azure Spot Virtual Machines is variable, based on region and SKU. For more information, see VM pricing for [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) and [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). For more information about setting the max price, see [Azure Spot Virtual Machines - Pricing](../spot-vms.md#pricing).
 
@@ -25,7 +25,7 @@ You have option to set a max price you are willing to pay, per hour, for the VM.
 
 ## Create the VM
 
-Create a spotVM using [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) to create the configuration. Include `-Priority Spot` and set `-MaxPrice` to either:
+Create a spot VM by using [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) to create the configuration. Include `-Priority Spot` or `-Priority SpotPlus` and set `-MaxPrice` to either:
 - `-1` so the VM is not evicted based on price.
 - a dollar amount, up to 5 digits. For example, `-MaxPrice .98765` means that the VM will be deallocated once the price for a spotVM goes about $.98765 per hour.
 
@@ -37,7 +37,7 @@ This example creates a spotVM that will not be deallocated based on pricing (onl
 $resourceGroup = "mySpotRG"
 $location = "eastus"
 $vmName = "mySpotVM"
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+$cred = Get-Credential -Message "Enter your credentials for the virtual machine."
 New-AzResourceGroup -Name $resourceGroup -Location $location
 $subnetConfig = New-AzVirtualNetworkSubnetConfig `
    -Name mySubnet -AddressPrefix 192.168.1.0/24

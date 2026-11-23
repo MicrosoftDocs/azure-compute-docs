@@ -2,7 +2,7 @@
 title: Enable Managed Identity in a Container Group
 description: Learn how to enable a managed identity in Azure Container Instances that can authenticate with other Azure services.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli

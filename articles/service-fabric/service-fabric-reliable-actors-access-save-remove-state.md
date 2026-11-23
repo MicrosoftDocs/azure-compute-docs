@@ -2,7 +2,7 @@
 title: Manage Azure Service Fabric state 
 description: Learn about accessing, saving, and removing state for an Azure Service Fabric Reliable Actor, and considerations when designing an application.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

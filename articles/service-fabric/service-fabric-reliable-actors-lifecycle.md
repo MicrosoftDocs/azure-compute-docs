@@ -2,7 +2,7 @@
 title: Overview the Azure Service Fabric actor lifecycle 
 description: Explains Service Fabric Reliable Actor lifecycle, garbage collection, and manually deleting actors and their state
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

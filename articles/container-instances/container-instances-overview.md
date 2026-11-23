@@ -2,7 +2,7 @@
 title: Serverless containers in Azure
 description: The Azure Container Instances service offers the fastest and simplest way to run isolated containers in Azure, without having to manage virtual machines and without having to adopt a higher-level orchestrator.
 ms.topic: overview
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances
@@ -16,7 +16,7 @@ ms.custom: mvc, linux-related-content
 
 Containers are becoming the preferred way to package, deploy, and manage cloud applications. Azure Container Instances offers the fastest and simplest way to run Linux or Windows containers in Azure, without having to manage any virtual machines and without having to adopt a higher-level service.
 
-ACI supports [regular](container-instances-container-groups.md), [confidential](container-instances-confidential-overview.md) (along with [enclaves](container-instances-enclaves.md) in preview), and [Spot](container-instances-spot-containers-overview.md) containers. ACI can be used as [single-instance](container-instances-container-groups.md) or multi-instance via [NGroups](container-instance-ngroups/container-instances-about-ngroups.md), or you can get orchestration capabilities by deploying pods in your Azure Kubernetes Service (AKS) cluster via [virtual nodes on ACI](container-instances-virtual-nodes.md). For even faster startup times, ACI supports [standby pools](container-instances-standby-pool-overview.md).
+ACI supports [regular](container-instances-container-groups.md), [confidential](container-instances-confidential-overview.md) (along with [enclaves](container-instances-enclaves.md) in preview), and [Spot](container-instances-spot-containers-overview.md) containers. ACI can be used as [single-instance](container-instances-container-groups.md) or multi-instance via [NGroups](container-instance-ngroups/container-instances-about-ngroups.md), or you can get orchestration capabilities by deploying pods in your Azure Kubernetes Service (AKS) cluster via [virtual nodes on ACI](container-instances-virtual-nodes.md). For even faster startup times, ACI supports [standby pools](container-instances-standby-pool-overview.md). For AI agent workloads, ACI also supports [serverless sandboxes](container-instances-ai-sandboxes.md) in preview.
 
 ## Fast startup times
 
@@ -112,6 +112,10 @@ NGroups provides advanced capabilities for managing multiple related container g
 ## Virtual nodes on Azure Container Instances
 
 [Virtual nodes on Azure Container Instances](container-instances-virtual-nodes.md) allow you to deploy pods in your Azure Kubernetes Service (AKS) cluster that run as container groups in ACI. This allows you to orchestrate your container groups using familiar Kubernetes constructs. Since virtual nodes are backed by ACI's serverless infrastructure, you can quickly scale up your workload without needing to wait for the Kubernetes cluster autoscaler to deploy VM compute nodes.
+
+## Serverless sandboxes (preview)
+
+[Serverless sandboxes in Azure Container Instances](container-instances-ai-sandboxes.md) provide purpose-built, Hyper-V isolated micro VMs for AI agents to execute code, run tools, manage files, and maintain state across tasks. Sandboxes support full-state snapshots for save and restore, in-place CPU and memory resizing, per-sandbox Microsoft Entra Agent ID, policy-controlled egress with Agent Grid, networkless enclaves, and integration with Azure Kubernetes Service (AKS).
 
 ## Considerations
 

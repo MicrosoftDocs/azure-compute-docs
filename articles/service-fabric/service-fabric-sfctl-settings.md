@@ -2,7 +2,7 @@
 title: Azure Service Fabric CLI- sfctl settings
 description: Learn about sfctl, the Azure Service Fabric command line interface. Includes a list of commands for configuring local sfctl settings.
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

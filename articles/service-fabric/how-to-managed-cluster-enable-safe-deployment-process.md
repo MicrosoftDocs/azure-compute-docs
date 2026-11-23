@@ -2,7 +2,7 @@
 title: Enable coordinated Safe Deployment Process (SDP) on Service Fabric managed clusters
 description: Learn how to enable coordinated Safe Deployment Process (SDP) on Service Fabric managed clusters.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

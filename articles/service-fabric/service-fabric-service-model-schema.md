@@ -2,7 +2,7 @@
 title: Azure Service Fabric service model XML schema descriptions 
 description: A description of the XML schema of the Service Fabric service model, including location and a summary of components.
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.date: 03/22/2026

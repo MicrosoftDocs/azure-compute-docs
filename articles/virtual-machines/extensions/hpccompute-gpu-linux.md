@@ -9,8 +9,8 @@ ms.collection: linux
 ms.topic: concept-article
 ms.tgt_pltfrm: vm-linux
 ms.date: 06/30/2025
-ms.author: wwilliams
-author: iamwilliew
+ms.author: gabsta
+author: gabstamsft
 ms.custom:
   - linux-related-content
   - sfi-image-nochange
@@ -21,10 +21,7 @@ ms.custom:
 This extension installs NVIDIA GPU drivers on Linux N-series virtual machines (VMs). Depending on the VM family, the extension installs CUDA or GRID drivers. When you install NVIDIA drivers by using this extension, you're accepting and agreeing to the terms of the [NVIDIA End-User License Agreement](https://www.nvidia.com/en-us/data-center/products/nvidia-ai-enterprise/eula/). During the installation process, the VM might reboot to complete the driver setup.
 
 Instructions on manual installation of the drivers and the current supported versions are available. An extension is also available to install NVIDIA GPU drivers on [Windows N-series VMs](hpccompute-gpu-windows.md).
-
-> [!NOTE]
-> This extension will continue to use v18.x until we finish the v20.x rollout in Q3 CY2026.
-> 
+ 
 > [!NOTE]
 > With Secure Boot enabled, all OS boot components (boot loader, kernel, kernel drivers) must be signed by trusted publishers (key trusted by the system). Secure Boot is not supported using Windows or Linux extensions. For more information on manually installing GPU drivers with Secure Boot enabled, see [Azure N-series GPU driver setup for Linux](../linux/n-series-driver-setup.md).
 >

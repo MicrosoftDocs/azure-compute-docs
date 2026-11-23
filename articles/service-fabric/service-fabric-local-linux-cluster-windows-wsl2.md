@@ -2,7 +2,7 @@
 title: Set up Azure Service Fabric Linux cluster on WSL2 linux distribution inside Windows 
 description: This article covers how to set up Service Fabric Linux clusters inside WSL2 linux distribution running on Windows development machines. This approach is useful for cross-platform development.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: linux-related-content

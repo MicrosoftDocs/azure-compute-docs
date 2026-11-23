@@ -2,7 +2,7 @@
 title: Configure maintenance control for Service Fabric managed cluster
 description: Learn how to configure maintenance control for Service Fabric managed cluster
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

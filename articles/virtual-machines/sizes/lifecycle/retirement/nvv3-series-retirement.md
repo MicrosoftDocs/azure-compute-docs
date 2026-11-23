@@ -6,13 +6,16 @@
 title: NVv3 series retirement
 description: 'This article contains the details of the NVv3-series retirement. '
 author:      yangnicole-ml # GitHub alias
-ms.author: yangnicole
+ms.author: abelw
 ms.service: azure-virtual-machines
 ms.topic: how-to
-ms.date:     06/13/2025
+ms.date: 11/20/2026
 ---
 
 # NVv3-series Virtual Machines Retired on September 30, 2026
+
+This article explains the retirement timeline for Azure NVv3-series virtual machines, including the UAE North extension, and provides guidance on replacement VM series and resizing your VMs.
+
 > [!NOTE]
 > If you're currently using NVv3-series Azure VMs in the Azure UAE North region, you can continue using the NVv3-series VMs beyond the general retirement date of September 30, 2026 until the extension date of January 31, 2027. Customers in the Azure UAE North region must migrate off the NVv3-series VMs by January 31, 2027. 
 

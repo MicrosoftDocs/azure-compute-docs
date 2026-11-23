@@ -1,13 +1,13 @@
 ---
 title: Format and mount managed disks on Azure Linux VMs
 description: Learn how to partition, format, mount, and persist Azure managed data disks on Linux VMs that use SCSI or NVMe interfaces.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.custom: linux-related-content
 ms.collection: linux
 ms.topic: how-to
 ms.date: 09/21/2026
-ms.author: rogarana
+ms.author: prkazasr
 ---
 
 # Format and mount Azure managed data disks on Linux VMs

@@ -9,7 +9,7 @@ ms.collection: linux
 ms.topic: how-to
 ms.custom: linux-related-content
 ms.date: 10/15/2025
-ms.author: padmalathas
+ms.author: prkazasr
 # Customer intent: As a cloud engineer managing Linux VMs with AMD GPUs, I want to install the necessary AMD GPU drivers and configure my NVv5-V710 instances, so that I can optimize performance for AI and graphics workloads.
 ---
 

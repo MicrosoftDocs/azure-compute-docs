@@ -1,13 +1,13 @@
 ---
 title: Use a VHD snapshot to create multiple identical managed disks (Windows) - PowerShell
 description: Azure PowerShell Script Sample -  Create a snapshot from a VHD to create multiple identical managed disks in small amount of time
-author: roygara
+author: ushnaarshadkhan
 ms.service: azure-disk-storage
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.custom: devx-track-azurepowershell
 ms.date: 06/05/2017
-ms.author: rogarana
+ms.author: uarshadkhan
 # Customer intent: "As a cloud administrator, I want to create a snapshot from a VHD to generate multiple identical managed disks quickly, so that I can streamline the deployment of virtual machines and improve operational efficiency."
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: "Use the Azure portal to enable server-side encryption with customer-managed keys for managed disks"
 description: Enable customer-managed keys on your managed disks through the Azure portal.
-author: roygara
+author: kaza-sriram
 ms.custom:
   - ge-structured-content-pilot
 
 ms.date: 07/20/2026
 ms.topic: how-to
-ms.author: rogarana
+ms.author: prkazasr
 ms.service: azure-disk-storage
 ---
 

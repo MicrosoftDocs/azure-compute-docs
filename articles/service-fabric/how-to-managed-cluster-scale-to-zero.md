@@ -2,7 +2,7 @@
 title: Scale to zero nodes for Service Fabric managed clusters
 description: Learn how to scale your Service Fabric managed clusters to zero nodes for cost saving during downtime.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template

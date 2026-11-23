@@ -1,8 +1,8 @@
 ---
 title: Download a Windows VHD from Azure
 description: Download a Windows VHD using the Azure portal, Azure PowerShell, or the Azure CLI.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 09/02/2026

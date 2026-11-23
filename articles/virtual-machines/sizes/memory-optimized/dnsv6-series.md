@@ -1,12 +1,12 @@
 ---
 title: Dnsv6 size series
 description: Information on and specifications of the Dnsv6-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 11/11/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to review the specifications and features of the Dnsv6 series virtual machine sizes, so that I can select the appropriate instance for optimizing performance and resource allocation for my applications.

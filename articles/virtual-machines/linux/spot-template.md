@@ -1,13 +1,13 @@
 ---
 title: Use a template to deploy Azure Spot Virtual Machines
 description: Learn how to use a template to deploy Azure Spot Virtual Machines to save costs.
-author: iamwilliew
+author: kaza-sriram
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.custom: linux-related-content
 ms.topic: how-to
-ms.date: 05/31/2023
-ms.author: wwilliams
+ms.date: 11/05/2026
+ms.author: prkazasr
 ms.reviewer: wwilliams
 # Customer intent: "As a cloud architect, I want to deploy Azure Spot Virtual Machines using a template, so that I can optimize costs while efficiently managing workloads that can tolerate interruptions."
 ---
@@ -16,7 +16,7 @@ ms.reviewer: wwilliams
 
 **Applies to:** :heavy_check_mark: Linux VMs
 
-Using [Azure Spot Virtual Machines](../spot-vms.md) allows you to take advantage of our unused capacity at a significant cost savings. At any point in time when Azure needs the capacity back, the Azure infrastructure evicts Azure Spot VMs. Azure Spot VMs are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more.
+By using [Azure Spot Virtual Machines](../spot-vms.md), you can take advantage of unused capacity at a significant cost savings. At any point when Azure needs the capacity back, the Azure infrastructure evicts Azure Spot VMs. Azure Spot VMs are great for workloads that can handle interruptions, such as batch processing jobs, dev/test environments, large compute workloads, and more. [Spot Plus (Public Preview)](../spot-plus-public-preview-azure-compute-technical.md) is an enhanced tier of Azure Spot Virtual Machines for interruption-tolerant workloads. It's designed to deliver better runtimes and improved eviction and rebalance signals, while remaining evictable when Azure needs the capacity.
 
 Pricing for Azure Spot Virtual Machines is variable, based on region and SKU. For more information, see VM pricing for [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) and [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
@@ -25,7 +25,7 @@ You have option to set a max price you're willing to pay, per hour, for the VM. 
 
 ## Use a template
 
-For Azure Spot VM template deployments, use`"apiVersion": "2019-03-01"` or later. Add the `priority`, `evictionPolicy` and `billingProfile` properties to in your template:
+For Azure Spot VM template deployments, use`"apiVersion": "2026-04-01"` or later. Add the `priority` (Spot or SpotPlus), `evictionPolicy`, and `billingProfile` properties to your template:
 
 ```json
 "priority": "Spot",

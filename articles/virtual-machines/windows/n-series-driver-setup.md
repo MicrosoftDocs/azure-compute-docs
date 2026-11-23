@@ -1,14 +1,14 @@
 ---
 title: Azure N-series NVIDIA GPU driver setup for Windows 
 description: How to set up NVIDIA GPU drivers for N-series VMs running Windows Server or Windows in Azure
-author: yangnicole-ml
+author: timiadebisi-ml
 manager: jkabat
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.collection: windows
 ms.topic: how-to
 ms.date: 05/06/2026
-ms.author: yangnicole
+ms.author: timiadebisi
 ms.custom: H1Hack27Feb2017
 # Customer intent: As a cloud administrator, I want to install and verify NVIDIA GPU drivers on N-series VMs running Windows, so that I can ensure optimal performance for GPU-accelerated applications in my Azure environment.
 ---
@@ -58,7 +58,6 @@ Microsoft redistributes NVIDIA GRID driver installers for NVv3, NCasT4_v3, NVads
 | NCv6 RTX PRO 6000 BSE | NVIDIA RTX PRO 6000 Blackwell Server Edition GPU (96GB) | [vGPU20.2](https://download.microsoft.com/download/0f21fd13-2390-4c79-876a-87ae3dc724c6/596.86_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) | •	Windows 11 25H2 (including all supported Windows 11 releases up to 25H2) <br> • Windows 11 25H2 AVD <br> •	Windows Server 2025 <br> •	Windows Server 2022 |
 | NCasT4_v3 | NVIDIA Tesla T4 GPU (16GB) |• [vGPU20.2](https://download.microsoft.com/download/0f21fd13-2390-4c79-876a-87ae3dc724c6/596.86_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) <br> • [vGPU19.6 (LTS)](https://download.microsoft.com/download/29a0b851-7631-445b-b829-f4a03042bd1b/582.78_grid_win10_win11_server2019_server2022_dch_64bit_international_azure_swl.exe)| •	Windows 11 25H2 (including all supported Windows 11 releases up to 25H2) <br> • Windows 11 25H2 AVD <br> • Windows Server 2025 <br> •	Windows Server 2022 | 
 | NVadsA10_v5 | NVIDIA A10 GPU (24GB)| • [vGPU20.2](https://download.microsoft.com/download/0f21fd13-2390-4c79-876a-87ae3dc724c6/596.86_grid_win10_win11_server2022_server2025_dch_64bit_international_azure_swl.exe) <br> • [vGPU19.6 (LTS)](https://download.microsoft.com/download/29a0b851-7631-445b-b829-f4a03042bd1b/582.78_grid_win10_win11_server2019_server2022_dch_64bit_international_azure_swl.exe) | •	Windows 11 25H2 (including all supported Windows 11 releases up to 25H2) <br> • Windows 11 25H2 AVD <br> •	Windows Server 2025 <br> •	Windows Server 2022 | 
-| NVv3 ([retiring September 30th, 2026](/azure/virtual-machines/sizes/lifecycle/retirement/nvv3-series-retirement))|NVIDIA Tesla M60 GPU (16GB)| [vGPU16 (LTS)](https://download.microsoft.com/download/a/3/1/a3186ac9-1f9f-4351-a8e7-b5b34ea4e4ea/538.46_grid_win10_win11_server2019_server2022_dch_64bit_international_azure_swl.exe) | • Windows 11 23H2 (including all supported Windows 11 releases up to 23H2) <br> • Windows 11 22H2 AVD <br> •	Windows 11 23H2 AVD <br> •	Windows Server 2019 <br> •	Windows Server 2022| 
 
 For more information on the specific vGPU and driver branch versions, visit the [NVIDIA website](https://docs.nvidia.com/grid/).
 

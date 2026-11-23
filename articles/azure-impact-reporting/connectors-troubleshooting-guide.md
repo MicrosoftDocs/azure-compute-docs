@@ -5,17 +5,17 @@ author: rolandnyamo
 ms.author: kezaveri
 ms.service: azure 
 ms.topic: overview
-ms.date: 06/25/2024
+ms.date: 11/19/2026
 ms.custom: template-overview
 # Customer intent: As an Azure user troubleshooting connector creation, I want guidance on solving common errors so that I can successfully create and manage Impact Reporting Connectors without delays or issues.
 ---
 
 # Impact Reporting connectors (preview) troubleshooting guide
 
+This article outlines solutions to common errors that you might encounter when you create an Azure Impact Reporting connector. For issues not covered here, contact the [Impact Reporting connectors team](mailto:impactrp-preview@microsoft.com).
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-This article outlines solutions to common errors that you might encounter when you create an Azure Impact Reporting connector. For issues not covered here, contact the [Impact Reporting connectors team](mailto:impactrp-preview@microsoft.com).
 
 ## Bash script fails immediately after starting
 

@@ -28,9 +28,9 @@ For basic specs, storage capacities, and disk details, see [GPU Windows VM sizes
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 11 23H2, 24H2, 25h2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/04605f8a-4b3e-4e08-9f88-b5b7d55d8cb5/v710-win11.exe) (.exe) |
-| Windows Server 2025 24H2, Windows 11 EMS 23H2, 24H2, 25H2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/68cc41fd-fe9d-47ac-98ec-c9a921a11397/v710-winsvr2025.exe) (.exe)|
-| Windows Server 2022 21H2 <br/><br/> | [25.Q4](https://download.microsoft.com/download/8eb8c91e-6c08-4c76-99a9-042bb84a7e86/v710-winsvr2022.exe) (.exe)|
+| Windows 11 23H2, 24H2, 25H2 <br/><br/> | [26.Q4](https://download.microsoft.com/download/2a7004e8-7ea7-45df-a1c8-0bafc7e9ea18/73482_WHQL-AMD-Software-Cloud-Edition-26.10.19.06-Win11-Azure-NV32.exe) (.exe) |
+| Windows Server 2025 24H2; Windows 11 EMS 23H2, 24H2, 25H2 <br/><br/> | [26.Q4](https://download.microsoft.com/download/f9fef6a3-0b7c-4dce-a61b-dca0faf920ff/73483_WHQL-AMD-Software-Cloud-Edition-26.10.19.06-WinSvr2025-Azure-NV32.exe) (.exe)|
+| Windows Server 2022 21H2 20348 <br/><br/> | [26.Q4](https://download.microsoft.com/download/7b2702fd-0263-4af9-9eac-bea3ecd53366/73484_WHQL-AMD-Software-Cloud-Edition-26.10.19.06-WinSvr2022-Azure-NV32.exe) (.exe)|
 
 ### VM Creation
 Create the VMs using CLI. (Azure AMD GPU driver extensions don't support NVads V710 v5 Series during preview)
@@ -56,9 +56,9 @@ The AMD Software: Cloud Edition drivers must be installed to take advantage of t
 
 | OS | Driver |
 | -------- |------------- |
-| Windows 11 64-bit version 23H2, 24H2 | [25.1.1](https://download.microsoft.com/download/44ee0d6c-74dd-4214-b6d5-24fbf2eac33b/whql-amd-software-cloud-edition-25.1.1-win10-win11-azure-ngads-v620.exe)|
-| Windows 11 EMS 64-bit 23H2, 24H2, 25H2 <br/><br/> Windows Server 2022 21H2 <br/><br/> Windows Server 2025 24H2 | [25.1.1](https://download.microsoft.com/download/6f834f98-109d-4dfc-89e6-d25ff02a9dd0/amd-software-cloud-edition-25.1.1-winsvr2022-azure-v620.exe)| 
-
+| Windows 11 23H2, 24H2, 25H2 <br/><br/> | [26.Q4](https://download.microsoft.com/download/52433ff3-394f-41be-b235-4a0a3eb005a2/73543_WHQL-AMD-Software-Cloud-Edition-25.10.43.16-Win11-azure.exe) (.exe) |
+| Windows Server 2025 24H2; Windows 11 EMS 23H2, 24H2, 25H2 <br/><br/> | [26.Q4](https://download.microsoft.com/download/cd27b242-a143-4c91-8ebb-42c283f4af84/73544_WHQL-AMD-Software-Cloud-Edition-25.10.43.16-WinSvr2025-azure-v620.exe) (.exe)|
+| Windows Server 2022 21H2 <br/><br/> | [26.Q4](https://download.microsoft.com/download/10cd24f1-8368-4af2-9378-6befad4b634d/73546_WHQL-AMD-Software-Cloud-Edition-25.10.43.16-WinSvr2022-azure-v620.exe) (.exe)|
 
 ### VM Creation
 Create the VMs using CLI. (Azure AMD GPU driver extensions don't support NGads  V620 Series during preview)

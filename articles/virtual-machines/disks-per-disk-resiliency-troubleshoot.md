@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot per-disk resiliency (preview)
 description: Troubleshoot configuration, detach, reattach, and Linux filesystem issues with per-disk resiliency for Azure managed disks.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-disk-storage
 ms.topic: troubleshooting
 ms.date: 08/28/2026

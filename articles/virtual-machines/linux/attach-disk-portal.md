@@ -1,8 +1,8 @@
 ---
 title: "Use the portal to attach a data disk to a Linux VM"
 description: Use the portal to attach new or existing data disk to a Linux virtual machine.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/21/2026
 ms.service: azure-disk-storage
 ms.topic: how-to

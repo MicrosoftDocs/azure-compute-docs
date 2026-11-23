@@ -1,12 +1,12 @@
 ---
 title: Ebsv6 series specs include
 description: Include file containing specifications of Esv6-series VM sizes.
-author: bansal-misha
+author: eehindero
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
-ms.date: 11/17/2025
-ms.author: bansal-misha
+ms.date: 11/16/2026
+ms.author: eehindero
 ms.reviewer: mattmcinnes
 ms.custom: include file
 ---
@@ -15,6 +15,6 @@ ms.custom: include file
 | Processor      | 2 - 192 vCPUs     | Intel Xeon Platinum 8573C (Emerald Rapids) [x86-64] |
 | Memory         | 16 - 1832 GiB        |    |
 | Local Storage  | None         |  |
-| Remote Storage | 8 - 64 Disks        | 8800 - 800000 IOPS <br> 253 - 14000 MBps|
+| Remote Storage | 8 - 64 Disks        | 8800 - 800000 IOPS <br> 253 - 12500 MBps|
 | Network        | 2 - 8 NICs        | 12500 - 200000 Mbps <br>Interfaces: NetVSC, [MANA](https://aka.ms/ManaFAQ1)  |
 | Accelerators   | None            |     |

@@ -1,7 +1,7 @@
 ---
 title: Mbdsv4-series summary include file
 description: Include file for Mbdsv4-series summary
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes

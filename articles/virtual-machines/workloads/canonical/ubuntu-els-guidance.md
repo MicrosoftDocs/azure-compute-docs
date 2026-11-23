@@ -1,14 +1,14 @@
 ---
 title: Canonical Ubuntu LTS end of standard support guidance 
 description: Understand end of standard support for Ubuntu
-author: fossygirl
+author: mattmcinnes
 ms.service: azure-virtual-machines
 ms.subservice: vm-linux-setup-configuration
 ms.custom: linux-related-content, linux-related-content
 ms.collection: linux
 ms.topic: concept-article
 ms.date: 02/21/2025
-ms.author: carols
+ms.author: mattmcinnes
 # Customer intent: "As an IT administrator managing Ubuntu LTS virtual machines, I want to understand the end of standard support implications, so that I can ensure my systems remain secure and consider upgrading or enabling extended security maintenance options."
 ---
 

@@ -2,8 +2,8 @@
 title: FAQ for converting Azure Cloud Services (extended support) apps to Service Fabric 
 description: This guide answers most frequently asked questions (FAQ) for Cloud Services (extended support) migration to Service Fabric managed cluster.
 ms.topic: how-to
-ms.author: hirshah
-author: hirshah
+ms.author: bojanmiksin
+author: bojanmiksin
 ms.service: azure-service-fabric
 services: service-fabric
 ms.date: 03/22/2026

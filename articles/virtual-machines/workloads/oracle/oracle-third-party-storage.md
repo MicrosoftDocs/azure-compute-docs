@@ -1,8 +1,8 @@
 ---
 title: Partner storage offerings for Oracle on Azure VMs 
 description: This article describes how Partner storage offerings are available for Oracle on Azure Virtual Machines.
-author: jjaygbay1
-ms.author: jacobjaygbay
+author: vaidehikher18
+ms.author: vaidehikher
 ms.service: oracle-on-azure
 ms.collection: oracle
 ms.topic: concept-article

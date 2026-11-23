@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 # Customer intent: As a cloud administrator, I want to update an application on a cluster using a CLI script, so that I can efficiently deploy new versions and ensure my applications are up to date.
 ---
 

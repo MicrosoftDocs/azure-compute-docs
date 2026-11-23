@@ -2,7 +2,7 @@
 title: Advanced Fault Tolerance for Cross-Availability-Zone Rings (On-Demand Auxiliary Replicas)
 description: Learn how on-demand auxiliary replicas reduce quorum-loss risk in two-availability-zone Service Fabric deployments during planned maintenance by utilizing a third availability zone.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

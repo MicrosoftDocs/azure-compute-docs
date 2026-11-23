@@ -5,11 +5,13 @@ author: sherrywangms
 ms.author: sherrywang
 ms.service: azure-virtual-machines
 ms.topic: concept-article
-ms.date: 05/28/2025
+ms.date: 11/20/2026
 ms.subservice: sizes
 # Customer intent: As a cloud infrastructure administrator, I want to migrate my NCv3-series virtual machines to a supported VM size by the retirement date, so that I can maintain my workloads without service disruption and ensure ongoing performance enhancements.
 ---
 # Migrate your NCv3-series virtual machines by September 30, 2025
+
+This article explains the retirement timeline for Azure NCv3-series virtual machines, including regional extensions, and provides guidance on replacement VM series and resizing your VMs.
 
 > [!NOTE]
 > If you're currently using the NCv3-series Azure VMs in either of these regions, you can disregard the general NCv3-series retirement date of September 30, 2025, and continue to use the NCv3-series Azure VMs in that region until the respective extension date: <br/><br/>

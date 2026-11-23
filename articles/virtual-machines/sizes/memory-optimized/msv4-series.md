@@ -1,17 +1,17 @@
 ---
-title: Msv4 Medium Memory size series (Preview)
+title: Msv4 Medium Memory size series
 description: Information on and specifications of the Msv4-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 09/03/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 # Customer intent: "As a cloud architect, I want to assess the Mbsv3 and Msv4 Medium Memory VM series specifications, so that I can determine the best virtual machine options for storage-intensive workloads like SQL Server and data analytics."
 ---
 
-# Msv4 Medium Memory sizes series (Preview)
+# Msv4 Medium Memory sizes series
 
 [!INCLUDE [msv4-summary](./includes/msv4-series-summary.md)]
 
@@ -55,7 +55,7 @@ Local (temp) storage information for each size:
 
 Remote (uncached) storage information for each size:
 
-| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Premium SSD Throughput (MB/s) | Max Uncached Ultra Disk and Premium SSD v2 IOPS | Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
+| Size Name | Max Remote Storage Disks (Qty.) | Max Uncached Premium SSD IOPS | Max Uncached Ultra Disk and Premium SSD v2 IOPS  | Max Uncached Premium SSD Throughput (MB/s)| Max Uncached Ultra Disk and Premium SSD v2 Throughput (MB/s) |
 | --- | --- | --- | --- | --- | --- |
 | Standard_M16ls_v4  | 64 | 20,000 | 20,000 | 400 | 400 |
 | Standard_M32ls_v4 | 64 | 40,000 | 40,000 | 800 | 800 |

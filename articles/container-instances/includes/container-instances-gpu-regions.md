@@ -4,7 +4,7 @@ services: container-instances
 ms.service: azure-container-instances
 ms.topic: include
 ms.date: 11/17/2025
-ms.author: tomcassidy
+ms.author: dmuralidhar
 # Customer intent: "As a cloud engineer, I want to understand the GPU SKU availability for container instances in various regions, so that I can optimize deployment strategies based on resource availability."
 ---
 ### Region availability

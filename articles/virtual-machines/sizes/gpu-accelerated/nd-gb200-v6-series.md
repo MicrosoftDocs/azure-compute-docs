@@ -1,12 +1,12 @@
 ---
 title: ND GB200-v6 size series
 description: Information on and specifications of the ND GB200-v6-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 03/20/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to assess the specifications and features of the ND GB200-v6 series, so that I can choose the optimal virtual machine size for our high-performance computing needs.
 ---

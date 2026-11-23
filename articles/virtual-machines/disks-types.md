@@ -1,8 +1,8 @@
 ---
 title: Select a disk type for Azure IaaS VMs - managed disks
 description: Learn about the available Azure disk types for virtual machines, including Ultra Disk, Premium SSD v2, Premium SSD, Standard SSD, and Standard HDD.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/15/2026
 ms.topic: concept-article
 ms.service: azure-disk-storage

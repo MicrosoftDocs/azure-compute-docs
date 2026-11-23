@@ -2,7 +2,7 @@
 title: Configure or modify a Service Fabric managed cluster node type
 description: This article walks through how to modify a managed cluster node type.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

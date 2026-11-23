@@ -1,12 +1,12 @@
 ---
 title: Mdsv4 Medium Memory series summary include file
 description: Include file for Mdsv4-series summary
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 09/03/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to review the specifications and performance capabilities of the Mdsv4-series virtual machines, so that I can determine their suitability for deploying memory-intensive applications and large in-memory databases."

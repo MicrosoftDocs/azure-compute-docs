@@ -2,7 +2,7 @@
 title: Deploy an application to a Service Fabric managed cluster via PowerShell
 description: In this tutorial, you connect to a Service Fabric managed cluster and deploy an application via PowerShell.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

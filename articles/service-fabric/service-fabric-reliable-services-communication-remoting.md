@@ -2,7 +2,7 @@
 title: Service remoting by using C# in Service Fabric
 description: Service Fabric remoting allows clients and services to communicate with C# services by using a remote procedure call.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

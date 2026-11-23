@@ -6,8 +6,8 @@ ms.subservice: hpc
 ms.topic: overview
 ms.date: 09/25/2026
 ms.reviewer: wwilliams
-ms.author: wwilliams
-author: iamwilliew
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: As a data scientist, I want to utilize InfiniBand-enabled HB-series and N-series VMs for my high-performance computing tasks, so that I can efficiently process complex simulations and AI workloads with optimal scalability and cost-effectiveness.
 ---
 

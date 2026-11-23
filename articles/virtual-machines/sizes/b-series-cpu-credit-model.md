@@ -1,8 +1,8 @@
 ---
 title:       B Series CPU Credit Model
 description: Overview of B Series CPU Credit Model
-author:      iamwilliew 
-ms.author:   wwilliams 
+author:      chiefabel7 
+ms.author:   abelw 
 ms.service: azure-virtual-machines
 ms.subservice:   sizes
 ms.topic:    overview

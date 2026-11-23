@@ -1,12 +1,12 @@
 ---
 title: Increase performance of Premium SSD, Standard SSD, and Standard HDD
 description: Increase the performance of Azure Premium SSD, Standard SSD, and Standard HDD managed disks by using performance plus.
-author: roygara
+author: kaza-sriram
 ms.service: azure-disk-storage
 ms.topic: how-to
 ai-usage: ai-assisted
 ms.date: 09/16/2026
-ms.author: rogarana
+ms.author: prkazasr
 ms.custom: devx-track-azurepowershell, portal
 # Customer intent: As an IT administrator, I want to enable performance enhancements on Azure disks, so that I can increase IOPS and throughput for demanding workloads without incurring additional costs.
 ---
@@ -23,7 +23,6 @@ Once enabled, the IOPS and throughput limits for an eligible disk increase to th
 - Can only be enabled during disk creation
     - To work around this, create a snapshot of your disk, then create a new disk from the snapshot
     - Can't be enabled on disks created during virtual machine creation.
-- Not supported for disks recovered with Azure Site Recovery
 
 ## Prerequisites
 

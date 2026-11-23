@@ -2,7 +2,7 @@
 title: Capacity planning for Service Fabric apps 
 description: Describes how to identify the number of compute nodes required for a Service Fabric application
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

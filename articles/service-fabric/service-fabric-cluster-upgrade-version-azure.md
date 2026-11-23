@@ -2,7 +2,7 @@
 title: Manage Service Fabric cluster upgrades
 description: Manage when and how your Service Fabric cluster runtime is updated
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

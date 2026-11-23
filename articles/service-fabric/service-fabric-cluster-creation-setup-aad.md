@@ -2,7 +2,7 @@
 title: Set up Microsoft Entra ID for client authentication
 description: Learn how to set up Microsoft Entra ID to authenticate clients for Service Fabric clusters.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

@@ -1,8 +1,8 @@
 ---
 title: Configure per-disk resiliency for Azure managed disks (preview)
 description: Configure per-disk resiliency on Azure managed data disks to keep a VM running when a data disk has a connectivity or availability issue.
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-disk-storage
 ms.topic: how-to
 ms.date: 08/28/2026

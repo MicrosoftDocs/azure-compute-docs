@@ -2,7 +2,7 @@
 title: Specify metrics and placement settings
 description: Learn how to describe a Service Fabric service by specifying metrics, placement constraints, and other placement policies.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

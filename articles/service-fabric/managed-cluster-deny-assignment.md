@@ -2,7 +2,7 @@
 title: Deny assignment policy for Service Fabric managed clusters
 description: An overview of the deny assignment policy for Service Fabric managed clusters.
 ms.topic: concept-article
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

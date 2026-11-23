@@ -2,7 +2,7 @@
 title: Set up IP tags on a Service Fabric managed cluster 
 description: Learn how to set IP tags on a Service Fabric managed cluster.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

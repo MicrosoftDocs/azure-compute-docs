@@ -6,7 +6,7 @@ ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 11/24/2025
-ms.author: padmalathas
+ms.author: jvenkatesh
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a cloud architect, I want to access detailed specifications of HC-series VM sizes, so that I can evaluate their suitability for high-performance computing workloads in my infrastructure planning."

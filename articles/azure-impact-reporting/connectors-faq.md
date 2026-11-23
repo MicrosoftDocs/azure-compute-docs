@@ -12,10 +12,10 @@ ms.custom: template-overview
 
 # Azure Impact Reporting connectors for Azure Monitor (preview) FAQ
 
+This article provides answers to common questions about Azure Impact Reporting connectors.
+
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Here are answers to common questions about Azure Impact Reporting connectors.
 
 ## How do I enable debug mode?
 

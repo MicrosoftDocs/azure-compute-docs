@@ -2,23 +2,23 @@
 title: Deploy GPU-Enabled Container Instance
 description: Learn how to deploy Azure container instances to run compute-intensive container applications by using GPU resources.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli
 services: container-instances
-ms.date: 11/17/2025
+ms.date: 11/17/2026
 # Customer intent: As a cloud developer, I want to deploy GPU-enabled container instances by using YAML or Azure Resource Manager templates so that I can efficiently run compute-intensive applications like deep learning and CUDA workloads in Azure.
 ---
 
 # Deploy container instances that use GPU resources
 
+This article shows how to add GPU resources when you deploy a container group by using a [YAML file](container-instances-multi-container-yaml.md) or [Azure Resource Manager template (ARM template)](container-instances-multi-container-group.md). You can also specify GPU resources when you deploy a container instance by using the Azure portal.
+
 > [!IMPORTANT]
 > This product is retired as of July 14, 2025.
 
 To run certain compute-intensive workloads on Azure Container Instances, deploy your [container groups](container-instances-container-groups.md) with *graphics processing unit (GPU) resources*. The container instances in the group can access one or more NVIDIA Tesla GPUs while running container workloads such as compute unified device architecture (CUDA) and deep learning applications.
-
-This article shows how to add GPU resources when you deploy a container group by using a [YAML file](container-instances-multi-container-yaml.md) or [Azure Resource Manager template (ARM template)](container-instances-multi-container-group.md). You can also specify GPU resources when you deploy a container instance by using the Azure portal.
 
 ## Prerequisites
 

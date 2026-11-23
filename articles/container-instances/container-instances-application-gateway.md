@@ -1,7 +1,7 @@
 ---
 title: Static IP address for container group
 description: Create a container group in a virtual network and use an Azure application gateway to expose a static frontend IP address to a containerized web app.
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 ms.custom: devx-track-azurecli

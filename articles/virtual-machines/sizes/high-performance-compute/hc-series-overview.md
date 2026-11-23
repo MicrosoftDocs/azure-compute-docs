@@ -7,8 +7,8 @@ ms.custom:
 ms.topic: concept-article
 ms.date: 09/25/2026
 ms.reviewer: wwilliams
-ms.author: padmalathas
-author: padmalathas
+ms.author: jvenkatesh
+author: jvenka
 # Customer intent: As an HPC administrator, I want to understand the specifications and architecture of HC-series virtual machines, so that I can optimize performance for high-performance computing applications in my cloud environment.
 ---
 

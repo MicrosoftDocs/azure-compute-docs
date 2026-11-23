@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to open application ports in an Azure load balancer using PowerShell so that my Service Fabric application can communicate with external clients effectively.
 ---

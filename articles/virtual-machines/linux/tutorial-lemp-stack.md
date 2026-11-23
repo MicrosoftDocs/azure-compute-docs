@@ -1,13 +1,13 @@
 ---
 title: Tutorial - Deploy a LEMP stack using WordPress on a VM
 description: In this tutorial, you learn how to install the LEMP stack, and WordPress, on a Linux virtual machine in Azure.
-author: fossygirl
+author: kaza-sriram
 ms.collection: linux
 ms.service: azure-virtual-machines
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 2/29/2024
-ms.author: carols
+ms.author: prkazasr
 ms.reviewer: jushim
 ms.custom:
   - innovation-engine

@@ -1,12 +1,12 @@
 ---
 title: ND GB300-v6 size series
 description: Information on and specifications of the ND GB300-v6-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 11/13/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 # Customer intent: As a cloud architect, I want to assess the specifications and features of the ND GB300-v6 series, so that I can choose the optimal virtual machine size for our high-performance computing needs.
 ---

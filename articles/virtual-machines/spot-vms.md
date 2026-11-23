@@ -1,16 +1,15 @@
 ---
 title: About Azure Spot Virtual Machines
 description: Learn about Azure Spot Virtual Machines to save on costs.
-author: iamwilliew
-ms.author: wwilliams
+author: kaza-sriram
+ms.author: prkazasr
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.topic: overview
-ms.date: 02/06/2026
-ms.reviewer: wwilliams
+ms.date: 11/06/2026
+ms.reviewer: mattmcinnes
 # Customer intent: "As a cost-conscious IT manager, I want to utilize Azure Spot Virtual Machines for my batch processing and development environments, so that I can leverage unused capacity and significantly reduce expenses while accepting possible interruptions."
 ---
-
 
 # Azure Spot Virtual Machines 
 
@@ -18,7 +17,9 @@ ms.reviewer: wwilliams
 
 Using Azure Spot Virtual Machines allows you to take advantage of our unused capacity at a significant cost savings. At any point in time when Azure needs the capacity back, the Azure infrastructure will evict Azure Spot Virtual Machines. Therefore, Azure Spot Virtual Machines are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more.
 
-The amount of available capacity can vary based on size, region, time of day, and more. When deploying Azure Spot Virtual Machines, Azure will allocate the VMs if there's capacity available, but there's no SLA for these VMs. An Azure Spot Virtual Machine offers no high availability guarantees. At any point in time when Azure needs the capacity back, the Azure infrastructure will evict Azure Spot Virtual Machines with 30-seconds notice. 
+The amount of available capacity can vary based on size, region, time of day, and more. When you deploy Azure Spot Virtual Machines, Azure allocates the VMs if there's capacity available, but there's no SLA for these VMs. An Azure Spot Virtual Machine offers no high availability guarantees. At any point when Azure needs the capacity back, the Azure infrastructure evicts Azure Spot Virtual Machines with 30 seconds' notice.
+
+Azure [Spot Plus (Public Preview)](spot-plus-public-preview-azure-compute-technical.md) is an enhanced tier of Azure Spot Virtual Machines for interruption-tolerant workloads. It's designed to deliver better runtimes, improved eviction and rebalance signals, while remaining evictable when Azure needs the capacity.
 
 :::image type="content" source="media/spot-vms/azure-spot-virtual-machines-thumbnail.jpg" alt-text="YouTube video about Spot VMs and reducing operational costs of stateless workloads." link="https://youtu.be/GFRA91FTqAE":::
 
@@ -31,7 +32,6 @@ The *Deallocate* policy moves your VM to the stopped-deallocated state, allowing
 If you would like your VM to be deleted when it's evicted, you can set the eviction policy to *delete*. The evicted VMs are deleted together with their underlying disks, so you'll not continue to be charged for the storage. 
 
 You can opt in to receive in-VM notifications through [Azure Scheduled Events](./linux/scheduled-events.md). These are delivered on a best effort basis up to 30 seconds prior to the eviction.
-
 
 | Option | Outcome |
 |--------|---------|
@@ -50,7 +50,7 @@ You can opt in to receive in-VM notifications through [Azure Scheduled Events](.
 ## Limitations
 
 The following VM sizes aren't supported for Azure Spot Virtual Machines:
- - B-series
+- B-series
  - Promo versions of any size (like Dv2, NV, NC, H promo sizes)
 
 Azure Spot Virtual Machines can be deployed to any region, except Microsoft Azure operated by 21Vianet.
@@ -64,12 +64,13 @@ The following [offer types](https://azure.microsoft.com/support/legal/offer-deta
 -	Sponsored (0036P and 0136P) - not available in Fairfax
 - For Cloud Service Provider (CSP), see the [Partner Center](/partner-center/azure-plan-get-started) or contact your partner directly.
 
-
 ## Pricing
 
 Pricing for Azure Spot Virtual Machines is variable, based on region and SKU. For more information, see VM pricing for [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) and [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
-You can also query pricing information using the [Azure retail prices API](/rest/api/cost-management/retail-prices/azure-retail-prices) to query for information about Spot pricing. The `meterName` and `skuName` will both contain `Spot`.
+You can also query pricing information by using the [Azure retail prices API](/rest/api/cost-management/retail-prices/azure-retail-prices) to query for information about Spot pricing (not Spot Plus). The `meterName` and `skuName` both contain `Spot`.
+
+For other ways to query pricing information, see [Spot & Spot Plus Pricing ARG](#azure-resource-graph).
 
 With variable pricing, you have option to set a max price, in US dollars (USD), using up to five decimal places. For example, the value `0.98765`would be a max price of $0.98765 USD per hour. If you set the max price to be `-1`, the VM won't be evicted based on price. The price for the VM will be the current price for spot or the price for a standard VM, which ever is less, as long as there's capacity and quota available.
 
@@ -102,7 +103,7 @@ Key benefits:
 
 Try out the following sample queries for Spot pricing history and eviction rates using the [ARG Explorer in Azure portal](/azure/governance/resource-graph/first-query-portal). Spot pricing history and eviction rates data are available in the `SpotResources` table. 
 
-**Spot pricing history sample query**:
+**Spot and Spot Plus pricing sample query (history available only for Spot)**:
 
 ```sql
 SpotResources 
@@ -110,7 +111,7 @@ SpotResources
 | where sku.name in~ ('standard_d2s_v4', 'standard_d4s_v4') 
 | where properties.osType =~ 'linux' 
 | where location in~ ('eastus', 'southcentralus') 
-| project skuName = tostring(sku.name), osType = tostring(properties.osType), location, latestSpotPriceUSD = todouble(properties.spotPrices[0].priceUSD) 
+| project skuName = tostring(sku.name), osType = tostring(properties.osType), location, latestSpotPriceUSD = todouble(properties.spotPrices[0].priceUSD), latestSpotPlusPriceUSD = todouble(properties.spotPlusPrices[0].priceUSD)
 | order by latestSpotPriceUSD asc 
 ```
 
@@ -133,26 +134,21 @@ Alternatively, try out the [ARG REST API](/rest/api/azure-resourcegraph/) to get
 
 **A:** Yes, except there's no SLA for Azure Spot Virtual Machines and they can be evicted at any time.
 
-
 **Q:** What to do when you get evicted, but still need capacity?
 
 **A:** We recommend you use standard VMs instead of Azure Spot Virtual Machines if you need capacity right away.
-
 
 **Q:** How is quota managed for Azure Spot Virtual Machines?
 
 **A:** Azure Spot Virtual Machines will have a separate quota pool. Spot quota will be shared between VMs and scale-set instances. For more information, see [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
-
 **Q:** Can I request for additional quota for Azure Spot Virtual Machines?
 
 **A:** Yes, you'll be able to submit the request to increase your quota for Azure Spot Virtual Machines through the [standard quota request process](/azure/azure-portal/supportability/per-vm-quota-requests).
 
-
 **Q:** Where can I post questions?
 
 **A:** You can post and tag your question with `azure-spot` at [Q&A](/answers/topics/azure-spot.html). 
-
 
 **Q:** How can I change the max price for a spot VM?
 

@@ -6,7 +6,7 @@ ms.subservice: sizes
 ms.topic: how-to
 ms.date: 8/1/2026
 author: angarg05
-ms.author: ananyagarg
+ms.author: abelw
 ms.custom: references_regions
 ---
 

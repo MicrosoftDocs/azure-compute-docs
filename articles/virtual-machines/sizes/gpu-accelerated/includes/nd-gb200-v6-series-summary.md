@@ -1,12 +1,12 @@
 ---
 title: ND_GB00_v6-series summary include file
 description: Include file for ND_GB200_v6-series summary
-author: iamwilliew
+author: chiefabel7
 ms.topic: include
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.date: 03/19/2025
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ms.custom: include file
 # Customer intent: "As a data scientist, I want to utilize ND-GB200-v6 series virtual machines for my deep learning projects, so that I can leverage their high-performance GPUs and advanced interconnects for efficient model training and large-scale computations."

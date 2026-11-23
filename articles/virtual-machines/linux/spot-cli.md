@@ -1,13 +1,13 @@
 ---
 title: Use CLI to deploy Azure Spot Virtual Machines
 description: Learn how to use the CLI to deploy Azure Spot Virtual Machines to save costs.
-author: iamwilliew
+author: kaza-sriram
 ms.service: azure-virtual-machines
 ms.subservice: azure-spot-vm
 ms.custom: devx-track-azurecli, linux-related-content
 ms.topic: how-to
-ms.date: 05/31/2023
-ms.author: wwilliams
+ms.date: 11/05/2026
+ms.author: prkazasr
 ms.reviewer: wwilliams
 # Customer intent: "As a cloud engineer, I want to deploy Azure Spot Virtual Machines using the CLI, so that I can leverage cost savings on compute resources for workloads that can tolerate interruptions."
 ---
@@ -16,13 +16,13 @@ ms.reviewer: wwilliams
 
 **Applies to:** :heavy_check_mark: Linux VMs :heavy_check_mark: Flexible scale sets 
 
-Using [Azure Spot Virtual Machines](../spot-vms.md) allows you to take advantage of our unused capacity at a significant cost savings. At any point in time when Azure needs the capacity back, the Azure infrastructure evicts Azure Spot Virtual Machines. Therefore, Azure Spot Virtual Machines are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more.
+By using [Azure Spot Virtual Machines](../spot-vms.md), you can take advantage of unused capacity at a significant cost savings. At any point in time when Azure needs the capacity back, the Azure infrastructure evicts Azure Spot Virtual Machines. Therefore, Azure Spot Virtual Machines are great for workloads that can handle interruptions like batch processing jobs, dev/test environments, large compute workloads, and more. [Spot Plus (Public Preview)](../spot-plus-public-preview-azure-compute-technical.md) is an enhanced tier of Azure Spot Virtual Machines for interruption-tolerant workloads. It's designed to deliver better runtimes and improved eviction and rebalance signals, while remaining evictable when Azure needs the capacity.
 
 Pricing for Azure Spot Virtual Machines is variable, based on region and SKU. For more information, see VM pricing for [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) and [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
-You have option to set a max price you're willing to pay, per hour, for the VM. The max price for an Azure Spot Virtual Machine can be set in US dollars (USD), using up to 5 decimal places. For example, the value `0.98765` is a max price of $0.98765 USD per hour. If you set the max price to be `-1`, the VM is evicted based on price. The price for the VM is the current price for Azure Spot Virtual Machine or the price for a standard VM, which ever is less, as long as there's capacity and quota available. For more information about setting the max price, see [Azure Spot Virtual Machines - Pricing](../spot-vms.md#pricing).
+You have the option to set a max price you're willing to pay, per hour, for the VM. The max price for an Azure Spot Virtual Machine can be set in US dollars (USD), using up to 5 decimal places. For example, the value `0.98765` is a max price of $0.98765 USD per hour. If you set the max price to be `-1`, the VM is evicted based on price. The price for the VM is the current price for Azure Spot Virtual Machine or the price for a standard VM, whichever is less, as long as there's capacity and quota available. For more information about setting the max price, see [Azure Spot Virtual Machines - Pricing](../spot-vms.md#pricing).
 
-The process to create an Azure Spot Virtual Machine using the Azure CLI is the same as detailed in the [quickstart article](./quick-create-cli.md). Just add the '--priority Spot' parameter, set the `--eviction-policy` to either `Deallocate` (the default) or `Delete`, and provide a max price or `-1`. 
+The process to create an Azure Spot Virtual Machine by using the Azure CLI is the same as detailed in the [quickstart article](./quick-create-cli.md). Just add the `--priority Spot` or `--priority SpotPlus` parameter, set the `--eviction-policy` to either `Deallocate` (the default) or `Delete`, and provide a max price or `-1`. 
 
 
 ## Install Azure CLI
@@ -37,7 +37,7 @@ az login
 
 ## Create an Azure Spot Virtual Machine
 
-This example shows how to deploy a Linux Azure Spot Virtual Machine that is not evicted based on price. The eviction policy is set to deallocate the VM, so that it can be restarted at a later time. If you want to delete the VM and the underlying disk when the VM is evicted, set `--eviction-policy` to `Delete`.
+This example shows how to deploy a Linux Azure Spot Virtual Machine that isn't evicted based on price. For Spot Plus, change the priority parameter to `--priority SpotPlus`. Set the eviction policy to deallocate the VM, so that it can be restarted later. If you want to delete the VM and the underlying disk when the VM is evicted, set `--eviction-policy` to `Delete`.
 
 ```azurecli-interactive
 az group create -n mySpotGroup -l eastus

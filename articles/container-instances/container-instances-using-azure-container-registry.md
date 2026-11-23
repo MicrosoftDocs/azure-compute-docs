@@ -2,7 +2,7 @@
 title: Deploy container image from Azure Container Registry using a service principal
 description: Learn how to deploy containers in Azure Container Instances by pulling container images from an Azure container registry using a service principal.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: dmuralidhar
 author: tomvcassidy
 ms.service: azure-container-instances
 services: container-instances

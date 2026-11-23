@@ -7,7 +7,7 @@ ms.subservice: sizes
 ms.topic: concept-article 
 ms.custom: references_regions
 ms.date: 06/03/2026 
-ms.author: yangnicole 
+ms.author: abelw 
 ms.reviewer: yangnicole 
 --- 
 

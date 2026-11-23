@@ -2,7 +2,7 @@
 title: Parameterize config files in Azure Service Fabric 
 description: Learn how to parameterize configuration files in Service Fabric, a useful technique when managing multiple environments.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

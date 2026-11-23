@@ -2,7 +2,7 @@
 title: Create and Publish a .NET Core app to a remote Linux Cluster
 description: Create and publish .NET Core apps targeting a remote Linux cluster from Visual Studio
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-dotnet, linux-related-content

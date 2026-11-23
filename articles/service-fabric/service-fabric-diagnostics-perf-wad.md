@@ -2,7 +2,7 @@
 title: Performance monitoring with Azure Diagnostics
 description: Use Azure Diagnostics to collect performance counters for your Azure Service Fabric clusters.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

@@ -61,6 +61,28 @@
     items:
     - name: Deploy virtual nodes on Azure Container Instances in your Azure Kubernetes Service cluster
       href: container-instances-tutorial-virtual-nodes-helm.md
+- name: Serverless sandboxes (preview)
+  items:
+  - name: Overview
+    href: container-instances-ai-sandboxes.md
+  - name: "Quickstart: Create your first serverless sandbox"
+    href: container-instances-ai-sandboxes-quickstart.md
+  - name: Tutorials
+    items:
+    - name: Save and restore a sandbox
+      href: container-instances-ai-sandboxes-tutorial-save-restore.md
+    - name: Connect sandboxes to a virtual network
+      href: container-instances-ai-sandboxes-tutorial-virtual-network.md
+    - name: Control outbound traffic with Agent Grid
+      href: container-instances-ai-sandboxes-tutorial-agent-grid.md
+    - name: Access Azure resources with an agent identity
+      href: container-instances-ai-sandboxes-tutorial-agent-identity.md
+    - name: Run workloads in an enclave
+      href: container-instances-ai-sandboxes-tutorial-enclave.md
+  - name: REST and gateway API reference
+    href: container-instances-ai-sandboxes-api-reference.md
+  - name: Sandbox gateway protobuf reference
+    href: container-instances-ai-sandboxes-gateway-proto.md
 - name: Samples
   items:
   - name: Code samples

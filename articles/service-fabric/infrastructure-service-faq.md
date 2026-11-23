@@ -2,7 +2,7 @@
 title: Introduction to the Service Fabric Infrastructure Service
 description: Frequently asked questions about Service Fabric Infrastructure Service
 ms.topic: faq
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

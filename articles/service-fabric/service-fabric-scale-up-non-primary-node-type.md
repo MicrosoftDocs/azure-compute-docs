@@ -2,7 +2,7 @@
 title: Scale up an Azure Service Fabric nonprimary node type 
 description: Vertically scale your Service Fabric cluster by adding a new nonprimary node type and removing the previous one.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-azurepowershell

@@ -1,12 +1,12 @@
 ---
 title: Dndsv6 size series
 description: Information on and specifications of the Dndsv6-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 11/11/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ai-usage: ai-assisted
 # Customer intent: As a cloud systems architect, I want to review the specifications and support features of the Dndsv6 size series, so that I can choose the best VM size for my application requirements and optimize performance.

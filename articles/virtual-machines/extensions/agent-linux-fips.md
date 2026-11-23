@@ -8,7 +8,7 @@ ms.author: gabsta
 author: GabstaMSFT
 ms.custom: linux-related-content; references_regions
 ms.collection: linux
-ms.date: 07/01/2026
+ms.date: 11/23/2026
 ---
 # FIPS 140-3 support for Azure Linux VM extensions and guest agent
 

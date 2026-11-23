@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Deploy WebLogic Server on Azure Virtual Machines (VMs)"
 description: Shows how to quickly stand up WebLogic Server on Azure Virtual Machine.
-author: KarlErickson
-ms.author: karler
+author: vaidehikher18
+ms.author: vaidehikher
 ms.reviewer: haiche
 ms.topic: quickstart
 ms.date: 03/26/2026

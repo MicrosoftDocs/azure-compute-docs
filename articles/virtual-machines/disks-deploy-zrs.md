@@ -1,8 +1,8 @@
 ---
 title: Deploy a ZRS managed disk
 description: Learn how to deploy a managed disk that uses zone-redundant storage (ZRS).
-author: roygara
-ms.author: rogarana
+author: kaza-sriram
+ms.author: prkazasr
 ms.date: 09/16/2026
 ms.topic: how-to
 ms.service: azure-disk-storage

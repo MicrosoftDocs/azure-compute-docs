@@ -2,7 +2,7 @@
 title: Deploy a Service Fabric managed cluster
 description: In this tutorial, you deploy a Service Fabric managed cluster for testing.
 ms.topic: tutorial
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

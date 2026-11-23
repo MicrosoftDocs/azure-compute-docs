@@ -1,12 +1,12 @@
 ---
 title: Ensv6 size series
 description: Information on and specifications of the Ensv6-series sizes
-author: iamwilliew
+author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
 ms.date: 11/11/2026
-ms.author: wwilliams
+ms.author: abelw
 ms.reviewer: mattmcinnes
 ai-usage: ai-assisted
 # Customer intent: As a cloud architect, I want to understand the specifications and capabilities of the Ensv6-series virtual machines, so that I can choose the appropriate size for my workload requirements.

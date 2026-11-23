@@ -6,7 +6,7 @@ author: tomvcassidy
 ms.service: azure-service-fabric
 ms.topic: sample
 ms.date: 03/22/2026
-ms.author: tomcassidy
+ms.author: bojanmiksin
 ms.custom: mvc
 # Customer intent: As a cloud administrator, I want to remove an application from a Service Fabric cluster using a script, so that I can efficiently manage application instances and free up resources in the cloud environment.
 ---

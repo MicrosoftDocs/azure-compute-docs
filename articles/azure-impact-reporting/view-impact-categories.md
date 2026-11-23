@@ -5,12 +5,15 @@ author: rolandnyamo
 ms.author: ronyamo
 ms.topic: overview
 ms.service: azure 
-ms.date: 10/30/2022
+ms.date: 11/18/2026
 ms.custom: template-overview
+ai-usage: ai-assisted
 # Customer intent: As a cloud user, I want to access a list of impact categories for Azure services so that I can accurately report issues related to resource operations and performance.
 ---
 
 # Impact categories (preview)
+
+Impact categories describe the type of issue you report through Azure Impact Reporting. Use this article to choose a category that matches the resource operation, performance, connectivity, or availability problem you observe.
 
 > [!IMPORTANT]
 > Azure Impact Reporting is currently in preview. For legal terms that apply to Azure features that are in beta, in preview, or otherwise not yet released into general availability, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

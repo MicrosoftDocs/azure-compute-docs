@@ -2,7 +2,7 @@
 title: Reliable Actors timers and reminders 
 description: Introduction to timers and reminders for Service Fabric Reliable Actors, including guidance on when to use each.
 ms.topic: how-to
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 services: service-fabric

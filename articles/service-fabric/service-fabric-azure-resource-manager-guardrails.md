@@ -2,7 +2,7 @@
 title: Service Fabric Azure Resource Manager deployment guardrails 
 description: This article provides an overview of common mistakes made when deploying a Service Fabric cluster through Azure Resource Manager and how to avoid them. 
 ms.topic: reference
-ms.author: tomcassidy
+ms.author: bojanmiksin
 author: tomvcassidy
 ms.service: azure-service-fabric
 ms.custom: devx-track-arm-template
