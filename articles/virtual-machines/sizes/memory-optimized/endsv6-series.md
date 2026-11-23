@@ -5,15 +5,19 @@ author: chiefabel7
 ms.service: azure-virtual-machines
 ms.subservice: sizes
 ms.topic: concept-article
-ms.date: 03/10/2026
+ms.date: 11/11/2026
 ms.author: abelw
 ms.reviewer: mattmcinnes
+ai-usage: ai-assisted
 # Customer intent: "As a cloud architect, I want to evaluate the specifications of the Endsv6 series VM sizes, so that I can select the appropriate size for my workloads based on resource requirements like CPU, memory, and storage performance."
 ---
 
 # Endsv6 sizes series (Preview)
 
 [!INCLUDE [endsv6-summary](./includes/endsv6-series-summary.md)]
+
+> [!IMPORTANT]
+> Increased connection setup performance (connections per second, or CPS) is available only for supported traffic scenarios. It doesn't apply to traffic destined for private endpoints, traffic that uses virtual network encryption, or certain container networking scenarios. See [Connection acceleration limitations](/azure/virtual-network/network-optimized-vm-network-connection-acceleration#limitations) before sizing your workload.
 
 ## Host specifications
 [!INCLUDE [endsv6-series-specs](./includes/endsv6-series-specs.md)]
@@ -125,7 +129,7 @@ Accelerator (GPUs, FPGAs, etc.) info for each size
 | --- | --- |
 |[Premium Storage](../../premium-storage-performance.md)| Supported |
 |[Premium Storage caching](../../premium-storage-performance.md)| Supported |
-|[Live Migration](../../maintenance-and-updates.md#live-migration)| Not Supported |
+|[Live Migration](../../maintenance-and-updates.md#live-migration)| Supported |
 |[Memory Preserving Updates](../../maintenance-and-updates.md)| Supported |
 |[Generation 2 VMs](../../generation-2.md)| Supported |
 |[Generation 1 VMs](../../generation-2.md)| Not Supported |
