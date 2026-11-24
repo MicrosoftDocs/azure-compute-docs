@@ -12,7 +12,7 @@ ms.custom: include file
 ---
 | Part | Quantity <br><sup>Count Units | Specs <br><sup>SKU ID, Performance Units, etc.  |
 |---|---|---|
-| Processor      | 32 - 192 vCPUs       | Intel Xeon Platinum 8280 (Cascade Lake) [x86-64]                   |
+| Processor      | 32 - 192 vCPUs       | Intel Xeon Platinum 8280 (Cascade Lake) [x86-64] and Intel Xeon 4th Gen Scalable (Sapphire Rapids) [x86-64]              |
 | Memory         | 875 - 4096 GiB          |                      |
 | Local Storage  | 0 -  Disks           |  <br> <br>                   |
 | Remote Storage | 32 - 64 Disks    | 20000 - 80000 IOPS <br>500 - 4000 MBps |
