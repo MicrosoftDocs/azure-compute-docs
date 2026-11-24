@@ -1,14 +1,14 @@
 ---
 title: CentOS end-of-life (EOL) guidance
 description: Understand your options for moving CentOS workloads
-author: fossygirl
+author: vamckms
 ms.service: azure-virtual-machines
 ms.subservice: vm-linux-setup-configuration
 ms.custom: linux-related-content, linux-related-content
 ms.collection: linux
 ms.topic: concept-article
 ms.date: 06/25/2024
-ms.author: carols
+ms.author: vakavuru
 # Customer intent: "As a CentOS user, I want to migrate my workloads to a supported operating system, so that I can ensure continued access to updates and security patches after the end-of-life of CentOS."
 ---
 # CentOS End-Of-Life guidance
