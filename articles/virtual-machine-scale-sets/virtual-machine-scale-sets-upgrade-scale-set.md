@@ -5,17 +5,17 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 05/19/2026
+ms.date: 11/24/2026
 ms.reviewer: wwilliams
 ms.custom: upgradepolicy, devx-track-azurecli, devx-track-azurepowershell, ignite-2024
 # Customer intent: As a cloud administrator, I want to modify and update an Azure Virtual Machine Scale Set using REST APIs, PowerShell, or CLI, so that I can ensure my applications run effectively and utilize the latest configurations and features.
 ---
 # Modify a Virtual Machine Scale Set
 
+You can update an Azure Virtual Machine Scale Set as your application requirements change. This article explains how to modify scale set and application configurations by using REST APIs, Azure PowerShell, or the Azure CLI.
+
 > [!NOTE]
 > Many of the steps listed in this document apply to Virtual Machine Scale Sets using Uniform Orchestration mode. We recommend using Flexible Orchestration for new workloads. For more information, see [Orchestration modes for Virtual Machine Scale Sets in Azure](virtual-machine-scale-sets-orchestration-modes.md).
-
-Throughout the lifecycle of your applications, you may need to modify or update your Virtual Machine Scale Set. These updates may include how to update the configuration of the scale set, or change the application configuration. This article describes how to modify an existing scale set with the REST APIs, Azure PowerShell, or Azure CLI.
 
 ## Fundamental concepts
 
