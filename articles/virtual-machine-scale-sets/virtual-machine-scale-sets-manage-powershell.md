@@ -5,17 +5,17 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
-ms.date: 05/19/2026
+ms.date: 11/25/2026
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell 
 # Customer intent: As a cloud administrator, I want to manage Virtual Machine Scale Sets using PowerShell cmdlets, so that I can automate tasks like scaling, starting, stopping, and removing VMs efficiently throughout the lifecycle of the scale set.
 ---
 # Manage a Virtual Machine Scale Set with Azure PowerShell
 
+Throughout the lifecycle of a virtual machine scale set, you might need to run one or more management tasks. You might also want to create scripts that automate various lifecycle tasks. This article details some of the common Azure PowerShell cmdlets that you can use to perform these tasks.
+
 > [!NOTE]
 > Many of the steps listed in this document apply to Virtual Machine Scale Sets using Uniform Orchestration mode. We recommend using Flexible Orchestration for new workloads. For more information, see [Orchesration modes for Virtual Machine Scale Sets in Azure](virtual-machine-scale-sets-orchestration-modes.md).
-
-Throughout the lifecycle of a Virtual Machine Scale Set, you may need to run one or more management tasks. Additionally, you may want to create scripts that automate various lifecycle-tasks. This article details some of the common Azure PowerShell cmdlets that let you perform these tasks.
 
 If you need to create a Virtual Machine Scale Set, you can [create a scale set with Azure PowerShell](quick-create-powershell.md).
 

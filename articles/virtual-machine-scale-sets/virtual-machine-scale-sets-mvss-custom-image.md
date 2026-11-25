@@ -6,18 +6,19 @@ ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: shared-image-gallery
-ms.date: 05/19/2026
+ms.date: 11/25/2026
 ms.reviewer: mimckitt # Customer intent: As a cloud engineer, I want to modify an Azure scale set template to deploy from a custom image, so that I can utilize specific configurations and optimizations required for my application workloads.
 ---
 
 # Add a custom image to an Azure scale set template
 
+This article shows how to modify the [basic scale set template](virtual-machine-scale-sets-mvss-start.md) to deploy from custom image.
+
 > [!NOTE]
 > This document covers Virtual Machine Scale Sets running in Uniform Orchestration mode. We recommend using Flexible Orchestration for new workloads. For more information, see [Orchesration modes for Virtual Machine Scale Sets in Azure](virtual-machine-scale-sets-orchestration-modes.md).
 
-This article shows how to modify the [basic scale set template](virtual-machine-scale-sets-mvss-start.md) to deploy from custom image.
-
 ## Change the template definition
+
 In a [previous article](virtual-machine-scale-sets-mvss-start.md) we had created a basic scale set template. We will now use that earlier template and modify it to create a template that deploys a scale set from a custom image.  
 
 ### Creating a managed disk image

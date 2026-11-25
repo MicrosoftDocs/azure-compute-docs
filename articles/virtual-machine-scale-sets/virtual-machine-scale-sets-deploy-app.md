@@ -6,7 +6,7 @@ ms.author: mimckitt
 ms.topic: how-to
 ms.service: azure-virtual-machine-scale-sets
 ms.subservice: management
-ms.date: 05/19/2026
+ms.date: 11/25/2026
 ms.reviewer: mimckitt
 ms.custom: avverma, devx-track-azurepowershell, devx-track-azurecli, linux-related-content
 ms.devlang: azurecli
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 
 # Deploy your application on Virtual Machine Scale Sets
 
+To run applications on virtual machine (VM) instances in a scale set, you first need to install the application components and required files. This article introduces ways to build a custom VM image for instances in a scale set, or automatically run install scripts on existing VM instances. You also learn how to manage application or OS updates across a scale set.
+
 > [!NOTE]
 > This document covers Virtual Machine Scale Sets running in Uniform Orchestration mode. We recommend using Flexible Orchestration for new workloads. For more information, see [Orchestration modes for Virtual Machine Scale Sets in Azure](virtual-machine-scale-sets-orchestration-modes.md).
-
-To run applications on virtual machine (VM) instances in a scale set, you first need to install the application components and required files. This article introduces ways to build a custom VM image for instances in a scale set, or automatically run install scripts on existing VM instances. You also learn how to manage application or OS updates across a scale set.
 
 ## Install an app using VM Applications
 [Azure VM Applications](../virtual-machines/vm-applications.md) provide a streamlined, scalable and secure way to package, manage, and deploy applications across Azure Virtual Machines (VMs), Virtual Machine Scale Sets (VMSS). VM Applications is the best suited method for deploying tools, agents, AI Apps, security components, and line-of-business applications across Azure. It is designed to deploy AI, secure, high scale, low latency and compliant workloads on Azure VMs. 
