@@ -1,5 +1,5 @@
 ---
-title: Upgrade Gen1 VMs to Trusted launch
+title: Upgrade existing Azure Gen1 VMs to Gen2 (Trusted launch)
 description: Learn how to upgrade existing Azure Gen1 virtual machines (VMs) to Trusted launch.
 author: AjKundnani
 ms.author: ajkundna
@@ -11,7 +11,7 @@ ms.custom: template-how-to, devx-track-azurepowershell
 # Customer intent: As a cloud administrator, I want to upgrade existing Azure Generation 1 VMs to Trusted launch, so that I can enhance security against advanced threats and comply with organizational security policies.
 ---
 
-# Upgrade existing Azure Gen1 VMs to Trusted launch
+# Upgrade existing Azure Gen1 VMs to Gen2 (Trusted launch)
 
 **Applies to:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: Generation 1 VM
 
